@@ -58,8 +58,8 @@ class Analysis:
                     savePath = os.path.join(PatchOutputPath, str(given_num) + "_"
                                             + method_name + "_" + str(file_number) + ".patch")
 
-                    new_PatchDenotation, SDK_VERSION_INT = self.solveLine(Old_API, New_API, Stmts)
-                    newPatch = self.BuildPatch(new_PatchDenotation, SDK_VERSION_INT, Old_API, New_API)
+                    new_PatchDenotation, SDK_VERSION_INT, all_variable_types = self.solveLine(Old_API, New_API, Stmts)
+                    newPatch = self.BuildPatch(new_PatchDenotation, SDK_VERSION_INT, Old_API, New_API, all_variable_types)
                     with open(savePath, "w") as fw:
                         for line in newPatch:
                             fw.write(line)
@@ -78,7 +78,7 @@ class Analysis:
     def getNewVar(self, num):
         return "$r" + str(num)
 
-    def BuildPatch(self, new_PatchDenotation, SDK_VERSION_INT, Old_API, New_API):
+    def BuildPatch(self, new_PatchDenotation, SDK_VERSION_INT, Old_API, New_API, all_variable_types):
         newPatch = []
         BLANK = ""
         note1 = "//(" + SDK_VERSION_INT + ")" + Old_API
@@ -88,6 +88,9 @@ class Analysis:
         newPatch.append(BLANK)
 
         newPatch.append(Declare_Variable)
+        for item in all_variable_types:
+            newline = item + " := " + all_variable_types[item]
+            newPatch.append(newline)
         newPatch.append(BLANK)
         newPatch.append(Declare_Location)
         location = "[OS] " + Old_API + " Build.VERSION.SDK_INT " + SDK_VERSION_INT
@@ -104,6 +107,7 @@ class Analysis:
         SDK_VERSION_INT = ""
         STATE = "READ_NEW"
         all_variables = {}
+        all_variable_types = {}
         new_PatchDenotation = []
         sentences = re.split(r',(?![^(]*\))', Stmts)
 
@@ -142,6 +146,58 @@ class Analysis:
 
                         line = line.replace(var, new_var)
 
+                # means there is a method call
+                if "invoke " in line:
+                    # static invoke
+                    pattern = re.compile(r'(\$?[a-z]\d+) = staticinvoke <(\S+): (\S+) (\w+)\((.*)\)>\((.*)\)')
+                    m = pattern.match(line)
+                    if m:
+                        rtnVar = m.group(1)
+                        rtnType = m.group(3)
+                        paraVars_s = m.group(6)
+                        paraTypes_s = m.group(5)
+
+                        all_variable_types[rtnVar] = rtnType.strip()
+                        paraVars = paraVars_s.split(",")
+                        paraTypes = paraTypes_s.split(",")
+                        for i in range(0, len(paraVars)):
+                            paraVar = paraVars[i].strip()
+                            paraType = paraTypes[i].strip()
+
+                            # if paraType == "int" or paraType == "java.lang.Integer":
+                            #     line = line.replace(paraVar, "1")
+                            # elif paraType == "float":
+                            #     line = line.replace(paraVar, "0.1")
+                            # else:
+                            if "$" in paraVar:
+                                all_variable_types[paraVar] = paraType
+
+                    else:
+                        pattern2 = re.compile(r'(\$?[a-z]\d+) = \w+ (\S+).<(\S+): (\S+) (\S+)\((.*)\)>\((.*)\)')
+                        m2 = pattern2.match(line)
+                        if m2:
+                            rtnVar2 = m2.group(1)
+                            rtnType2 = m2.group(4)
+                            baseVar2 = m2.group(2)
+                            baseType2 = m2.group(3)
+                            paraVars_s2 = m2.group(7)
+                            paraTypes_s2 = m2.group(6)
+                            all_variable_types[baseVar2] = baseType2.strip()
+                            all_variable_types[rtnVar2] = rtnType2.strip()
+                            paraVars2 = paraVars_s2.split(",")
+                            paraTypes2 = paraTypes_s2.split(",")
+                            for i in range(0, len(paraVars2)):
+                                paraVar2 = paraVars2[i].strip()
+                                paraType2 = paraTypes2[i].strip()
+
+                                # if paraType2 == "int" or paraType2 == "java.lang.Integer":
+                                #     line = line.replace(paraVar2, "1")
+                                # elif paraType2 == "float":
+                                #     line = line.replace(paraVar2, "0.1")
+                                # else:
+                                if "$" in paraVar2:
+                                    all_variable_types[paraVar2] = paraType2
+
                 newStmt = "+ " + line
                 new_PatchDenotation.append(newStmt)
 
@@ -168,12 +224,64 @@ class Analysis:
 
                         line = line.replace(var, new_var)
 
+                # means there is a method call
+                if "invoke " in line:
+                    # static invoke
+                    pattern = re.compile(r'(\$?[a-z]\d+) = staticinvoke <(\S+): (\S+) (\w+)\((.*)\)>\((.*)\)')
+                    m = pattern.match(line)
+                    if m:
+                        rtnVar = m.group(1)
+                        rtnType = m.group(3)
+                        paraVars_s = m.group(6)
+                        paraTypes_s = m.group(5)
+
+                        all_variable_types[rtnVar] = rtnType.strip()
+                        paraVars = paraVars_s.split(",")
+                        paraTypes = paraTypes_s.split(",")
+                        for i in range(0, len(paraVars)):
+                            paraVar = paraVars[i].strip()
+                            paraType = paraTypes[i].strip()
+
+                            # if paraType == "int" or paraType == "java.lang.Integer":
+                            #     line = line.replace(paraVar, "1")
+                            # elif paraType == "float":
+                            #     line = line.replace(paraVar, "0.1")
+                            # else:
+                            if "$" in paraVar:
+                                all_variable_types[paraVar] = paraType
+
+                    else:
+                        pattern2 = re.compile(r'(\$?[a-z]\d+) = \w+ (\S+).<(\S+): (\S+) (\S+)\((.*)\)>\((.*)\)')
+                        m2 = pattern2.match(line)
+                        if m2:
+                            rtnVar2 = m2.group(1)
+                            rtnType2 = m2.group(4)
+                            baseVar2 = m2.group(2)
+                            baseType2 = m2.group(3)
+                            paraVars_s2 = m2.group(7)
+                            paraTypes_s2 = m2.group(6)
+                            all_variable_types[baseVar2] = baseType2.strip()
+                            all_variable_types[rtnVar2] = rtnType2.strip()
+                            paraVars2 = paraVars_s2.split(",")
+                            paraTypes2 = paraTypes_s2.split(",")
+                            for i in range(0, len(paraVars2)):
+                                paraVar2 = paraVars2[i].strip()
+                                paraType2 = paraTypes2[i].strip()
+
+                                # if paraType2 == "int" or paraType2 == "java.lang.Integer":
+                                #     line = line.replace(paraVar2, "1")
+                                # elif paraType2 == "float":
+                                #     line = line.replace(paraVar2, "0.1")
+                                # else:
+                                if "$" in paraVar2:
+                                    all_variable_types[paraVar2] = paraType2
+
                 newStmt = "[Stmt] " + line
                 new_PatchDenotation.append(newStmt)
 
         newStmt3 = "+ " + Label_Next
         new_PatchDenotation.append(newStmt3)
-        return new_PatchDenotation, SDK_VERSION_INT
+        return new_PatchDenotation, SDK_VERSION_INT, all_variable_types
 
     def start(self):
         files = getFileList(CSVInputPath, ".csv")

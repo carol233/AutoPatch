@@ -58,6 +58,10 @@ class Analysis:
                     savePath = os.path.join(PatchOutputPath, str(given_num) + "_"
                                             + method_name + "_" + str(file_number) + ".patch")
 
+                    # for debug
+                    # if not "72_saveLayerAlpha_1.patch" in savePath:
+                    #     continue
+
                     new_PatchDenotation, SDK_VERSION_INT, all_variable_types = self.solveLine(Old_API, New_API, Stmts)
                     newPatch = self.BuildPatch(new_PatchDenotation, SDK_VERSION_INT, Old_API, New_API, all_variable_types)
                     with open(savePath, "w") as fw:
@@ -76,7 +80,7 @@ class Analysis:
         return
 
     def getNewVar(self, num):
-        return "$r" + str(num)
+        return "$v" + str(num)
 
     def BuildPatch(self, new_PatchDenotation, SDK_VERSION_INT, Old_API, New_API, all_variable_types):
         newPatch = []
@@ -89,8 +93,9 @@ class Analysis:
 
         newPatch.append(Declare_Variable)
         for item in all_variable_types:
-            newline = item + " := " + all_variable_types[item]
-            newPatch.append(newline)
+            if all_variable_types[item] != -1:
+                newline = item + " := " + all_variable_types[item]
+                newPatch.append(newline)
         newPatch.append(BLANK)
         newPatch.append(Declare_Location)
         location = "[OS] " + Old_API + " Build.VERSION.SDK_INT " + SDK_VERSION_INT
@@ -103,13 +108,26 @@ class Analysis:
 
 
     def solveLine(self, Old_API, New_API, Stmts):
-        TargetStmt = ""
         SDK_VERSION_INT = ""
         STATE = "READ_NEW"
         all_variables = {}
         all_variable_types = {}
+        collect_vars_in_Old = []
         new_PatchDenotation = []
         sentences = re.split(r',(?![^(]*\))', Stmts)
+
+        for tmpline in sentences:
+            tmpline = tmpline.strip()
+            if Old_API in tmpline and not tmpline.startswith("if "):
+                paraVars3 = re.findall(r'\$[a-z]\d+', tmpline)
+                if paraVars3:
+                    for var in paraVars3:
+                        if var in all_variables:
+                            new_var = all_variables[var]
+                        else:
+                            new_var = self.getNewVar(len(all_variables))
+                            all_variables[var] = new_var
+                        collect_vars_in_Old.append(new_var)
 
         for line in sentences:
             line = line.strip()
@@ -164,13 +182,15 @@ class Analysis:
                             paraVar = paraVars[i].strip()
                             paraType = paraTypes[i].strip()
 
-                            # if paraType == "int" or paraType == "java.lang.Integer":
-                            #     line = line.replace(paraVar, "1")
-                            # elif paraType == "float":
-                            #     line = line.replace(paraVar, "0.1")
-                            # else:
                             if "$" in paraVar:
                                 all_variable_types[paraVar] = paraType
+                                if paraVar not in collect_vars_in_Old:
+                                    if paraType == "int" or paraType == "java.lang.Integer":
+                                        line = line.replace(paraVar, "1")
+                                    elif paraType == "float":
+                                        line = line.replace(paraVar, "0.1")
+                                    all_variable_types[paraVar] = -1
+
 
                     else:
                         pattern2 = re.compile(r'(\$?[a-z]\d+) = \w+ (\S+).<(\S+): (\S+) (\S+)\((.*)\)>\((.*)\)')
@@ -190,13 +210,14 @@ class Analysis:
                                 paraVar2 = paraVars2[i].strip()
                                 paraType2 = paraTypes2[i].strip()
 
-                                # if paraType2 == "int" or paraType2 == "java.lang.Integer":
-                                #     line = line.replace(paraVar2, "1")
-                                # elif paraType2 == "float":
-                                #     line = line.replace(paraVar2, "0.1")
-                                # else:
                                 if "$" in paraVar2:
                                     all_variable_types[paraVar2] = paraType2
+                                    if paraVar2 not in collect_vars_in_Old:
+                                        if paraType2 == "int" or paraType2 == "java.lang.Integer":
+                                            line = line.replace(paraVar2, "1")
+                                        elif paraType2 == "float":
+                                            line = line.replace(paraVar2, "0.1")
+                                        all_variable_types[paraVar2] = -1
 
                 newStmt = "+ " + line
                 new_PatchDenotation.append(newStmt)
@@ -242,13 +263,14 @@ class Analysis:
                             paraVar = paraVars[i].strip()
                             paraType = paraTypes[i].strip()
 
-                            # if paraType == "int" or paraType == "java.lang.Integer":
-                            #     line = line.replace(paraVar, "1")
-                            # elif paraType == "float":
-                            #     line = line.replace(paraVar, "0.1")
-                            # else:
                             if "$" in paraVar:
                                 all_variable_types[paraVar] = paraType
+                                if paraVar not in collect_vars_in_Old:
+                                    if paraType == "int" or paraType == "java.lang.Integer":
+                                        line = line.replace(paraVar, "1")
+                                    elif paraType == "float":
+                                        line = line.replace(paraVar, "0.1")
+                                    all_variable_types[paraVar] = -1
 
                     else:
                         pattern2 = re.compile(r'(\$?[a-z]\d+) = \w+ (\S+).<(\S+): (\S+) (\S+)\((.*)\)>\((.*)\)')
@@ -268,13 +290,14 @@ class Analysis:
                                 paraVar2 = paraVars2[i].strip()
                                 paraType2 = paraTypes2[i].strip()
 
-                                # if paraType2 == "int" or paraType2 == "java.lang.Integer":
-                                #     line = line.replace(paraVar2, "1")
-                                # elif paraType2 == "float":
-                                #     line = line.replace(paraVar2, "0.1")
-                                # else:
                                 if "$" in paraVar2:
                                     all_variable_types[paraVar2] = paraType2
+                                    if paraVar2 not in collect_vars_in_Old:
+                                        if paraType2 == "int" or paraType2 == "java.lang.Integer":
+                                            line = line.replace(paraVar2, "1")
+                                        elif paraType2 == "float":
+                                            line = line.replace(paraVar2, "0.1")
+                                        all_variable_types[paraVar2] = -1
 
                 newStmt = "[Stmt] " + line
                 new_PatchDenotation.append(newStmt)

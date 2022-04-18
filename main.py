@@ -73,7 +73,7 @@ class Analysis:
 
             self.lock.acquire()
             with open(RECORD_TXT, "a+") as fw:
-                fw.write(sha256)
+                fw.write(sha256 + "," + str(file_number))
                 fw.write("\n")
             self.lock.release()
 
@@ -192,7 +192,7 @@ class Analysis:
                                 all_variable_types[paraVar] = paraType
                                 if paraVar not in collect_seen_vars:
                                     if paraType == "int" or paraType == "java.lang.Integer":
-                                        line = line.replace(paraVar, "1")
+                                        line = line.replace(paraVar, "0")
                                         all_variable_types[paraVar] = -1
                                     elif paraType == "float":
                                         line = line.replace(paraVar, "0.1")
@@ -227,7 +227,7 @@ class Analysis:
                                     all_variable_types[paraVar2] = paraType2
                                     if paraVar2 not in collect_seen_vars:
                                         if paraType2 == "int" or paraType2 == "java.lang.Integer":
-                                            line = line.replace(paraVar2, "1")
+                                            line = line.replace(paraVar2, "0")
                                             all_variable_types[paraVar2] = -1
                                         elif paraType2 == "float":
                                             line = line.replace(paraVar2, "0.1")

@@ -113,6 +113,7 @@ class Analysis:
     def solveLine(self, Old_API, New_API, Stmts):
         SDK_VERSION_INT = ""
         STATE = "READ_NEW"
+        TargetStmt = ""
         all_variables = {}
         SEARCH_variables = {}
         all_variable_types = {}
@@ -158,7 +159,7 @@ class Analysis:
             elif line.startswith("return "):
                 continue
 
-            elif STATE == "READ_NEW":
+            elif STATE == "READ_NEW" and TargetStmt not in line:
                 allVars = re.findall(r'\$?[a-z]\d+', line)
                 if allVars:
                     for var in allVars:
@@ -205,18 +206,23 @@ class Analysis:
                         collect_seen_vars[rtnVar] = 1
 
                     else:
-                        pattern2 = re.compile(r'(\$?[a-z]\d+) = \w+ (\S+).<(\S+): (\S+) (\S+)\((.*)\)>\((.*)\)')
+                        rtnVar2 = ""
+                        if "=" in line:
+                            rtnVar2 = line.split("=")[0].strip()
+
+                        pattern2 = re.compile(r'(\S+).<(\S+): (\S+) (\S+)\((.*)\)>\((.*)\)')
                         m2 = pattern2.match(line)
                         if m2:
-                            rtnVar2 = m2.group(1)
-                            rtnType2 = m2.group(4)
-                            baseVar2 = m2.group(2)
-                            baseType2 = m2.group(3)
-                            paraVars_s2 = m2.group(7)
-                            paraTypes_s2 = m2.group(6)
+                            rtnType2 = m2.group(3)
+                            baseVar2 = m2.group(1)
+                            baseType2 = m2.group(2)
+                            paraVars_s2 = m2.group(6)
+                            paraTypes_s2 = m2.group(5)
 
                             all_variable_types[baseVar2] = baseType2.strip()
-                            all_variable_types[rtnVar2] = rtnType2.strip()
+                            if rtnVar2:
+                                all_variable_types[rtnVar2] = rtnType2.strip()
+
                             paraVars2 = paraVars_s2.split(",")
                             paraTypes2 = paraTypes_s2.split(",")
                             for i in range(0, len(paraVars2)):
@@ -264,6 +270,8 @@ class Analysis:
                     STATE = "END_NEW"
 
             else:
+                if TargetStmt in line:
+                    STATE = "END_NEW"
                 # old statements <label_original>
                 newStmt1 = "+ goto " + Label_Next
                 newStmt2 = "+ " + Label_Original

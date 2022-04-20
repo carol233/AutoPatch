@@ -265,10 +265,6 @@ class Analysis:
                 newStmt = "+ " + line
                 new_PatchDenotation_part1.append(newStmt)
 
-                if New_API in line:
-                    # by default, new API first, old API second
-                    STATE = "END_NEW"
-
             else:
                 if TargetStmt in line:
                     STATE = "END_NEW"

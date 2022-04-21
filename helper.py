@@ -32,11 +32,11 @@ def get_md5(s):
     m.update(s.encode("utf-8"))
     return m.hexdigest()
 
-def loadCDA(CDAPath):
+def loadPair(Path):
     API_Old_dic = {}
     API_new_dic = {}
     num = 1
-    with open(CDAPath, "r") as f:
+    with open(Path, "r") as f:
         lines = f.readlines()
         for line in lines:
             pattern = re.compile(r'\S+(<\S+:\s+\S+\s+[\w<>]+\(.*\)>)[\s\S]+----> {1,10}(<\S+:\s+\S+\s+[\w<>]+\(.*\)>)[\s\S]+')

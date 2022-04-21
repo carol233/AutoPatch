@@ -7,7 +7,7 @@ from threading import Timer
 
 from helper import *
 
-CDAPath = "AutoPatch_Pairs.txt"
+PairPath = "AutoPatch_Pairs.txt"
 # CSVInputPath = "/data/sdc/yanjie/AutoPatch_dataset"
 # PatchOutputPath = "/data/sdc/yanjie/AutoPatch_generatePatch"
 CSVInputPath = "test"
@@ -379,7 +379,7 @@ if __name__ == '__main__':
             for item in solved:
                 all_solved[item] = 1
     check_and_mk_dir(PatchOutputPath)
-    API_Old_dic, API_new_dic = loadCDA(CDAPath)
+    API_Old_dic, API_new_dic = loadPair(PairPath)
     print("Load ", len(API_Old_dic), " API pairs.")
     analysis = Analysis()
     analysis.start()

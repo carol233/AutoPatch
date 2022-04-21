@@ -39,7 +39,7 @@ def loadCDA(CDAPath):
     with open(CDAPath, "r") as f:
         lines = f.readlines()
         for line in lines:
-            pattern = re.compile(r'\S+(<\S+:\s\S+\s[\w<>]+\(.*\)>)[\s\S]+----> {1,10}(<\S+:\s\S+\s[\w<>]+\(.*\)>)[\s\S]+')
+            pattern = re.compile(r'\S+(<\S+:\s+\S+\s+[\w<>]+\(.*\)>)[\s\S]+----> {1,10}(<\S+:\s+\S+\s+[\w<>]+\(.*\)>)[\s\S]+')
             m = pattern.match(line)
             if m:
                 old_sig = m.group(1)

@@ -7,7 +7,7 @@ from threading import Timer
 
 from helper import *
 
-CDAPath = "CDA.txt"
+CDAPath = "AutoPatch_Pairs.txt"
 # CSVInputPath = "/data/sdc/yanjie/AutoPatch_dataset"
 # PatchOutputPath = "/data/sdc/yanjie/AutoPatch_generatePatch"
 CSVInputPath = "test"

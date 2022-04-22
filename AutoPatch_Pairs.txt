@@ -47,7 +47,7 @@
 (30)<android.app.AppOpsManager: int noteProxyOpNoThrow(java.lang.String,java.lang.String)>[normal]    ---->    <android.app.AppOpsManager: int noteProxyOpNoThrow(java.lang.String,java.lang.String,int,java.lang.String,java.lang.String)>[normal]
 (30)<android.app.AppOpsManager: int noteOp(java.lang.String,int,java.lang.String)>[normal]    ---->    <android.app.AppOpsManager: int noteOp(java.lang.String,int,java.lang.String,java.lang.String,java.lang.String)>[normal]
 (30)<android.app.AppOpsManager: int startOpNoThrow(int,int,java.lang.String)>[normal]    ---->    <android.app.AppOpsManager: int startOpNoThrow(java.lang.String,int,java.lang.String,java.lang.String,java.lang.String)>[normal]
-(30)<android.app.AppOpsManager: int startOp(int,int,java.lang.String,boolean)>[normal]    ---->    <android.app.AppOpsManager: int startOp(java.lang.String,int,java.lang.String,java.lang.String,java.lang.String)>
+(30)<android.app.AppOpsManager: int startOp(int,int,java.lang.String,boolean)>[normal]    ---->    <android.app.AppOpsManager: int startOp(java.lang.String,int,java.lang.String,java.lang.String,java.lang.String)>[normal]
 (30)<android.app.AppOpsManager: int startOp(java.lang.String,int,java.lang.String)>[normal]    ---->    <android.app.AppOpsManager: int startOp(java.lang.String,int,java.lang.String,java.lang.String,java.lang.String)>[normal]
 (30)<android.app.AppOpsManager: int startOp(int)>[normal]    ---->    <android.app.AppOpsManager: int startOp(java.lang.String,int,java.lang.String,java.lang.String,java.lang.String)>[normal]
 (30)<android.app.AppOpsManager: int startOpNoThrow(java.lang.String,int,java.lang.String)>[normal]    ---->    <android.app.AppOpsManager: int startOpNoThrow(java.lang.String,int,java.lang.String,java.lang.String,java.lang.String)>[normal]
@@ -95,7 +95,7 @@
 (29)<android.telephony.SubscriptionInfo: int getMcc()>[normal]    ---->    <android.telephony.SubscriptionInfo: java.lang.String getMccString()>[normal]
 (29)<android.telephony.data.ApnSetting: java.net.InetAddress getProxyAddress()>[normal]    ---->    <android.telephony.data.ApnSetting: java.lang.String getProxyAddressAsString()>[normal]
 (29)<android.telephony.data.ApnSetting: java.net.InetAddress getMmsProxyAddress()>[normal]    ---->    <android.telephony.data.ApnSetting: java.lang.String getMmsProxyAddressAsString()>[normal]
-(30)<android.telephony.CellInfo: long getTimeStamp()>[normal]    ---->    <android.telephony.CellInfo: long getTimestampMillis()>
+(30)<android.telephony.CellInfo: long getTimeStamp()>[normal]    ---->    <android.telephony.CellInfo: long getTimestampMillis()>[normal]
 (30)<android.location.LocationManager: void requestSingleUpdate(android.location.Criteria,android.app.PendingIntent)>[normal]    ---->    <android.location.LocationManager: void getCurrentLocation(java.lang.String,android.os.CancellationSignal,java.util.concurrent.Executor,java.util.function.Consumer)>[normal]
 (30)<android.location.LocationManager: void requestSingleUpdate(android.location.Criteria,android.location.LocationListener,android.os.Looper)>[normal]    ---->    <android.location.LocationManager: void getCurrentLocation(java.lang.String,android.os.CancellationSignal,java.util.concurrent.Executor,java.util.function.Consumer)>[normal]
 (30)<android.location.LocationManager: void requestSingleUpdate(java.lang.String,android.location.LocationListener,android.os.Looper)>[normal]    ---->    <android.location.LocationManager: void getCurrentLocation(java.lang.String,android.os.CancellationSignal,java.util.concurrent.Executor,java.util.function.Consumer)>[normal]
@@ -130,7 +130,7 @@
 (30)<android.accessibilityservice.AccessibilityService: boolean onGesture(int)>[normal]    ---->    <android.accessibilityservice.AccessibilityService: boolean onGesture(android.accessibilityservice.AccessibilityGestureEvent)>[normal]
 (29)<android.widget.SearchView: boolean isIconfiedByDefault()>[normal]    ---->    <android.widget.SearchView: boolean isIconifiedByDefault()>[normal]
 (29)<android.view.inputmethod.InputMethodManager: boolean setCurrentInputMethodSubtype(android.view.inputmethod.InputMethodSubtype)>[normal]    ---->    <android.inputmethodservice.InputMethodService: void switchInputMethod(java.lang.String,android.view.inputmethod.InputMethodSubtype)>[normal]
-(30)<android.app.Notification.BubbleMetadata.Builder: void <init>()>[normal]    ---->    <android.app.Notification.BubbleMetadata.Builder: void <init>(java.lang.String)>
+(30)<android.app.Notification.BubbleMetadata.Builder: void <init>()>[normal]    ---->    <android.app.Notification.BubbleMetadata.Builder: void <init>(java.lang.String)>[normal]
 (30)<android.hardware.biometrics.BiometricPrompt.Builder: android.hardware.biometrics.BiometricPrompt.Builder setDeviceCredentialAllowed(boolean)>[normal]    ---->    <android.hardware.biometrics.BiometricPrompt.Builder: android.hardware.biometrics.BiometricPrompt.Builder setAllowedAuthenticators(int)>[normal]
 (30)<android.view.Display: void getRectSize(android.graphics.Rect)>[normal]    ---->    <android.view.WindowMetrics: android.graphics.Rect getBounds()>[normal]
 (30)<android.widget.Toast: android.view.View getView()>[normal]    ---->    <android.widget.Toast: android.widget.Toast makeText(android.content.Context,java.lang.CharSequence,int)>[normal]

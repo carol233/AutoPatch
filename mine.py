@@ -7,13 +7,12 @@ from subprocess import Popen, PIPE
 from threading import Timer
 
 JAR_PATH = "AutoPatch.jar"
-APK_FOLDER = "/data/sdc/yanjie/APK2020"
-# APK_FOLDER = "/data/sdc/yanjie/APPLineage3w"
+APK_FOLDER = "/data/sdc/yanjie/APK2021"
 SAVECSV_DIR = "/data/sdc/yanjie/AutoPatch_dataset"
 SAVEAPI_DIR = "/data/sdc/yanjie/AutoPatch_APIindex"
 Android_jar = "/home/yanjie/android-sdk-linux/platforms"
-CDAPath = "/home/yanjie/APImigration/MineFromApps/CDA.txt"
-RECORD_TXT = "record_mine_log.txt"
+CDAPath = "AutoPatch_Pairs.txt"
+RECORD_TXT = "record_0422.txt"
 
 all_solved = {}
 
@@ -34,7 +33,7 @@ def getFileList(rootDir, pickstr):
 
 class Analysis:
     def __init__(self):
-        self.max_jobs = 12
+        self.max_jobs = 15
         self.lock = threading.Lock()
 
     def run(self, cmd, timeout_sec):

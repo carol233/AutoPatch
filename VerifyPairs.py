@@ -8,7 +8,7 @@ def loadpairs(Path):
     with open(Path, "r") as f:
         lines = f.readlines()
         for line in lines:
-            pattern = re.compile(r'\S+<\S+:\s+(\S+)\s+[\w<>]+\((.*)\)>[\s\S]+----> {1,10}(<\S+:\s+(\S+)\s+[\w<>]+\((.*)\)>)[\s\S]+')
+            pattern = re.compile(r'\S+<\S+:\s(\S+)\s[\w<>]+\((.*)\)>[\s\S]+----> {1,10}(<\S+:\s(\S+)\s[\w<>]+\((.*)\)>)[\s\S]+')
             m = pattern.match(line)
             if m:
                 sin_type1 = m.group(1)
@@ -35,7 +35,8 @@ def loadpairs(Path):
 
 
             else:
-                print("Load CDA error", line)
+                print("Load error", line)
+
     return API_Old_dic, API_new_dic
 
 

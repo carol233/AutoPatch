@@ -49,6 +49,8 @@ class Analysis:
                 for line in reader:
                     Old_API = line[0].strip("\"' ")
                     New_API = line[1].strip("\"' ")
+                    if Old_API == "None" or New_API == "None":
+                        continue
                     Stmts = line[3].strip("\"[]")
                     given_num = API_Old_dic[Old_API]
                     pattern = re.compile(r'<\S+:\s\S+\s([\w<>]+)\(.*\)>')
@@ -60,7 +62,7 @@ class Analysis:
                                             + method_name + "_" + str(file_number) + ".patch")
 
                     # for debug
-                    # if not "72_saveLayerAlpha_1.patch" in savePath:
+                    # if not "147_setBackgroundDrawable_3.patch" in savePath:
                     #     continue
 
                     new_PatchDenotation, SDK_VERSION_INT, all_variable_types, SEARCH_variables = self.solveLine(Old_API, New_API, Stmts)
@@ -113,6 +115,7 @@ class Analysis:
     def solveLine(self, Old_API, New_API, Stmts):
         SDK_VERSION_INT = ""
         STATE = "READ_NEW"
+        FLAG_ifnext = 1  # for protection
         TargetStmt = ""
         all_variables = {}
         SEARCH_variables = {}
@@ -156,10 +159,14 @@ class Analysis:
                 new_PatchDenotation_part1.append(newStmt1)
                 new_PatchDenotation_part1.append(newStmt2)
 
-            elif line.startswith("return "):
+            elif line.startswith("return"):
                 continue
 
-            elif STATE == "READ_NEW" and TargetStmt not in line:
+            elif line.startswith("goto"):
+                continue
+
+            elif STATE == "READ_NEW" and (TargetStmt not in line or FLAG_ifnext):
+                FLAG_ifnext = 0
                 allVars = re.findall(r'\$?[a-z]\d+', line)
                 if allVars:
                     for var in allVars:
@@ -377,7 +384,8 @@ if __name__ == '__main__':
         with open(RECORD_TXT, "r") as fr:
             solved = fr.read().split("\n")
             for item in solved:
-                all_solved[item] = 1
+                sha2561 = item.split(",")[0]
+                all_solved[sha2561] = 1
     check_and_mk_dir(PatchOutputPath)
     API_Old_dic, API_new_dic = loadPair(PairPath)
     print("Load ", len(API_Old_dic), " API pairs.")

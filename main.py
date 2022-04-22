@@ -7,11 +7,15 @@ from threading import Timer
 
 from helper import *
 
+DEBUG = 1
+if DEBUG:
+    CSVInputPath = "test"
+    PatchOutputPath = "testOutput"
+else:
+    CSVInputPath = "/data/sdc/yanjie/AutoPatch_dataset"
+    PatchOutputPath = "/data/sdc/yanjie/AutoPatch_generatePatch"
+
 PairPath = "AutoPatch_Pairs.txt"
-# CSVInputPath = "/data/sdc/yanjie/AutoPatch_dataset"
-# PatchOutputPath = "/data/sdc/yanjie/AutoPatch_generatePatch"
-CSVInputPath = "test"
-PatchOutputPath = "testOutput"
 RECORD_TXT = "RawPatch_Parsed.txt"
 all_solved = {}
 API_Old_dic = {}
@@ -62,16 +66,29 @@ class Analysis:
                                             + method_name + "_" + str(file_number) + ".patch")
 
                     # for debug
-                    # if not "147_setBackgroundDrawable_3.patch" in savePath:
-                    #     continue
+                    # if DEBUG:
+                    #     if not "147_setBackgroundDrawable_3.patch" in savePath:
+                    #         continue
 
-                    new_PatchDenotation, SDK_VERSION_INT, all_variable_types, SEARCH_variables = self.solveLine(Old_API, New_API, Stmts)
+                    new_PatchDenotation, SDK_VERSION_INT, all_variable_types, SEARCH_variables = self.solveLine(Old_API,
+                                                                                                                New_API,
+                                                                                                                Stmts)
                     newPatch = self.BuildPatch(new_PatchDenotation, SDK_VERSION_INT, Old_API, New_API,
                                                all_variable_types, SEARCH_variables)
-                    with open(savePath, "w") as fw:
-                        for line in newPatch:
-                            fw.write(line)
-                            fw.write("\n")
+
+                    # filter
+                    flag_ifSave = 1
+                    m5 = re.findall(r'<.*>', " ".join(newPatch))
+                    for s in m5:
+                        if not (s.startswith("<android") or s.startswith("<java")):
+                            flag_ifSave = 0
+                            break
+
+                    if flag_ifSave == 1:
+                        with open(savePath, "w") as fw:
+                            for ll in newPatch:
+                                fw.write(ll)
+                                fw.write("\n")
 
             self.lock.acquire()
             with open(RECORD_TXT, "a+") as fw:

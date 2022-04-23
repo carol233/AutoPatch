@@ -6,6 +6,7 @@ CSVInputPath = "/data/sdc/yanjie/AutoPatch_dataset"
 Patches = "/data/sdc/yanjie/AutoPatch_generatePatch_selected/"
 
 Root_dir = "/data/sdc/yanjie/AutoPatch_DL/"
+check_and_mk_dir(Root_dir)
 Output_all = Root_dir + "input_all.txt"
 Output_input = Root_dir + "input_filter.txt"
 Output_GroundTruth = Root_dir + "output_filter.txt"
@@ -63,6 +64,10 @@ if __name__ == "__main__":
         with open(jishu, "a+") as fw2:
             fw2.write(Old_API + "|" + str(repeat_num))
             fw2.write("\n")
+
+        if Old_API not in API_Old_dic:
+            print(Old_API)
+            continue
 
         API_num = API_Old_dic[Old_API]
         gr = Patches + str(API_num) + "_"

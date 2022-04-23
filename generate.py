@@ -7,7 +7,7 @@ from threading import Timer
 
 from helper import *
 
-DEBUG = 1
+DEBUG = 0
 if DEBUG:
     CSVInputPath = "test"
     PatchOutputPath = "testOutput"
@@ -17,9 +17,11 @@ else:
 
 PairPath = "AutoPatch_Pairs.txt"
 RECORD_TXT = "RawPatch_Parsed.txt"
+Filed_File = "framework_fields.txt"
 all_solved = {}
 API_Old_dic = {}
 API_new_dic = {}
+fields = {}
 
 
 class Analysis:
@@ -67,7 +69,7 @@ class Analysis:
 
                     # for debug
                     # if DEBUG:
-                    #     if not "147_setBackgroundDrawable_3.patch" in savePath:
+                    #     if not "_4.patch" in savePath:
                     #         continue
 
                     new_PatchDenotation, SDK_VERSION_INT, all_variable_types, SEARCH_variables = self.solveLine(Old_API,
@@ -234,7 +236,7 @@ class Analysis:
                         if "=" in line:
                             rtnVar2 = line.split("=")[0].strip()
 
-                        pattern2 = re.compile(r'(\S+).<(\S+): (\S+) (\S+)\((.*)\)>\((.*)\)')
+                        pattern2 = re.compile(r'[\S\s]+(\S+).<(\S+): (\S+) (\S+)\((.*)\)>\((.*)\)')
                         m2 = pattern2.match(line)
                         if m2:
                             rtnType2 = m2.group(3)
@@ -332,15 +334,19 @@ class Analysis:
                                 all_variable_types[paraVar] = paraType
 
                     else:
-                        pattern2 = re.compile(r'(\$?[a-z]\d+) = \w+ (\S+).<(\S+): (\S+) (\S+)\((.*)\)>\((.*)\)')
+                        rtnVar2 = ""
+                        if "=" in line:
+                            rtnVar2 = line.split("=")[0].strip()
+
+                        pattern2 = re.compile(r'[\S\s]+(\S+).<(\S+): (\S+) (\S+)\((.*)\)>\((.*)\)')
                         m2 = pattern2.match(line)
                         if m2:
-                            rtnVar2 = m2.group(1)
-                            rtnType2 = m2.group(4)
-                            baseVar2 = m2.group(2)
-                            baseType2 = m2.group(3)
-                            paraVars_s2 = m2.group(7)
-                            paraTypes_s2 = m2.group(6)
+                            rtnType2 = m2.group(3)
+                            baseVar2 = m2.group(1)
+                            baseType2 = m2.group(2)
+                            paraVars_s2 = m2.group(6)
+                            paraTypes_s2 = m2.group(5)
+
                             all_variable_types[baseVar2] = baseType2.strip()
                             all_variable_types[rtnVar2] = rtnType2.strip()
                             paraVars2 = paraVars_s2.split(",")
@@ -403,8 +409,16 @@ if __name__ == '__main__':
             for item in solved:
                 sha2561 = item.split(",")[0]
                 all_solved[sha2561] = 1
+
     check_and_mk_dir(PatchOutputPath)
     API_Old_dic, API_new_dic = loadPair(PairPath)
+
+    with open(Filed_File, "r") as fr:
+        for line in fr.read().split("\n"):
+            filed = line.split("|")[0]
+            value = line.split("|")[-1].split(":")[-1]
+            fields[filed] = value
+
     print("Load ", len(API_Old_dic), " API pairs.")
     analysis = Analysis()
     analysis.start()

@@ -26,7 +26,7 @@ fields = {}
 
 class Analysis:
     def __init__(self):
-        self.max_jobs = 12
+        self.max_jobs = 15
         self.lock = threading.Lock()
 
     def run(self, cmd, timeout_sec):
@@ -80,9 +80,12 @@ class Analysis:
 
                     # filter
                     flag_ifSave = 1
-                    m5 = re.findall(r'<.*>', " ".join(newPatch))
+                    m5 = re.findall(r'<.*?>', " ".join(newPatch))
                     for s in m5:
-                        if not (s.startswith("<android") or s.startswith("<java")):
+                        if not (s.startswith("<android") or s.startswith("<java")
+                                or s.startswith("< ") or s.startswith("<label")
+                                or s.startswith("<= ")):
+                            print(s)
                             flag_ifSave = 0
                             break
 
@@ -116,7 +119,7 @@ class Analysis:
 
         newPatch.append(Declare_Variable)
         for item in all_variable_types:
-            if all_variable_types[item] != -1:
+            if all_variable_types[item] != -1 and item.startswith("$"):
                 newline = item + " := " + all_variable_types[item]
                 if item in SEARCH_variables:
                     newline = "[SEARCH] " + newline

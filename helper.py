@@ -1,6 +1,9 @@
 import hashlib
 import os
 import re
+from subprocess import Popen, PIPE
+from threading import Timer
+import shlex
 
 SDK_VERSION_STR = "<android.os.Build$VERSION: int SDK_INT>"
 SDKVersionValue = -1
@@ -31,6 +34,18 @@ def get_md5(s):
     m = hashlib.md5()
     m.update(s.encode("utf-8"))
     return m.hexdigest()
+
+
+def run(cmd, timeout_sec):
+    proc = Popen(shlex.split(cmd), stdout=PIPE, stderr=PIPE)
+    timer = Timer(timeout_sec, proc.kill)
+    try:
+        timer.start()
+        # stdout, stderr = proc.communicate()
+        print(proc.stdout.readlines())
+    finally:
+        timer.cancel()
+
 
 def loadPair(Path):
     API_Old_dic = {}

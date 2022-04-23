@@ -18,7 +18,9 @@ all_data = {}
 filter_data = {}
 
 if __name__ == "__main__":
+    all_patches = getFileList(Patches, ".patch")
     API_Old_dic, API_new_dic = loadPair(PairPath)
+    print(API_Old_dic)
     files = getFileList(CSVInputPath, ".csv")
     for file in files:
         with open(file, "r") as fr1:
@@ -36,23 +38,21 @@ if __name__ == "__main__":
                     all_data[Old_API] = []
                     all_data[Old_API].append(Stmts)
 
-                flag_ifSave = 1
-                m5 = re.findall(r'<.*>', " ".join(Stmts))
-                for s in m5:
-                    if not (s.startswith("<android") or s.startswith("<java")):
-                        flag_ifSave = 0
+                if Old_API not in API_Old_dic:
+                    continue
+
+                API_num = API_Old_dic[Old_API]
+                for patch in all_patches:
+                    gr = Patches + str(API_num) + "_"
+                    if gr in patch:
+                        if Old_API in filter_data:
+                            if (len(filter_data[Old_API])) < 1000:
+                                filter_data[Old_API].append(Stmts)
+                        else:
+                            filter_data[Old_API] = []
+                            filter_data[Old_API].append(Stmts)
                         break
 
-                if flag_ifSave == 1:
-                    # save and count
-
-                    if Old_API in filter_data:
-                        filter_data[Old_API].append(Stmts)
-                    else:
-                        filter_data[Old_API] = []
-                        filter_data[Old_API].append(Stmts)
-
-    all_patches = getFileList(Patches, ".patch")
     for Old_API in filter_data:
         with open(Output_input, "a+") as fw1:
             lst = filter_data[Old_API]
@@ -66,7 +66,6 @@ if __name__ == "__main__":
             fw2.write("\n")
 
         if Old_API not in API_Old_dic:
-            print(Old_API)
             continue
 
         API_num = API_Old_dic[Old_API]
@@ -74,15 +73,16 @@ if __name__ == "__main__":
         for patch in all_patches:
             if gr in patch:
                 with open(patch, "r") as fr:
-                    content = fr.read(patch)
+                    content = fr.read()
                     line = content.replace('\n', '|').replace('\r', '|')
 
                     count = 1
                     with open(Output_GroundTruth, "a+") as fw3:
-                        if count <= repeat_num:
+                        while count <= repeat_num:
                             fw3.write(line)
                             fw3.write("\n")
                             count += 1
+                break
 
 
 

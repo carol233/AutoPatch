@@ -45,11 +45,11 @@ if __name__ == '__main__':
                     methodname2 = m2.group(2).strip()
 
                     if classname1 == classname2 and methodname1 == methodname2:
-                        matches[item1] = item2
+                        matches[item2] = item1
                         break
 
     print(len(matches), len(cda), len(sc))
-    for item in cda.keys() - matches.keys():
+    for item in sc.keys() - matches.keys():
         print(item)
 
 

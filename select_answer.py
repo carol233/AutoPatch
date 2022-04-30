@@ -7,7 +7,7 @@ if DEBUG:
     selected_path = "testPatchOutput"
 else:
     PatchOutputPath = "/data/sdc/yanjie/AutoPatch_generatePatch"
-    selected_path = "/data/sdc/yanjie/AutoPatch_generatePatch_selected_2"
+    selected_path = "/data/sdc/yanjie/AutoPatch_generatePatch_selected"
 all_saved = {}
 
 if __name__ == "__main__":
@@ -22,6 +22,7 @@ if __name__ == "__main__":
                 content = fr.read()
                 # filter
                 flag_ifSave = 1
+
                 # m5 = re.findall(r'<.*?>', content)
                 # for s in m5:
                 #     if not (s.startswith("<android") or s.startswith("<java")

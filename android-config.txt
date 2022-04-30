@@ -1,0 +1,97 @@
+Android,12,31,android-12.0.0_r26,acc288377442012fe94d8003bec0bb99912f920a,android-31
+Android,11,30,android-11.0.0_r40,5735148f4ad74424a7c59457e46f7151a96bb3ab,android-30
+Android,10,29,android-security-10.0.0_r54,af9e4710df4b18e090c4c6c519d46816145193b0,android-29
+Android,9,28,android-security-9.0.0_r68,67fae877f918a31ac9286972b97ae7667dd1eb1d,android-28
+Android,8.1.0,27,android-security-8.1.0_r88,3eb437536b377b8f8f177b28a0f55940f6736919,android-27
+Android,8.0.0,26,android-security-8.0.0_r54,340621a7fdcc6f8ef471c89fe639b1b9ec0b8fae,android-26
+Android,7.1,25,android-7.1.2_r39,8fe116528f1caf04f1a1edd07ec054cf463cc985,android-25
+Android,7.0,24,android-7.0.0_r36,0f492b9e4100bedd355d27f66f537054ff501307,android-24
+Android,6.0,23,android-6.0.1_r81,cac6285b48e88e118f69992d5c97d56163b6274c,android-23
+Android,5.1,22,android-5.1.1_r38,6e9224c3ef7a2b0064b80e9a597ae9316f80d004,android-22
+Android,5.0,21,android-5.0.2_r3,e0dd9516b516bc9042ad5d6f4b7fef053ce07d0e,android-21
+Android,4.4-4.4.4,19,android-4.4.4_r2,63ade05d76785975fc3292ca030abbaa1dda8891,android-19
+Android,4.3.x,18,android-4.3.1_r1,0c82481e783a2fa7d97bbd6140be3f8c3642e4e0,android-18
+Android,4.2.x,17,android-4.2.2_r1.2,763ef60466ac752a3031719fb86b08486c9946b1,android-17
+Android,4.1.x,16,android-4.1.2_r2.1,4873a480f6df3f84bb3ca5c8647e9498aaf597a5,android-16
+Android,4.0.3-4.0.4,15,android-4.0.4_r2.1,df331873c8576e0ae34ae1ee3cc258beed373535,android-15
+Android,4.0.1-4.0.2,14,android-4.0.2_r1,185d0e7f0a843b3fd0cd6696a01b19d21de85693,android-14
+Android,3.2.x,13,android-3.2.4_r1,7944ef8bc137b1b73b879ab6cb5fbff9db7a98d2,android-13
+Android,3.1,12,tag12,496d94f2346271709d0ada3e754a4b84635ec24f,android-12
+Android,3.0,11,tag11,190d4e29f978742b14e196119e977f0f409b6b86,android-11
+Android,2.3.3-2.3.7,10,android-2.3.7_r1,3f2821425f1ab6eddb76a8725e3f2c3edb5d8b07,android-10
+Android,2.3-2.3.2,9,android-2.3.2_r1,6bcc7a7e5fc5a2340c4f060141bec9d181454807,android-9
+Android,2.2.x,8,android-2.2.3_r2,adba66b5d89fd8382c4f6b90d772942d86d5afbf,android-8
+Android,2.1,7,android-2.1_r2.1p2,562ac30bddb37b8bebeedfb035111dda41187332,android-7
+Android,2.0.1,6,android-2.0.1_r1,7dc48d34ae680e5304f11a8ff898598672162727,android-6
+Android,2.0,5,android-2.0_r1,92d82787e911d24b8b0ee24bb87c2922a595d9c4,android-5
+Android,1.6,4,android-1.6_r1.5,a16a12a27d1f25c3f3aa5f9a10fd202df785a82d,android-4
+Android,1.5,3,tag3,77c4903397eb0fb81f641c0beb1762f42819357b,android-3
+Android,1.1,2,tag2,625648e059c4959db265a026a967710d3179b3b3,android-2
+Android,1.0,1,tag1,e1dc1d6dc8064740b78562c3028ccc526a44597e,android-1
+AOKP,pie,9.0,Merge tag 'android-9.0.0_r46',292d49751b7984704e0bcd96f1fa3e722cb3adc8,android-28
+AOKP,oreo,8.1.0,Merge tag 'android-8.1.0_r52',610fea25cf48e730f42506139522bfbd7b218d6a,android-27
+AOKP,Oreo,8.0.0
+AOKP,Nougat,7.1,Merge tag 'android-7.1.2_r29',a939551d82e39422af035641d67005d14d3588c0,android-25
+AOKP,Nougat,7.0,Merge tag 'android-7.0.0_r14',aad1a2e74b4588ab1eb75d7475c614d518b78552,android-24
+AOKP,Marshmallow,6.0,Merge tag 'android-6.0.1_r74',aceb2dc599ac99a75fbdd45ae81ce7b5b9a783fc,android-23
+Lineage,lineage-18.1,11,Merge tag 'android-11.0.0_r27',0177db12a69ad98627fef924376ce4a77bb0f3eb,android-30
+Lineage,lineage-17.1,10,Merge tag 'android-security-10.0.0_r50',51d126e0ca6600c64f6670bdbed70c4c223711e4,android-29
+Lineage,lineage-16.0,9.0,Merge tag 'android-security-9.0.0_r64',75ed0a20a1215a7d38f72dbb905be20aa5b32e8a,android-28
+Lineage,lineage-15.1,8.1.0,Merge tag 'android-security-8.1.0_r84',1d8f2ed2c55d6dd00546bb8f7e27f72939bf7e2b,android-27
+Lineage,8.0.0
+Lineage,cm-14.1,7.1.0,Merge tag 'android-7.1.2_r29',bdbf96c117553153589086cf29a848accf075a01,android-25
+Lineage,cm-14.0,7.0.0,Merge tag 'android-7.0.0_r14',7517e8058becac2200840cd0c289b236ab04dae2,android-24
+Lineage,cm-13.0,6.0,Merge tag 'android-6.0.1_r74',c6a475dc6553dfc6836e716360f835ff8a22f68f,android-23
+Lineage,cm-12.1,5.1,Merge tag 'android-5.1.1_r37',2562e11eea3c6aa659156b04f898a43d68a82994,android-22
+Lineage,cm-12.0,5.0,Merge tag 'android-5.0.1_r1',f1b946efb7e36dbe1b7e6ac7cb28d99d2d83f566,android-21
+Lineage,cm-11,4.4,Merge tag 'android-4.4.4_r1',16b778a002b776cdb5d097d2566732ad02ee0773,android-19
+Lineage,cm-10.2,4.3,Merge tag 'android-4.3.1_r1',677b2c0d07a53e90f108fce7264e2bdb63371211,android-18
+Omnirom,android-11,11,Merge tag 'android-11.0.0_r16',3ac374e2776e7e76310bd5618677e6d27704bf64,android-30
+Omnirom,android-10,10,Merge tag 'android-10.0.0_r41',ff52c76ccd6c47eb134d6ba286b79e59fbd68d4f,android-29
+Omnirom,android-9,9,Merge tag 'android-9.0.0_r47',9bcb339da21dac994f0d0593ce9bf1973e5caa1d,android-28
+Omnirom,android-8.1,8.1,Merge tag 'android-8.1.0_r51',ed29d2d966faba29a4a0497b3108137f58dcafd5,android-27
+Omnirom,android-8.0,8.0,Merge tag 'android-8.0.0_r31',2f824e0a4151a5bac2e1dcdc5e7fbc890b39aaa7,android-26
+Omnirom,android-7.1,7.1,Merge tag 'android-7.1.2_r29',4310f05cc3180341de286f10839b74b5d443d4ef,android-25
+Omnirom,android-7.0,7.0,Merge tag 'android-7.0.0_r19',d3cf5a0d84dd46085cf6233c50e1ae132902cad3,android-24
+Omnirom,android-6.0,6.0,Merge tag 'android-6.0.1_r74',2b225570771828c9d4c7d76e1935bd295be88017,android-23
+Omnirom,android-5.1,5.1,Merge tag 'android-5.1.1_r13',51faf5994a65471566c7070641eeb2e0ab3c6bd3,android-22
+Omnirom,android-5.0,5.0,Merge tag 'android-5.0.2_r1',e558a6719a58396ffc9ed71b4ca6adbacd33bb80,android-21
+Omnirom,android-4.4,4.4,Merge tag 'android-4.4.4_r1',43037d3e33d4621cafc58746f4ba5657376dbdce,android-19
+Omnirom,android-4.3,4.3,Merge tag 'android-4.3.1_r1',b89b591df1d82c45dd2ba013fb9a1431dc56dcf7,android-18
+Resur,Q,10,Merge tag 'android-security-10.0.0_r50',8f0e0aadde8c7e19a9acf06ad34f5a5060272a7d,android-29
+Resur,Pie,9,Merge tag 'android-9.0.0_r46',ec90918de5ebdeb88e2efafd9ee40945ab39745c,android-28
+Resur,Oreo,8.1,Merge tag 'android-8.1.0_r52',b403c59d9cd5365df0635c84867bcaa06857d854,android-27
+Resur,Oreo,8.0
+Resur,Nougat,7.1,Merge tag 'android-7.1.2_r24',d61247a3cad0d38d2fcbc55006e103dc30bb3c11,android-25
+Resur,Nougat,7.0,Merge tag 'android-7.0.0_r14',dbc5ccdb624bdbd10240790be8954c84c8258264,android-24
+Resur,Marshmallow,6.0,Merge tag 'android-6.0.1_r74',e3f0c3aa0907fa8eaa75ee90c1859b9ebb40e28f,android-23
+Resur,Lollipop,5.1,Merge tag 'android-5.1.1_r34',1c1b904835d901fc73a5b586d3d0fe37e6eed612,android-22
+Resur,Lollipop,5,0
+Resur,cm-11-stable,4.4,Merge tag '4.4.3_r1.1',65048ebf498e29f7ca33db01becbe2119042fb76,android-19
+Slimrom,9.0,9.0,Merge tag 'android-9.0.0_r35',13bd23bf7dbdfdbd74df538cdb463f819e659507,android-28
+Slimrom,or8.1,8.1,Merge tag 'android-8.1.0_r36',5a8ce059ac76e3d35718974ba89a425db1265e6b,android-27
+Slimrom,or8.0,8.0
+Slimrom,ng7.1,7.1,Merge tag 'android-7.1.1_r4',0391c14b6945b3f43a446f5beb3dd7269ac2f7c8,android-25
+Slimrom,ng7.0,7.0
+Slimrom,mm6.0,6.0,Merge tag 'android-6.0.1_r24',8c2146fa4fe0d3e9534d28eceeaeffb9a764a5cc,android-23
+Slimrom,lp5.1,5.1,Merge tag 'android-5.1.0_r1',79e556a4f582ed1f2156edd423d9e5383961812c,android-22
+Slimrom,lp5.0,5.0,Merge tag 'android-5.0.2_r1',d6e031a1dd4c0f0e12d8958654cf3b38d3a5ec4d,android-21
+Slimrom,kk4.4,4.4,Merge tag 'android-4.4.3_r1.1',b00938003047bc0a13c7f9b4cffc623eddc5904b,android-19
+Slimrom,jb4.3,4.3,Merge tag 'android-4.3_r3.1',15d92769f8717ee83c95efd8f0fa64c944860cda,android-18
+crdroid,10.0-fod-next,10,Merge 'lineage-17.1' into 10.0,0da9793aeb3bbbccbc6e0e9b8589db8663656acd,android-29
+crdroid,9.0,9.0,Merge 'lineage-16.0' into 9.0,0e62855b7b94284c61096f3bb50345a2572519ae,android-28
+crdroid,8.1,8.1,Merge 'lineage-15.1' into 8.1,99b55f8e59879dc4dd5ddbccd0b858dd9e587479,android-27
+crdroid,7.1,7.1,Merge 'cm-14.1' into 7.1,9b3b8f11d42af1451d43a73c06165563c53c34a4,android-25
+crdroid,6.0.0,6.0,Merge remote-tracking branch 'cm/cm-13.0',cd156580bce9b6bba153b17519862971406f9eb0,android-23
+crdroid,5.1.1,5.1,Merge remote-tracking branch 'CyanogenMod/cm-12.1',2f4cccc940e2352bd5464e072192a088995248cb,android-22
+AOSPA,ruby,11.0,Merge tag 'LA.QSSI.11.0.r1-11900-qssi.0',5a52a4b09f910a76ae1aa761d8545b17f7e83196,android-30
+AOSPA,quartz,10.0,Merge tag 'LA.UM.8.15.r1-06800-KAMORTA.0',e5ff69d42924a666e475fb866a75323343e1b382,android-29
+AOSPA,Pie,9.0,Merge tag 'LA.UM.7.1.r1-16300-sm8150.0',b507bea0753e186495284dd58ac68465a9566377,android-28
+AOSPA,Oreo-mr1,8.1,Merge tag 'LA.UM.6.2.r1-09500-sdm660.0',d14d54596e5712b9429d84c741e50a1354647fe7,android-27
+AOSPA,Oreo,8.0,Merge tag 'LA.UM.6.4.r1-05200-8x98.0',fdedb9e883c7112678ba06ccc7205634b05c8404,android-26
+AOSPA,Nougat-mr2,7.1,Merge tag 'LA.UM.5.8.r1-02900-8x98.0',538f21179f0befe65aa43adf5a33623df7288754,android-25
+AOSPA,Nougat,7.0,Merge tag 'android-7.0.0_r4',81d702d8b575372863e8ffa41fd7edf870bbd0a3,android-24
+AOSPA,Marshmallow,6.0,Merge tag 'android-6.0.1_r62',f787677aff612997b229425b9c279e361744810f,android-23
+AOSPA,Lollipop-mr1,5.1,Merge tag 'android-5.1.1_r12',31704a61eef8dad41b2ed29b320cf2555d5ee4a8,android-22
+AOSPA,lollipop,5.0,Merge tag 'android-5.0.2_r1',05de85ba36278696734f36285c0f2d091c7a3a56,android-21
+AOSPA,Kitkat,4.4,Merge tag 'android-4.4.4_r1',3d6e006aed1f365688fb9ad3e0100adf6643689f,android-19

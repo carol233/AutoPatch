@@ -1,7 +1,7 @@
 from helper import *
 import csv
 
-PairPath = "AutoPatch_Pairs.txt"
+PairPath = "NewPairs.txt"
 CSVInputPath = "/data/sdc/yanjie/AutoPatch_dataset"
 Patches = "/data/sdc/yanjie/AutoPatch_generatePatch_selected/"
 

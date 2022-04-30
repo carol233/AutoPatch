@@ -1,0 +1,395 @@
+#### ------------------------- All APIs below are deprecated in api level 23 ------------------------- 
+[Verified]<android.content.ContentResolver: void notifyChange (Uri uri,ContentObserver observer, boolean syncToNetwork)> ----> <android.content.ContentResolver: void notifyChange (Uri uri,ContentObserver observer, int flags)>
+
+
+#### ------------------------- All APIs below are deprecated in api level 29 ------------------------- 
+
+[Verified]<android.telephony.SignalStrength: boolean isGsm()>    ---->    <android.telephony.SignalStrength:  getCellSignalStrengths()> 
+<com.android.systemui.bubbles.BubbleStackView: void expandStack()>    ---->    #setExpanded(boolean) OR #setSelectedBubble(Bubble)
+[REMOVED]<android.net.wifi.WifiManager: void removePasspointConfiguration(String)>   
+[Verified]<android.provider.MediaStore.Images.Media: Cursor query(ContentResolver,Uri,String[])>    ---->    ContentResolver
+<android.location.LocationManager: void setLocationControllerExtraPackage(String)>
+[Verified]<android.graphics.RenderNode: RecordingCanvas start(int,int)>   ---->   <android.graphics.RenderNode: beginRecording start(int,int)>
+[https://developer.android.com/reference/android/graphics/Picture#beginRecording(int,%20int)]
+<android.content.pm.PackageItemInfo: CharSequence loadSafeLabel(PackageManager)>
+[Verified]<android.widget.PopupWindow: boolean isLayoutInScreenEnabled()>  ---->  <android.widget.PopupWindow: boolean isLaidOutInScreen()>
+[Verified]<android.telephony.SignalStrength: int getCdmaEcio()>    ---->    <android.telephony.CellSignalStrengthCdma: int getCdmaEcio()>
+[REMOVED]<android.database.sqlite.SQLiteQueryBuilder: boolean isProjectionAggregationAllowed()>  
+[Verified]<android.widget.PopupWindow: void setClipToScreenEnabled(boolean)> ----> <android.widget.PopupWindow: void setIsClippedToScreen(boolean)>
+<android.app.backup.BackupManager: String getDataManagementLabel(String)>     ---->    <android.app.backup.BackupManager: String getDataManagementIntentLabel(String)>
+[Verified]<android.content.pm.PackageManager: int installExistingPackageAsUser(String,int)>   ---->   <android.content.pm.PackageInstaller: void installExistingPackage(String,int,IntentSender)> 
+<android.content.IContentProvider: ContentProviderResult[] applyBatch(String,ArrayList<ContentProviderOperation>)>    ---->    
+<android.net.NetworkInfo: void setExtraInfo(String)> [https://developer.android.com/reference/android/net/NetworkInfo]
+<com.android.settingslib.wifi.AccessPoint: String getConfigName()>    ---->    #getTitle()
+[Verified]<android.telephony.SignalStrength: int getWcdmaRscp()>  ---->   <android.telephony.CellSignalStrengthTdscdma: int getRscp()>
+[Verified]<android.provider.MediaStore.Images.Thumbnails: Cursor queryMiniThumbnails(ContentResolver,Uri,int,String[])>    ---->   <android.content.ContentResolver: Bitmap loadThumbnail(uri,size,CancellationSignal)>
+[REMOVED]<android.net.wifi.WifiManager: WifiLock createWifiLock(String)>   
+[ComplexFix]<com.android.server.ServiceWatcher: T runOnBinderBlocking(BlockingBinderRunner<T>,T)>   
+[Verified]<android.telephony.SignalStrength: int getLteSignalStrength()>  ---->   <android.telephony.CellSignalStrengthLte: int getRssi()>
+[Verified]<android.content.pm.PackageManager: int installExistingPackage(String,int)>  ---->  <android.content.pm.PackageInstaller: void installExistingPackage(String,int,IntentSender)> 
+[Verified]<android.net.wifi.aware.DiscoverySession: NetworkSpecifier createNetworkSpecifierPassphrase(PeerHandle,String)>    ---->    <android.net.wifi.aware.WifiAwareNetworkSpecifier: Builder(DiscoverySession,PeerHandle)>
+<android.app.backup.BackupManager: void updateTransportAttributes(ComponentName,String,Intent,String,Intent,String)>  ---->   <android.app.backup.BackupManager: void updateTransportAttributes(ComponentName, String, Intent, String, Intent, CharSequence)>
+[REMOVED]<android.text.style.SuggestionSpan: void notifySelection(Context,String,int)>
+[Verified]<android.telephony.SignalStrength: int getWcdmaDbm()>   ---->   <android.telephony.CellSignalStrengthWcdma: int getDbm()> 
+[Verified]<android.service.notification.ConditionProviderService: void notifyCondition(Condition)>    ---->    <android.app.NotificationManager: void setAutomaticZenRuleState(String, Condition)>
+[Verified]<android.service.voice.VoiceInteractionSession: void onHandleAssistSecondary(Bundle,AssistStructure,AssistContent,int,int)>    ---->    <android.service.voice.VoiceInteractionSession: void onHandleAssist(VoiceInteractionSession.AssistState)>
+[REMOVED]<android.view.accessibility.AccessibilityNodeInfo: void setBoundsInParent(Rect)>      
+[Verified]<android.graphics.Canvas: void insertReorderBarrier()>   ---->   <android.graphics.Canvas: void enableZ()>
+[Verified]<android.view.inputmethod.InputMethodManager: InputMethodManager peekInstance()>   ---->   <android.content.Context:  InputMethodManager getSystemService(String)>
+[Verified]<android.telephony.PhoneNumberUtils: boolean isEmergencyNumber(int,String,String)>   ---->   <android.telephony.TelephonyManager: boolean isEmergencyNumber(String)> 
+[Verified]<android.telephony.SignalStrength: int getCdmaAsuLevel()>   ---->   <android.telephony.CellSignalStrengthCdma: int getAsuLevel()>
+[ComplexFix]<android.net.wifi.WifiManager: boolean enableNetwork(int,boolean)>    ---->    WifiNetworkSpecifier.Builder#build()
+[Verified]<android.provider.MediaStore.Images.Media: Cursor query(ContentResolver,Uri,String[],String,String[],String)>    ---->    <android.content.ContentResolver: Cursor query(Uri, String[], String, String[], String)>
+[Verified]<android.provider.MediaStore.Video.Thumbnails: void cancelThumbnailRequest(ContentResolver,long,long)>    ---->    <android.content.ContentResolver: Bitmap loadThumbnail(Uri, Size,CancellationSignal)>
+[Verified]<android.provider.MediaStore.Images.Thumbnails: Cursor query(ContentResolver,Uri,String[])>    ---->    <android.content.ContentResolver: Cursor query(Uri, String[], Bundle, CancellationSignal)>
+[Verified]<android.provider.MediaStore.Images.Thumbnails: Bitmap getThumbnail(ContentResolver,long,long,int,Options)>    ---->   <android.content.ContentResolver: Bitmap loadThumbnail(Uri, Size,CancellationSignal)>
+[Verified]<android.provider.MediaStore.Images.Thumbnails: Cursor queryMiniThumbnail(ContentResolver,long,int,String[])>    ---->    <android.content.ContentResolver: Cursor query(Uri, String[], Bundle, CancellationSignal)>
+[Verified]<android.provider.MediaStore.Images.Thumbnails: Cursor queryMiniThumbnails(ContentResolver,long,int,String[])>    ---->    <android.content.ContentResolver: Cursor query(Uri, String[], Bundle, CancellationSignal)>
+[Verified]<android.provider.MediaStore.Video: Cursor query(ContentResolver,Uri,String[])>    ---->    <android.content.ContentResolver: Cursor query(Uri, String[], String, String[], String)>  
+[Verified]<android.provider.MediaStore.Images.Media: Cursor query(ContentResolver,Uri,String[],String,String)>    ---->    <android.content.ContentResolver: Cursor query(Uri, String[], String, String[], String)>  
+<android.telephony.ims.feature.MmTelFeature.MmTelCapabilities: void <init>(Capabilities)>    ---->    MmTelCapabilities
+[REMOVED]<android.media.MediaFile: void addFileType(String,int,String)>    ---->    
+[Verified]<android.graphics.Canvas: void insertInorderBarrier()>   ---->    <android.graphics.Canvas: void diableZ()> 
+<android.app.backup.RestoreSession: int restoreSome(long,RestoreObserver,String[])>   ----> <android.app.backup.RestoreSession: int restorePackages(long,RestoreObserver,Set)>
+[Verified]<android.view.KeyEvent: String getCharacters()>    ---->    <android.view.KeyEvent: int getAction()>
+[Verified]<android.telephony.SignalStrength: int getLteRssnr()>   ---->   <android.telephony.CellSignalStrengthLte: int getRssnr()>
+<android.telecom.TelecomManager: boolean setDefaultDialer(String)>   ---->    <android.app.role.RoleManager#addRoleHolderAsUser(String, String, int, UserHandle,Executor, java.util.function.Consumer)>
+<android.view.inputmethod.InputMethodManager: void notifyUserAction()>
+[Verified]<android.graphics.RenderNode: boolean setLayerPaint(Paint)>  ---->  <android.graphics.RenderNode: boolean setUseCompositingLayer(boolean,Paint)>
+<android.nfc.NfcAdapter: void setNdefPushMessageCallback(CreateNdefMessageCallback,Activity,Activity)>    ---->    File sharing can work using other technology like Bluetooth.
+<android.os.UserManager: boolean canSwitchUsers()>
+[REMOVED]<android.provider.MediaStore.Audio.Media: Uri getContentUriForPath(String)>    ---->    
+<android.telephony.TelephonyManager: List<CarrierIdentifier> getAllowedCarriers(int)>
+<android.media.ThumbnailUtils: Bitmap transform(Matrix,Bitmap,int,int,int)>    ---->  
+[REMOVED]<android.media.ThumbnailUtils: Bitmap createAudioThumbnail(String,int)>    ---->    <android.media.ThumbnailUtils: Bitmap createAudioThumbnail(File, Size, CancellationSignal)>
+<com.android.internal.widget.LockPatternChecker: AsyncTask<?, ?, ?> verifyPassword(LockPatternUtils,String,long,int,OnVerifyCallback)>    ---->    
+<android.media.ThumbnailUtils: ParcelFileDescriptor makeInputStream(Uri,ContentResolver)>   
+[No-Documentation]<android.media.ThumbnailUtils: int computeInitialSampleSize(Options,int,int)>    ---->    
+[Verified]<android.widget.PopupWindow: void setLayoutInScreenEnabled(boolean)>   ---->   <android.widget.PopupWindow: void setIsLaidOutInScreen(boolean)>
+[HIDDEN]<android.hardware.hdmi.HdmiControlManager: boolean isRemoteDeviceConnected(HdmiDeviceInfo)>  ---->   android.hardware.hdmi.HdmiControlManager: boolean isDeviceConnected(HdmiDeviceInfo)>
+[Verified]<android.net.NetworkInfo: DetailedState getDetailedState()>    ---->    <android.net.ConnectivityManager.NetworkCallback>
+[ComplexFix]<android.app.DownloadManager.Request: void allowScanningByMediaScanner()>    ---->    Context#getExternalFilesDir(String)
+[REMOVED]<com.android.server.pm.ApexManager: PackageInfo getPackageInfoForApexName(String)>    
+[No-Documentation]<com.android.systemui.shared.recents.model.Task: void addCallback(TaskCallbacks)>    ---->    
+[HIDDEN]<android.content.ContentProviderClient: void releaseQuietly(ContentProviderClient)>
+[Verified]<android.telephony.SignalStrength: int getEvdoDbm()>    ---->    <android.telephony.CellSignalStrengthCdma: int getEvdoDbm()>
+[ComplexFix]<android.bluetooth.BluetoothHealthCallback: void onHealthAppConfigurationStatusChange(BluetoothHealthAppConfiguration,int)>    ---->    <android.bluetooth.BluetoothGatt>, <android.bluetooth.BluetoothAdapter: BluetoothServerSocket listenUsingL2capChannel()>, <android.bluetooth.BluetoothDevice: BluetoothSocket createL2capChannel(int)>, 
+[HIDDEN]<android.os.PowerManager: void wakeUp(long,String)>   ----> <android.os.PowerManager: void wakeUp(long,int,String)>
+[HIDDEN]<android.app.prediction.AppTarget.Builder: Builder setTarget(ShortcutInfo)>
+[HIDDEN]<android.security.keystore.recovery.WrappedApplicationKey: void <init>(String,byte[])>
+[Verified]<android.telephony.SignalStrength: int getWcdmaLevel()>   ---->   <android.telephony.CellSignalStrengthWcdma: int getDbm()>
+[Verified]<android.net.wifi.WifiManager: boolean disableNetwork(int)>    
+---->    "trigger connection to a Wi-Fi network" : <android.netwifi.WifiNetworkSpecifier.Builder: WifiNetworkSpecifier build()>
+---->    "for new API to add Wi-Fi networks for consideration when auto-connecting to wifi" : <android.net.wifi.WifiManager: int addNetworkSuggestions(List<WifiNetworkSuggestion>)>, <android.net.wifi.WifiManager: int removeNetworkSuggestions(List<WifiNetworkSuggestion>)> 
+[REMOVED]<com.android.internal.app.SimpleIconFactory: Bitmap createAppBadgedIconBitmap(Drawable,Bitmap)>    ---->    
+[HIDDEN]<android.app.ActivityManager: void clearGrantedUriPermissions(String)>
+[ComplexFix]<android.graphics.drawable.Drawable: int getOpacity()>    ---->    <android.graphics.PixelFormat>
+[Verified]<android.telephony.SignalStrength: int getCdmaDbm()>    ---->    <android.telephony.CellSignalStrengthCdma: int getCdmaDbm()>
+[Verified]<android.provider.MediaStore: void trash(Context,Uri,long)>  ---->   <android.provider.MediaStore: PendingIntent createTrashRequest(ContentResolver ,Collection<Uri>,boolean)> 
+[Verified]<android.provider.MediaStore: void trash(Context,Uri)>    ---->   <android.provider.MediaStore: PendingIntent createTrashRequest(ContentResolver ,Collection<Uri>,boolean)> 
+[Incorrect-Documentation]<android.telephony.SignalStrength: void setFromNotifierBundle(Bundle)>
+[Verified]<android.telephony.data.ApnSetting.Builder: Builder setProxyAddress(InetAddress)>    ---->    <android.telephony.data.ApnSetting.Builder: Builder setProxyAddress(String)>
+[REMOVED]<android.provider.MediaStore: Set<String> getAllVolumeNames(Context)>
+[Verified]<android.telephony.PhoneNumberUtils: boolean isEmergencyNumber(int,String)>   ---->   <android.telephony.TelephonyManager: boolean isEmergencyNumber(String)> 
+[Verified]<com.android.server.backup.UserBackupManagerService: String selectBackupTransport(String)>    ---->    <com.android.server.backup.UserBackupManagerService: void selectBackupTransportAsync(ComponentName,  ISelectBackupTransportCallback)>
+[REMOVED]<android.app.DownloadManager.Request: Request setVisibleInDownloadsUi(boolean)>    ---->    Environment#getExternalStoragePublicDirectory(String)
+[Verified]<android.telephony.SignalStrength: int getAsuLevel()>   ---->  <android.telephony.CellSignalStrength: int getAsuLevel()> 
+[Verified]<android.telephony.data.ApnSetting.Builder: Builder setMmsProxyAddress(InetAddress)>    ---->    <android.telephony.data.ApnSetting.Builder: Builder setMmsProxyAddress(String)
+[Verified]<android.telephony.PhoneNumberUtils: boolean isLocalEmergencyNumber(Context,String)>    ---->    <android.telephony.TelephonyManager: boolean isEmergencyNumber(String)> 
+[ComplexFix]<android.net.wifi.WifiManager: boolean reassociate()>    
+---->   "new mechanism to trigger connection to a Wi-Fi network" :  <android.net.wifi.WifiNetworkSpecifier.Builder: WifiNetworkSpecifier build()>
+---->   "new API to add Wi-Fi networks":  <android.net.wifi.WifiManager: int addNetworkSuggestions(List<WifiNetworkSuggestion>)>, <android.net.wifi.WifiManager: int removeNetworkSuggestions(List<WifiNetworkSuggestion>)>
+[HIDDEN]<android.app.backup.RestoreSession: int restoreSome(long,RestoreObserver,BackupManagerMonitor,String[])>
+[ComplexFix]<android.net.wifi.WifiManager: boolean removeNetwork(int)> 
+---->   "new mechanism to trigger connection to a Wi-Fi network" :  <android.net.wifi.WifiNetworkSpecifier.Builder: WifiNetworkSpecifier build()>
+---->   "new API to add Wi-Fi networks for consideration when auto-connecting to wifi.":  <android.net.wifi.WifiManager: int addNetworkSuggestions(List<WifiNetworkSuggestion>)>, <android.net.wifi.WifiManager: int removeNetworkSuggestions(List<WifiNetworkSuggestion>)>
+[HIDDEN]<android.os.storage.StorageManager: File maybeTranslateEmulatedPathToInternal(File)> 
+[REMOVED]<android.nfc.NfcAdapter: void setBeamPushUris(Uri[],Activity)>    "this feature is deprecated. File sharing can work using other technology like Bluetooth."
+[HIDDEN]<android.location.LocationManager: boolean setProviderEnabledForUser(String,boolean,UserHandle)>
+[Verified]<android.app.KeyguardManager: Intent createConfirmDeviceCredentialIntent(CharSequence,CharSequence)>    ---->    <android.hardware.biometrics.BiometricPrompt.Builder: BiometricPrompt.Builder setAllowedAuthenticators(int)>
+[No-Documentation]<android.app.prediction.AppTarget: void <init>(AppTargetId,String,String,UserHandle)>
+[REMOVED]<android.app.Activity: void onStateNotSaved()>    
+[ComplexFix]<android.app.DownloadManager: long addCompletedDownload(String,String,boolean,String,String,long,boolean,boolean,Uri,Uri)>   ----> <android.provider.MediaStore.Downloads>
+[REMOVED]<android.content.pm.PermissionInfo: void <init>(PermissionInfo)>    ---->    
+[ComplexFix]<android.view.inputmethod.InputMethodManager: void viewClicked(View)>    ---->    <android.webkit.WebView>  
+[Verified]<android.service.notification.ConditionProviderService: void notifyConditions(Condition)>    ---->    <android.app.NotificationManager: void setAutomaticZenRuleState(String, Condition)>
+[REMOVED]<android.view.animation.Animation: void setDetachWallpaper(boolean)>     
+[No-Documentation]<android.app.TaskStackListener: void onTaskDescriptionChanged(int,TaskDescription)>    ---->    <android.app.TaskStackListener: void onTaskDescriptionChanged(ActivityManager.RunningTaskInfo)>
+[No-Documentation]<android.app.TaskStackListener: void onTaskMovedToFront(int)>    ---->    <android.app.TaskStackListener: void onTaskMovedToFront(ActivityManager.RunningTaskInfo)>
+[ComplexFix]<android.content.res.Resources: Movie getMovie(int)>    ---->    <android.graphics.drawable.AnimatedImageDrawable>
+[REMOVED]<android.nfc.NfcAdapter: boolean isNdefPushEnabled()> 
+[Verified]<android.graphics.RenderNode: boolean setLayerType(int)>  ---->   <android.graphics.RenderNode: boolean getUseCompositingLayer()> 
+[No-Documentation]<android.app.InstantAppResolverService: void onGetInstantAppIntentFilter(Intent,int[],String,InstantAppResolutionCallback)>    ---->    <android.app.InstantAppResolverService: void onGetInstantAppIntentFilter(Intent, int[], UserHandle,  String, InstantAppResolutionCallback)>
+[ComplexFix]<android.inputmethodservice.InputMethodService: void onViewClicked(boolean)>    ---->    "on-going input is interrupted": <android.inputmethodservice.InputMethodService: void onFinishInput()>
+[No-Documentation]<com.android.systemui.bubbles.BubbleStackView: void setExpandedBubble(String)>    ---->    setSelectedBubble(Bubble) + setExpanded(true) 
+[REMOVED]<android.net.ConnectivityManager: NetworkInfo getNetworkInfo(Network)>   
+[Verified]<android.media.ThumbnailUtils: Bitmap createAudioThumbnail(String,int)>    ---->    <android.media.ThumbnailUtils: Bitmap createAudioThumbnail(File, Size, CancellationSignal)>
+[REMOVED]<android.database.sqlite.SQLiteOpenHelper: void setIdleConnectionTimeout(long)>   
+[HIDDEN]<android.view.ViewDebug: AutoCloseable startRenderingCommandsCapture(View,Executor,Function<Picture, Boolean>)>   ---->   <android.view.ViewDebug: AutoCloseable startRenderingCommandsCapture(View, Executor, Callable)>
+[HIDDEN]<android.service.autofill.AutofillFieldClassificationService: float[][] onGetScores(String,Bundle,List<AutofillValue>,List<String>)>
+[No-Documentation]<com.android.systemui.shared.recents.model.Task: void setWindowingMode(int)>    ---->    
+[REMOVED]<android.telephony.UiccSlotInfo: void <init>(boolean,boolean,String,int,int,boolean)>    ---->    
+[Verified]<android.telephony.SignalStrength: int getTdScdmaLevel()>    ---->    <android.telephony.CellSignalStrengthTdscdma: int getLevel()>
+[HIDDEN]<android.telephony.TelephonyManager: void setCarrierTestOverride(String,String,String,String,String,String,String)>
+[Verified]<android.telephony.SignalStrength: int getTdScdmaDbm()>   ---->    <android.telephony.CellSignalStrengthTdscdma: int getDbm()>
+[Verified]<android.telephony.SignalStrength: int getLteDbm()>   ---->     <android.telephony.CellSignalStrengthLte: int getDbm()>
+[REMOVED]<android.net.wifi.WifiManager: boolean isScanAlwaysAvailable()>      
+[No-Documentation]<android.media.ThumbnailUtils: void createThumbnailFromEXIF(String,int,int,SizedThumbnailBitmap)>      
+[REMOVED]<android.net.shared.LinkPropertiesParcelableUtil: LinkProperties toStableParcelable(LinkProperties)>    "No longer necessay"
+[REMOVED]<android.app.Notification.WearableExtender: WearableExtender setDisplayIntent(PendingIntent)>    "No longer supported"
+[Verified]<android.app.AppOpsManager: int checkOp(String,int,String)>    ---->   <android.app.AppOpsManager: int unsafeCheckOp(String, int, String)>
+[REMOVED]<android.location.LocationManager: void clearTestProviderLocation(String)>    
+[HIDDEN]<android.app.ActivityManager: ParceledListSlice<GrantedUriPermission> getGrantedUriPermissions(String)>
+[Suggested Replacement Not Found]<android.net.NetworkUtils: int netmaskToPrefixLength(Inet4Address)>
+[Verified]<android.os.Environment: File getExternalStorageDirectory()>    ---->   <android.content.Context: File getExternalFilesDir(String)>
+[Verified]<android.telephony.SignalStrength: int getGsmLevel()>    ---->     <android.telephony.CellSignalStrengthGsm: int getLevel()>
+[Verified]<android.app.AppOpsManager: int checkOpNoThrow(String,int,String)>    ---->    <android.app.AppOpsManager: int unsafeCheckOpNoThrow(String, int, String)>
+[REMOVED]<android.content.pm.PermissionGroupInfo: void <init>(PermissionGroupInfo)>    ---->    
+[Verified]<android.telephony.SignalStrength: int getTdScdmaAsuLevel()>     ---->      <android.telephony.CellSignalStrengthTdscdma: int getAsuLevel()> 
+[Verified]<android.media.ThumbnailUtils: Bitmap createVideoThumbnail(String,int)>    ---->    <android.media.ThumbnailUtils: Bitmap createVideoThumbnail(File, Size, CancellationSignal)>
+[REMOVED]<android.media.MediaFile: MediaFileType getFileType(String)>
+[HIDDEN]<android.app.ActivityManager: int getMaxRecentTasksStatic()>  
+[Verified]<android.telephony.SignalStrength: int getGsmAsuLevel()>    ----->     <android.telephony.CellSignalStrengthGsm: int getAsuLevel()>
+[Verified]<android.app.AutomaticZenRule: void <init>(String,ComponentName,Uri,int,boolean)>    ---->    <android.app.AutomaticZenRule: void <init>AutomaticZenRule(String, ComponentName, ComponentName, Uri,  ZenPolicy, int, boolean)>
+[No-Documentation]<com.android.location.provider.LocationProviderBase: void onDisable()>    
+[ComplexFix]<android.app.DownloadManager: long addCompletedDownload(String,String,boolean,String,String,long,boolean,boolean)>  ----->     <android.provider.MediaStore.Downloads> 
+[REMOVED]<android.location.LocationManager: void setTestProviderStatus(String,int,Bundle,long)>    
+[Verified]<android.net.wifi.WifiManager: boolean isDeviceToDeviceRttSupported()>   ---->    <android.content.pm.PackageManager: boolean hasSystemFeature(String, int)>
+[REMOVED]<com.android.internal.app.SimpleIconFactory: void recycle()>    ---->     <iconloader>
+[HIDDEN]<android.app.prediction.AppTarget.Builder: Builder setTarget(String,UserHandle)>
+[Suggested Replacement Not Found]<android.telephony.PhoneNumberUtils: boolean isPotentialEmergencyNumber(int,String)>
+[HIDDEN]<android.graphics.RecordingCanvas: void drawGLFunctor2(long,Runnable)>
+[Verified]<android.net.wifi.aware.DiscoverySession: NetworkSpecifier createNetworkSpecifierOpen(PeerHandle)>    ---->    <android.net.wifi.aware.WifiAwareNetworkSpecifier.Builder: WifiAwareNetworkSpecifier build()>
+[ComplexFix]<android.graphics.Typeface: Typeface createFromFamiliesWithDefault(FontFamily[],int,int)>    ---->    <android.graphics.fonts.FontFamily>
+[Suggested Replacement Not Found]<android.webkit.WebViewDelegate: boolean canInvokeDrawGlFunctor(View)>    ---->    #drawWebViewFunctor(Canvas, int)
+[HIDDEN]<android.content.pm.PackageInstaller.SessionInfo: boolean getAllowDowngrade()>
+[Verified]<android.telephony.SignalStrength: int getCdmaLevel()>    ---->    <android.telephony.CellSignalStrengthCdma: int getLevel()>
+[Verified]<android.net.NetworkInfo: int getSubtype()>    ---->    <android.telephony.TelephonyManager: int getDataNetworkType()>
+[REMOVED]<android.provider.MediaStore: PendingSession openPending(Context,Uri)>
+[ComplexFix]<android.bluetooth.BluetoothHealth: boolean connectChannelToSource(BluetoothDevice,BluetoothHealthAppConfiguration)>    ---->    BluetoothGatt
+[Verified]<android.content.pm.PackageManager: int installExistingPackage(String)>   ---->    <android.content.pm.PackageInstaller: int installExistingPackage(String)>
+[HIDDEN]<android.webkit.WebViewDelegate: void invokeDrawGlFunctor(View,long,boolean)>    ---->    #drawWebViewFunctor(Canvas, int)
+[HIDDEN]<android.content.pm.PackageInstaller.SessionParams: void setAllowDowngrade(boolean)>   ---->   <android.content.pm.PackageInstaller.SessionParams: void setRequestDowngrade(boolean)>
+[Verified]<android.view.textclassifier.TextClassifier.EntityConfig: EntityConfig create(Collection<String>,Collection<String>,Collection<String>)>    ---->     <android.view.textclassifier.TextClassifier.EntityConfig.Builder: TextClassifier.EntityConfig build()>
+[Verified]<android.view.textclassifier.TextClassifier.EntityConfig: EntityConfig createWithHints(Collection<String>)>    ---->    <android.view.textclassifier.TextClassifier.EntityConfig.Builder: TextClassifier.EntityConfig build()>   + <android.view.textclassifier.TextClassifier.EntityConfig.Builder: TextClassifier.EntityConfig.Builder setHints(Collections<String>)>
+[HIDDEN]<android.telephony.SignalStrength: int getEvdoAsuLevel()>   ---->   <android.telephony.CellSignalStrengthCdma: int getEvdoAsuLevel()>
+[HIDDEN]<android.telephony.TelephonyManager: boolean isRinging()>   ---->  <android.telecom.TelecomManager: boolean isRinging()>
+[REMOVED]<com.android.location.provider.LocationProviderBase: long onGetStatusUpdateTime()>       
+[Suggested Replacement Not Found]<com.android.settingslib.utils.StringUtil: CharSequence formatRelativeTime(Context,double,boolean)>    ---->    #formatRelativeTime(Context, double, boolean,  RelativeDateTimeFormatter.Style)
+[REMOVED]<android.os.Environment: File maybeTranslateEmulatedPathToInternal(File)>
+[REMOVED]<android.media.MediaFile: boolean isDrmFileType(int)>    ---->    
+[Verfied, REMOVED]<android.app.ActivityManager: boolean isRunningInTestHarness()>    ---->    <android.app.ActivityManager: boolean isRunningInUserTestHarness()>
+[Verified]<android.telephony.TelephonyManager: boolean isRadioOn()>   ---->    <android.telephony.TelephonyManager: ServiceState getServiceState()>
+[REMOVED]<android.media.MediaFile: int getFileTypeForMimeType(String)>     
+[HIDDEN]<android.app.prediction.AppTarget: void <init>(AppTargetId,ShortcutInfo,String)>
+[REMOVED]<com.android.systemui.statusbar.StatusBarStateControllerImpl: void addCallback(StateListener,int)>    
+[REMOVED]<android.provider.MediaStore: Uri createPending(Context,PendingParams)>
+[Suggested Replacement Not Found]<android.telephony.PhoneNumberUtils: boolean isPotentialEmergencyNumber(String,String)>
+[Verified]<com.android.internal.widget.LockPatternUtils: String patternToString(Cell>)>    ---->    <com.android.internal.widget.LockPatternUtils: byte[] patternToByteArray(List<LockPatternView.Cell>)>
+[Verified]<com.android.internal.widget.LockPatternUtils: Cell> stringToPattern(String)>    ---->    <com.android.internal.widget.LockPatternUtils: List<LockPatternView.Cell>  byteArrayToPattern(byte[])>
+[Verified]<android.view.textclassifier.TextClassifier.EntityConfig: EntityConfig createWithExplicitEntityList(Collection<String>)>    ---->    <android.view.textclassifier.TextClassifier.EntityConfig.Builder: TextClassifier.EntityConfig build()>
+[Suggested Replacement Not Found]<com.android.server.backup.BackupManagerService: String selectBackupTransport(int,String)>    ---->    #selectBackupTransportAsync(ComponentName,  ISelectBackupTransportCallback)
+[REMOVED]<android.media.MediaFile: boolean isAudioFileType(int)>    ---->    
+[REMOVED]<android.content.pm.PermissionInfo: void <init>()>    ---->    
+[ComplexFix]<android.bluetooth.BluetoothHealth: boolean unregisterAppConfiguration(BluetoothHealthAppConfiguration)>    ---->    <android.bluetooth.BluetoothGatt>, <android.bluetooth.BluetoothAdapter: BluetoothServerSocket listenUsingL2capChannel()>, <android.bluetooth.BluetoothDevice: BluetoothSocket createL2capChannel(int)>, 
+[REMOVED]<android.nfc.NfcAdapter: void setBeamPushUrisCallback(CreateBeamUrisCallback,Activity)>    ---->    
+<android.net.wifi.WifiManager: boolean isDeviceToApRttSupported()>    ---->    <android.content.pm.PackageManager: hasSystemFeature(String)
+<android.net.NetworkInfo: String getExtraInfo()>    ---->    
+<android.os.PowerManager: void wakeUp(long)>
+<android.bluetooth.BluetoothHealthAppConfiguration: String getName()>    ---->    <android.bluetooth.BluetoothGatt>, <android.bluetooth.BluetoothAdapter: BluetoothServerSocket listenUsingL2capChannel()>, <android.bluetooth.BluetoothDevice: BluetoothSocket createL2capChannel(int)>, 
+<android.graphics.drawable.Drawable: void setColorFilter(int,Mode)>    ---->    #setColorFilter(ColorFilter)
+<android.content.ContentResolver: Drawable getTypeDrawable(String)>
+<android.telephony.TelephonyManager: boolean isOffhook()>
+<android.telephony.SignalStrength: int getEvdoLevel()>
+<com.android.internal.app.SimpleIconFactory: Bitmap createUserBadgedIconBitmap(Drawable,UserHandle)>    ---->    
+<com.android.server.location.AbstractLocationProvider: long getStatusUpdateTime()>    ---->    
+<android.media.MediaTimestamp: long getAnchorSytemNanoTime()>    ---->    #getAnchorSystemNanoTime
+<android.telephony.SignalStrength: int getGsmSignalStrength()>    ---->    android.telephony#CellSignalStrengthGsm
+<com.android.systemui.Dependency: T get(DependencyKey<T>)>    ---->    
+<android.bluetooth.BluetoothHealthCallback: void onHealthChannelStateChange(BluetoothHealthAppConfiguration,BluetoothDevice,int,int,ParcelFileDescriptor,int)>    ---->    <android.bluetooth.BluetoothGatt>, <android.bluetooth.BluetoothAdapter: BluetoothServerSocket listenUsingL2capChannel()>, <android.bluetooth.BluetoothDevice: BluetoothSocket createL2capChannel(int)>, 
+<android.provider.MediaStore: Uri setIncludeTrashed(Uri)>
+<android.view.textservice.TextServicesManager: TextServicesManager getInstance()>
+<android.telephony.SubscriptionInfo: int getMcc()>    ---->    #getMccString()
+<android.app.Notification.WearableExtender: WearableExtender clearPages()>    ---->    
+<android.os.FileUtils: long checksumCrc32(File)>
+<android.app.DownloadManager: long addCompletedDownload(String,String,boolean,String,String,long,boolean)>    ---->    android.provider.MediaStore.Downloads
+<android.service.textclassifier.TextClassifierService: void onSelectionEvent(TextClassificationSessionId,SelectionEvent)>    ---->    #onTextClassifierEvent(TextClassificationSessionId, TextClassifierEvent)
+<android.app.TaskStackListener: void onTaskRemovalStarted(int)>    ---->    #onTaskRemovalStarted(ActivityManager.RunningTaskInfo)
+<android.location.LocationManager: void setLocationControllerExtraPackageEnabled(boolean)>
+<com.android.internal.app.SimpleIconFactory: void setWrapperBackgroundColor(int)>    ---->    
+<android.app.InstantAppResolverService: void onGetInstantAppResolveInfo(Intent,int[],String,InstantAppResolutionCallback)>    ---->    #onGetInstantAppResolveInfo(Intent, int[], UserHandle,  String, InstantAppResolutionCallback)
+<android.hardware.hdmi.HdmiControlManager: void powerOffRemoteDevice(HdmiDeviceInfo)>
+<android.telephony.SignalStrength: int getEvdoEcio()>    ---->    CellSignalStrengthCdma#getEvdoEcio.
+<android.telephony.data.ApnSetting: InetAddress getProxyAddress()>    ---->    #getProxyAddressAsString()
+<android.net.wifi.WifiManager: List<PasspointConfiguration> getPasspointConfigurations()>    ---->    
+<android.media.MediaFile: boolean isImageFileType(int)>    ---->    
+<android.hardware.display.DisplayManager: void setSaturationLevel(float)>
+<android.telephony.SignalStrength: int getDbm()>
+<android.provider.MediaStore.Images.Thumbnails: void cancelThumbnailRequest(ContentResolver,long,long)>    ---->    
+<android.bluetooth.BluetoothHealth: ParcelFileDescriptor getMainChannelFd(BluetoothDevice,BluetoothHealthAppConfiguration)>    ---->    <android.bluetooth.BluetoothGatt>, <android.bluetooth.BluetoothAdapter: BluetoothServerSocket listenUsingL2capChannel()>, <android.bluetooth.BluetoothDevice: BluetoothSocket createL2capChannel(int)>, 
+<android.provider.MediaStore.InternalThumbnails: void cancelThumbnail(ContentResolver,Uri)>    ---->    
+<com.android.location.provider.LocationProviderBase: void onEnable()>    ---->    
+<android.net.wifi.WifiManager: int addNetwork(WifiConfiguration)>    ---->    WifiNetworkSpecifier.Builder#build()
+<android.net.ConnectivityManager: NetworkInfo getActiveNetworkInfo()>    ---->    NetworkInfo
+<android.transition.TransitionValues: void <init>()>    ---->    #TransitionValues(View)
+[Suggested Replacement Not Found]<android.telephony.PhoneNumberUtils: boolean isPotentialEmergencyNumber(String)>
+<android.media.AudioTrack: void removeOnRoutingChangedListener(OnRoutingChangedListener)>    ---->    AudioRouting.OnRoutingChangedListener
+<android.bluetooth.BluetoothHealth: boolean disconnectChannel(BluetoothDevice,BluetoothHealthAppConfiguration,int)>    ---->    <android.bluetooth.BluetoothGatt>, <android.bluetooth.BluetoothAdapter: BluetoothServerSocket listenUsingL2capChannel()>, <android.bluetooth.BluetoothDevice: BluetoothSocket createL2capChannel(int)>, 
+<android.telephony.SignalStrength: int getWcdmaAsuLevel()>
+<android.media.ThumbnailUtils: Bitmap createImageThumbnail(String,int)>    ---->    #createImageThumbnail(File, Size, CancellationSignal)
+<android.webkit.WebViewDelegate: void callDrawGlFunction(Canvas,long)>    ---->    #drawWebViewFunctor(Canvas, int)
+<android.graphics.BaseRecordingCanvas: void drawBitmap(int[],int,int,float,float,int,int,boolean,Paint)>    ---->    
+<android.graphics.BaseRecordingCanvas: void drawBitmap(int[],int,int,int,int,int,int,boolean,Paint)>    ---->    
+<com.android.internal.widget.LockPatternUtils: boolean saveLockPassword(String,String,int,int)>    ---->    
+<android.telephony.TelephonyManager: boolean isIdle()>
+<android.widget.RemoteViews: void setRemoteAdapter(int,ArrayList<RemoteViews>,int)>
+<android.webkit.WebViewFactoryProvider: TokenBindingService getTokenBindingService()>    ---->    
+<android.location.LocationManager: void clearTestProviderEnabled(String)>    ---->    #setTestProviderEnabled(String, boolean)
+<android.view.WindowInsets: void <init>(Rect,Rect,boolean,boolean,DisplayCutout)>
+<android.view.inputmethod.InputMethodManager: void registerSuggestionSpansForNotification(SuggestionSpan[])>
+<android.os.FileObserver: void <init>(String)>    ---->    #FileObserver(File)
+<com.android.systemui.bubbles.BubbleStackView: void collapseStack(Runnable)>    ---->    #setExpanded(boolean)
+<android.widget.PopupWindow: boolean isClipToScreenEnabled()>
+<android.nfc.NfcAdapter: void setNdefPushMessage(NdefMessage,Activity,Activity)>    ---->    
+<android.media.MediaFile: boolean isPlayListFileType(int)>    ---->    
+<android.telephony.SignalStrength: int getGsmBitErrorRate()>    ---->    android.telephony#CellSignalStrengthGsm
+<android.view.inputmethod.InputMethodManager: void setAdditionalInputMethodSubtypes(String,InputMethodSubtype[])>    ---->    InputMethodSubtype
+<com.android.server.SystemServiceManager: File ensureSystemDir()>    ---->    Environment#getDataSystemCeDirectory()
+<android.os.Environment: File getExternalStoragePublicDirectory(String)>    ---->    
+<android.provider.MediaStore.InternalThumbnails: Bitmap getThumbnail(ContentResolver,Uri,int,Options)>    ---->    
+<android.text.style.SuggestionSpan: String getNotificationTargetClassName()>
+<android.provider.MediaStore.Video.Thumbnails: Bitmap getThumbnail(ContentResolver,long,int,Options)>    ---->    
+<com.android.server.location.AbstractLocationProvider: int getStatus(Bundle)>    ---->    
+<com.android.location.provider.LocationProviderBase: void onDump(FileDescriptor,PrintWriter,String[])>    ---->    lback will never be invoked on Android Q and above. This method may be  removed in the future. Prefer to dump provider state via the containing service
+<android.view.WindowInsets: Rect getSystemWindowInsetsAsRect()>
+<android.telephony.PhoneNumberUtils: boolean isEmergencyNumber(String)>    ---->    TelephonyManager#isEmergencyNumber(String)
+<android.net.shared.LinkPropertiesParcelableUtil: ProxyInfo toStableParcelable(ProxyInfo)>    ---->    
+<com.android.internal.app.SimpleIconFactory: void <init>(Context,int,int,int)>    ---->    
+<android.app.Notification.WearableExtender: boolean getHintAmbientBigPicture()>    ---->    
+<com.android.server.am.ActivityManagerService: void removeContentProviderExternal(String,IBinder)>    ---->    #removeContentProviderExternalAsUser
+<com.android.internal.app.SimpleIconFactory: SimpleIconFactory obtain(Context)>    ---->    
+<android.net.wifi.WifiManager: boolean setWifiEnabled(boolean)>    ---->    
+<android.telephony.SignalStrength: int getEvdoSnr()>    ---->    android.telephony#CellSignalStrengthCdma
+<android.view.WindowInsets: WindowInsets replaceSystemWindowInsets(Rect)>    ---->    Builder#setSystemWindowInsets(Insets)
+<android.content.pm.PackageManager: String[] setPackagesSuspended(String[],boolean,PersistableBundle,PersistableBundle,String)>
+<com.android.server.locksettings.recoverablekeystore.RecoverableKeyStoreManager: String importKey(String,byte[])>
+<android.telephony.SignalStrength: void fillInNotifierBundle(Bundle)>
+<android.content.pm.PermissionGroupInfo: void <init>()>    ---->    
+<android.telephony.ims.ImsSsInfo: String getIcbNum()>    ---->    #getIncomingCommunicationBarringNumber()
+<android.content.ContentValues: void <init>(HashMap<String, Object>)>
+<android.telephony.SignalStrength: int getGsmDbm()>
+<android.view.WindowInsets: WindowInsets replaceSystemWindowInsets(int,int,int,int)>    ---->    Builder#setSystemWindowInsets(Insets)
+<com.android.systemui.plugins.qs.QSTile: void clearState()>    ---->    
+<com.android.systemui.Dependency: T get(Class<T>)>    ---->    
+<android.bluetooth.BluetoothHealthAppConfiguration: int getRole()>    ---->    <android.bluetooth.BluetoothGatt>, <android.bluetooth.BluetoothAdapter: BluetoothServerSocket listenUsingL2capChannel()>, <android.bluetooth.BluetoothDevice: BluetoothSocket createL2capChannel(int)>, 
+<android.location.LocationListener: void onStatusChanged(String,int,Bundle)>    ---->    
+<android.os.FileUtils: int getUid(String)>
+<android.telephony.PhoneNumberUtils: boolean isEmergencyNumber(String,String)>
+<android.telecom.TelecomManager: boolean endCall()>    ---->    InCallService
+<android.app.AppOpsManager: List<PackageOps> getOpsForPackage(int,String,int[])>
+<android.content.pm.PackageManager: List<PackageInfo> getPreferredPackages(int)>    ---->    #resolveActivity
+<android.app.Notification.WearableExtender: WearableExtender addPage(Notification)>    ---->    
+<android.inputmethodservice.InputMethodService: int getInputMethodWindowRecommendedHeight()>    ---->    
+<android.net.NetworkInfo: boolean isConnected()>    ---->    android.net.ConnectivityManager.NetworkCallback
+<android.telephony.SignalStrength: int getLteRsrp()>
+<android.telephony.SignalStrength: int getLteAsuLevel()>
+<android.widget.Magnifier: void <init>(View)>    ---->    Builder
+<android.telephony.PhoneNumberUtils: boolean isPotentialLocalEmergencyNumber(Context,String)>
+<android.app.Notification.WearableExtender: WearableExtender addPages(List<Notification>)>    ---->    
+<com.android.systemui.shared.recents.model.Task: void copyFrom(Task)>    ---->    
+<android.telephony.PhoneNumberUtils: boolean isLocalEmergencyNumber(Context,int,String)>
+<android.net.NetworkUtils: InetAddress intToInetAddress(int)>    ---->    Inet4AddressUtils#intToInet4AddressHTH(int)
+<android.security.keystore.recovery.RecoveryController: Key generateKey(String)>    ---->    #generateKey(String, byte[])
+<android.os.FileObserver: void <init>(String,int)>    ---->    #FileObserver(File, int)
+<android.app.Notification.WearableExtender: List<Notification> getPages()>    ---->    
+<android.telephony.SignalStrength: int getLteRsrq()>
+<android.app.prediction.AppTarget.Builder: void <init>(AppTargetId)>
+<android.graphics.Typeface: Typeface createFromFamilies(FontFamily[])>    ---->    
+<android.app.Notification.WearableExtender: PendingIntent getDisplayIntent()>    ---->    
+<com.android.systemui.bubbles.BubbleStackView: void stackDismissed(int)>    ---->    
+<android.app.TaskStackListener: void onActivityLaunchOnSecondaryDisplayFailed()>    ---->    #onActivityLaunchOnSecondaryDisplayFailed(ActivityManager.RunningTaskInfo, int)
+<android.provider.MediaStore.Images.Media: String insertImage(ContentResolver,String,String,String)>    ---->    MediaColumns#IS_PENDING
+<android.provider.MediaStore.Images.Media: Bitmap getBitmap(ContentResolver,Uri)>    ---->    ImageDecoder#createSource(ContentResolver, Uri)
+<android.telecom.TelecomManager: PhoneAccountHandle getSimCallManager(int)>
+<android.net.NetworkUtils: int prefixLengthToNetmaskInt(int)>    ---->    Inet4AddressUtils#prefixLengthToV4NetmaskIntHTH(int)
+<android.hardware.hdmi.HdmiControlManager: List<HdmiDeviceInfo> getConnectedDevicesList()>
+<android.graphics.BaseRecordingCanvas: void drawPosText(String,float[],Paint)>    ---->    
+<android.net.NetworkUtils: InetAddress numericToInetAddress(String)>
+<android.net.NetworkUtils: int inetAddressToInt(Inet4Address)>    ---->    Inet4AddressUtils#inet4AddressToIntHTH(Inet4Address)
+<android.telephony.ServiceState: void <init>(Parcel)>    ---->    #ServiceState()
+[REMOVED]<android.database.sqlite.SQLiteDatabase.OpenParams.Builder: Builder setIdleConnectionTimeout(long)>    
+<android.net.wifi.aware.DiscoverySession: NetworkSpecifier createNetworkSpecifierPmk(PeerHandle,byte[])>
+<android.app.backup.BackupTransport: String dataManagementLabel()>    ---->    #dataManagementIntentLabel()
+<android.telecom.TelecomManager: void acceptRingingCall(int)>    ---->    InCallService
+<android.view.accessibility.AccessibilityNodeInfo: void getBoundsInParent(Rect)>    ---->    #getBoundsInScreen(Rect)
+<android.bluetooth.BluetoothHealth: boolean registerSinkAppConfiguration(String,int,BluetoothHealthCallback)>    ---->    <android.bluetooth.BluetoothGatt>, <android.bluetooth.BluetoothAdapter: BluetoothServerSocket listenUsingL2capChannel()>, <android.bluetooth.BluetoothDevice: BluetoothSocket createL2capChannel(int)>, 
+<android.net.wifi.WifiManager: List<WifiConfiguration> getConfiguredNetworks()>    ---->    WifiNetworkSpecifier.Builder#build()
+<android.net.wifi.WifiManager: boolean reconnect()>    ---->    WifiNetworkSpecifier.Builder#build()
+<android.widget.SearchView: boolean isIconfiedByDefault()>    ---->    #isIconifiedByDefault()
+<android.view.inputmethod.InputMethodManager: InputMethodManager getInstance()>
+<android.location.LocationManager: void clearTestProviderStatus(String)>    ---->    
+<android.net.ConnectivityManager: LinkProperties getActiveLinkProperties()>
+<android.os.FileUtils: long copyInternalUserspace(FileDescriptor,FileDescriptor,ProgressListener,CancellationSignal,long)>
+<android.telephony.data.ApnSetting: InetAddress getMmsProxyAddress()>    ---->    #getMmsProxyAddressAsString()
+<android.telephony.SubscriptionInfo: int getMnc()>    ---->    #getMncString()
+<com.android.internal.widget.LockPatternChecker: AsyncTask<?, ?, ?> checkPassword(LockPatternUtils,String,int,OnCheckCallback)>    ---->    
+<com.android.systemui.statusbar.SysuiStatusBarStateController: void addCallback(StateListener,int)>    ---->    
+<android.telephony.TelephonyManager: int setAllowedCarriers(int,List<CarrierIdentifier>)>
+<android.view.WindowInsets: WindowInsets inset(Rect)>
+<android.telephony.ims.ImsSsInfo: void <init>(int,String)>    ---->    ImsSsInfo.Builder
+<android.provider.MediaStore.Images.Thumbnails: void cancelThumbnailRequest(ContentResolver,long)>    ---->    
+<android.webkit.WebViewDelegate: void callDrawGlFunction(Canvas,long,Runnable)>    ---->    #drawWebViewFunctor(Canvas, int)
+<android.net.wifi.WifiManager: boolean disconnect()>    ---->    WifiNetworkSpecifier.Builder#build()
+<android.graphics.RenderNode: void end(RecordingCanvas)>
+<android.content.pm.PackageManager: int getPreferredActivities(List<IntentFilter>,List<ComponentName>,String)>    ---->    #resolveActivity
+<android.view.inputmethod.InputMethodManager: void notifySuggestionPicked(SuggestionSpan,String,int)>
+<android.content.ContentProviderClient: void closeQuietly(ContentProviderClient)>
+<android.graphics.Typeface: Typeface createFromFamiliesWithDefault(FontFamily[],String,int,int)>    ---->    android.graphics.fonts.FontFamily
+<android.database.sqlite.SQLiteQueryBuilder: void setProjectionAggregationAllowed(boolean)>
+<android.telephony.SignalStrength: int getLteCqi()>
+<android.provider.MediaStore.Images.Thumbnails: Bitmap getThumbnail(ContentResolver,long,int,Options)>    ---->    
+<com.android.systemui.bubbles.BubbleStackView: void collapseStack()>    ---->    #setExpanded(boolean)
+<com.android.systemui.shared.recents.model.Task: void removeCallback(TaskCallbacks)>    ---->    
+<android.provider.MediaStore: void untrash(Context,Uri)>
+<android.service.textclassifier.TextClassifierService: TextClassifier getLocalTextClassifier()>    ---->    #getDefaultTextClassifierImplementation(Context)
+<android.hardware.usb.UsbAccessory: void <init>(String,String,String,String,String,String)>
+<com.android.systemui.shared.recents.model.Task: void notifyTaskDataLoaded(ThumbnailData,Drawable)>    ---->    
+<android.media.MediaScanner.FileEntry: void <init>(long,String,long,int)>    ---->    
+<com.android.location.provider.LocationProviderBase: int onGetStatus(Bundle)>    ---->    
+<android.telephony.SignalStrength: int getLteLevel()>
+<android.provider.MediaStore.Images.Media: String insertImage(ContentResolver,Bitmap,String,String)>    ---->    MediaColumns#IS_PENDING
+<android.net.wifi.WifiManager: int updateNetwork(WifiConfiguration)>    ---->    WifiNetworkSpecifier.Builder#build()
+<android.media.ThumbnailUtils: void closeSilently(ParcelFileDescriptor)>    ---->    
+<android.app.Notification.WearableExtender: WearableExtender setHintAmbientBigPicture(boolean)>    ---->    
+<android.content.pm.PackageManager: void addPreferredActivityAsUser(IntentFilter,int,ComponentName[],ComponentName,int)>
+<android.nfc.NfcAdapter: boolean invokeBeam(Activity)>    ---->    
+<android.app.Notification.WearableExtender: WearableExtender setBackground(Bitmap)>    ---->    
+<android.bluetooth.BluetoothHealthAppConfiguration: int getDataType()>    ---->    <android.bluetooth.BluetoothGatt>, <android.bluetooth.BluetoothAdapter: BluetoothServerSocket listenUsingL2capChannel()>, <android.bluetooth.BluetoothDevice: BluetoothSocket createL2capChannel(int)>, 
+<android.media.MediaScanner.MyMediaScannerClient: int getFileTypeFromDrm(String)>    ---->    
+<android.content.pm.PackageManager: void clearPackagePreferredActivities(String)>    ---->    #resolveActivity
+[Suggested Replacement Not Found]<android.telephony.PhoneNumberUtils: boolean isPotentialEmergencyNumber(int,String,String)>
+<android.hardware.hdmi.HdmiControlManager: void requestRemoteDeviceToBecomeActiveSource(HdmiDeviceInfo)>
+<android.view.animation.Animation: boolean getDetachWallpaper()>    ---->    
+<android.graphics.RecordingCanvas: void callDrawGLFunction2(long)>
+<android.net.ConnectivityManager: PacketKeepalive startNattKeepalive(Network,int,PacketKeepaliveCallback,InetAddress,int,InetAddress)>
+<android.app.DownloadManager: long addCompletedDownload(String,String,boolean,String,String,long,boolean,Uri,Uri)>    ---->    android.provider.MediaStore.Downloads
+<android.view.inputmethod.InputMethodManager: boolean setCurrentInputMethodSubtype(InputMethodSubtype)>    ---->    InputMethodService#switchInputMethod(String, InputMethodSubtype)
+<android.webkit.WebViewDelegate: void detachDrawGlFunctor(View,long)>    ---->    #drawWebViewFunctor(Canvas, int)
+<android.service.voice.VoiceInteractionSession: void onHandleAssist(Bundle,AssistStructure,AssistContent)>    ---->    #onHandleAssist(AssistState)
+<android.media.MediaFile: boolean isVideoFileType(int)>    ---->    
+<android.provider.MediaStore.Video.Thumbnails: Bitmap getThumbnail(ContentResolver,long,long,int,Options)>    ---->    
+<android.os.storage.StorageVolume: Intent createAccessIntent(String)>    ---->    Intent#ACTION_OPEN_DOCUMENT_TREE
+<android.service.euicc.EuiccService: int onDownloadSubscription(int,DownloadableSubscription,boolean,boolean)>    ---->    #onDownloadSubscription(int, DownloadableSubscription, boolean, boolean, Bundle)
+<android.telephony.PhoneNumberUtils: boolean isPotentialLocalEmergencyNumber(Context,int,String)>
+<android.nfc.NfcAdapter: void setOnNdefPushCompleteCallback(OnNdefPushCompleteCallback,Activity,Activity)>    ---->    
+<android.net.NetworkInfo: String getSubtypeName()>    ---->    android.telephony.TelephonyManager#getDataNetworkType
+<android.security.keystore.recovery.RecoveryController: Key importKey(String,byte[])>    ---->    #importKey(String, byte[], byte[])
+<android.media.ThumbnailUtils: int computeSampleSize(Options,int,int)>    ---->    
+<android.graphics.BaseRecordingCanvas: void drawPosText(char[],int,int,float[],Paint)>    ---->    
+<android.telecom.TelecomManager: void acceptRingingCall()>    ---->    InCallService
+<android.provider.MediaStore.Video.Thumbnails: void cancelThumbnailRequest(ContentResolver,long)>    ---->    
+<com.android.server.locksettings.recoverablekeystore.RecoverableKeyStoreManager: String generateKey(String)>    ---->    #generateKeyWithMetadata(String, byte[])
+<android.content.IContentProvider: Bundle call(String,String,String,Bundle)>    ---->    
+<com.android.systemui.shared.recents.model.Task: void notifyTaskDataUnloaded(Drawable)>    ---->    
+<android.hardware.hdmi.HdmiControlManager: void powerOnRemoteDevice(HdmiDeviceInfo)>
+<android.app.Notification.WearableExtender: Bitmap getBackground()>    ---->   

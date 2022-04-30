@@ -7,15 +7,16 @@ from threading import Timer
 
 from helper import *
 
-DEBUG = 0
+DEBUG = 1
 if DEBUG:
+    print("[-] Debug mode...")
     CSVInputPath = "test"
     PatchOutputPath = "testOutput"
 else:
     CSVInputPath = "/data/sdc/yanjie/AutoPatch_dataset"
     PatchOutputPath = "/data/sdc/yanjie/AutoPatch_generatePatch"
 
-PairPath = "AutoPatch_Pairs.txt"
+PairPath = "NewPairs.txt"
 RECORD_TXT = "RawPatch_Parsed.txt"
 Filed_File = "framework_fields.txt"
 all_solved = {}
@@ -28,6 +29,11 @@ class Analysis:
     def __init__(self):
         self.max_jobs = 15
         self.lock = threading.Lock()
+
+    def clean(self, s):
+        pattern = re.compile(r'[\s\'()<>"]+')
+        s = re.sub(pattern, "", s, 0)
+        return s
 
     def run(self, cmd, timeout_sec):
         proc = Popen(shlex.split(cmd), stdout=PIPE, stderr=PIPE)
@@ -67,11 +73,6 @@ class Analysis:
                     savePath = os.path.join(PatchOutputPath, str(given_num) + "_"
                                             + method_name + "_" + str(file_number) + ".patch")
 
-                    # for debug
-                    # if DEBUG:
-                    #     if not "_4.patch" in savePath:
-                    #         continue
-
                     new_PatchDenotation, SDK_VERSION_INT, all_variable_types, SEARCH_variables = self.solveLine(Old_API,
                                                                                                                 New_API,
                                                                                                                 Stmts)
@@ -88,6 +89,16 @@ class Analysis:
                             print(s)
                             flag_ifSave = 0
                             break
+
+                    # tmp_s = self.clean("".join(newPatch))
+                    # start_old = [_.start() for _ in re.finditer(self.clean(Old_API), tmp_s)]
+                    # start_new = [_.start() for _ in re.finditer(self.clean(New_API), tmp_s)]
+                    #
+                    # if len(start_old) == 3 and len(start_new) == 2:
+                    #     if start_old[2] < start_new[1]:
+                    #         flag_ifSave = 0
+                    # else:
+                    #     flag_ifSave = 0
 
                     if flag_ifSave == 1:
                         with open(savePath, "w") as fw:
@@ -163,7 +174,7 @@ class Analysis:
         for line in sentences:
             line = line.strip()
             if line.startswith("if "):
-                pattern = re.compile(r'if (\$?[a-z]\d+) ([<>=]+) (\d+) goto (.*)')
+                pattern = re.compile(r'if (\$?[a-z]\d+) (<=?) (\d+) goto (.*)')
                 m = pattern.match(line)
                 if not m:
                     continue
@@ -185,6 +196,9 @@ class Analysis:
                 continue
 
             elif line.startswith("goto"):
+                continue
+
+            elif re.compile(r'\$?[a-z]\d+ = -?\d+').match(line):
                 continue
 
             elif STATE == "READ_NEW" and (TargetStmt not in line or FLAG_ifnext):

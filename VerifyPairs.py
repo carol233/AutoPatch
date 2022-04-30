@@ -41,4 +41,4 @@ def loadpairs(Path):
 
 
 if __name__ == "__main__":
-    loadpairs("AutoPatch_Pairs.txt")
+    loadpairs("NewPairs.txt")

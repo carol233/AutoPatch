@@ -11,7 +11,7 @@ APK_FOLDER = "/data/sdc/yanjie/APK2021"
 SAVECSV_DIR = "/data/sdc/yanjie/AutoPatch_dataset"
 SAVEAPI_DIR = "/data/sdc/yanjie/AutoPatch_APIindex"
 Android_jar = "/home/yanjie/android-sdk-linux/platforms"
-CDAPath = "AutoPatch_Pairs.txt"
+CDAPath = "NewPairs.txt"
 RECORD_TXT = "record_0422.txt"
 
 all_solved = {}

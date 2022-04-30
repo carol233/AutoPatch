@@ -1,0 +1,192 @@
+(29)<android.telephony.SignalStrength: boolean isGsm()>[normal]    ---->    <android.telephony.SignalStrength:  getCellSignalStrengths()>[normal]
+(29)<android.provider.MediaStore.Images.Thumbnails: Cursor queryMiniThumbnails(ContentResolver,Uri,int,String[])>    ---->   <android.content.ContentResolver: Bitmap loadThumbnail(uri,size,CancellationSignal)>
+(29)<android.telephony.SignalStrength: int getCdmaEcio()>    ---->    <android.telephony.CellSignalStrengthCdma: int getCdmaEcio()>
+(29)<android.net.wifi.aware.DiscoverySession: NetworkSpecifier createNetworkSpecifierPassphrase(PeerHandle,String)>    ---->    <android.net.wifi.aware.WifiAwareNetworkSpecifier: Builder(DiscoverySession,PeerHandle)>
+(29)<android.service.notification.ConditionProviderService: void notifyCondition(Condition)>    ---->    <android.app.NotificationManager: void setAutomaticZenRuleState(String, Condition)>
+(29)<android.service.voice.VoiceInteractionSession: void onHandleAssistSecondary(Bundle,AssistStructure,AssistContent,int,int)>    ---->    <android.service.voice.VoiceInteractionSession: void onHandleAssist(VoiceInteractionSession.AssistState)>
+(29)<android.telephony.PhoneNumberUtils: boolean isEmergencyNumber(int,String,String)>   ---->   <android.telephony.TelephonyManager: boolean isEmergencyNumber(String)>
+(29)<android.provider.MediaStore.Images.Media: Cursor query(ContentResolver,Uri,String[],String,String[],String)>    ---->    <android.content.ContentResolver: Cursor query(Uri, String[], String, String[], String)>
+(29)<android.provider.MediaStore.Video.Thumbnails: void cancelThumbnailRequest(ContentResolver,long,long)>    ---->    <android.content.ContentResolver: Bitmap loadThumbnail(Uri, Size,CancellationSignal)>
+(29)<android.provider.MediaStore.Images.Thumbnails: Cursor query(ContentResolver,Uri,String[])>    ---->    <android.content.ContentResolver: Cursor query(Uri, String[], Bundle, CancellationSignal)>
+(29)<android.provider.MediaStore.Images.Thumbnails: Bitmap getThumbnail(ContentResolver,long,long,int,Options)>    ---->   <android.content.ContentResolver: Bitmap loadThumbnail(Uri, Size,CancellationSignal)>
+(29)<android.provider.MediaStore.Images.Thumbnails: Cursor queryMiniThumbnail(ContentResolver,long,int,String[])>    ---->    <android.content.ContentResolver: Cursor query(Uri, String[], Bundle, CancellationSignal)>
+(29)<android.provider.MediaStore.Images.Thumbnails: Cursor queryMiniThumbnails(ContentResolver,long,int,String[])>    ---->    <android.content.ContentResolver: Cursor query(Uri, String[], Bundle, CancellationSignal)>
+(29)<android.provider.MediaStore.Images.Media: Cursor query(ContentResolver,Uri,String[],String,String)>    ---->    <android.content.ContentResolver: Cursor query(Uri, String[], String, String[], String)>
+(29)<android.view.KeyEvent: String getCharacters()>    ---->    <android.view.KeyEvent: int getAction()>
+(29)<android.net.NetworkInfo: DetailedState getDetailedState()>    ---->    <android.net.ConnectivityManager.NetworkCallback>
+(29)<android.telephony.SignalStrength: int getEvdoDbm()>    ---->    <android.telephony.CellSignalStrengthCdma: int getEvdoDbm()>
+(29)<android.net.wifi.WifiManager: boolean disableNetwork(int)>     ---->    <android.netwifi.WifiNetworkSpecifier.Builder: WifiNetworkSpecifier build()>
+(29)<android.telephony.SignalStrength: int getCdmaDbm()>    ---->    <android.telephony.CellSignalStrengthCdma: int getCdmaDbm()>
+(29)<android.provider.MediaStore: void trash(Context,Uri,long)>  ---->   <android.provider.MediaStore: PendingIntent createTrashRequest(ContentResolver ,Collection<Uri>,boolean)>
+(29)<android.provider.MediaStore: void trash(Context,Uri)>    ---->   <android.provider.MediaStore: PendingIntent createTrashRequest(ContentResolver ,Collection<Uri>,boolean)>
+(29)<android.telephony.data.ApnSetting.Builder: Builder setProxyAddress(InetAddress)>    ---->    <android.telephony.data.ApnSetting.Builder: Builder setProxyAddress(String)>
+(29)<android.telephony.PhoneNumberUtils: boolean isEmergencyNumber(int,String)>   ---->   <android.telephony.TelephonyManager: boolean isEmergencyNumber(String)>
+(29)<android.telephony.data.ApnSetting.Builder: Builder setMmsProxyAddress(InetAddress)>    ---->    <android.telephony.data.ApnSetting.Builder: Builder setMmsProxyAddress(String)
+(29)<android.telephony.PhoneNumberUtils: boolean isLocalEmergencyNumber(Context,String)>    ---->    <android.telephony.TelephonyManager: boolean isEmergencyNumber(String)>
+(29)<android.net.wifi.WifiManager: boolean reassociate()>     ---->   <android.net.wifi.WifiNetworkSpecifier.Builder: WifiNetworkSpecifier build()>
+(29)<android.net.wifi.WifiManager: boolean removeNetwork(int)>    ---->   <android.net.wifi.WifiNetworkSpecifier.Builder: WifiNetworkSpecifier build()>
+(29)<android.app.KeyguardManager: Intent createConfirmDeviceCredentialIntent(CharSequence,CharSequence)>    ---->    <android.hardware.biometrics.BiometricPrompt.Builder: BiometricPrompt.Builder setAllowedAuthenticators(int)>
+(29)<android.service.notification.ConditionProviderService: void notifyConditions(Condition)>    ---->    <android.app.NotificationManager: void setAutomaticZenRuleState(String, Condition)>
+(29)<android.media.ThumbnailUtils: Bitmap createAudioThumbnail(String,int)>    ---->    <android.media.ThumbnailUtils: Bitmap createAudioThumbnail(File, Size, CancellationSignal)>
+(29)<android.app.AppOpsManager: int checkOp(String,int,String)>    ---->   <android.app.AppOpsManager: int unsafeCheckOp(String, int, String)>
+(29)<android.os.Environment: File getExternalStorageDirectory()>    ---->   <android.content.Context: File getExternalFilesDir(String)>
+(29)<android.telephony.SignalStrength: int getGsmLevel()>    ---->     <android.telephony.CellSignalStrengthGsm: int getLevel()>
+(29)<android.app.AppOpsManager: int checkOpNoThrow(String,int,String)>    ---->    <android.app.AppOpsManager: int unsafeCheckOpNoThrow(String, int, String)>
+(29)<android.telephony.SignalStrength: int getTdScdmaAsuLevel()>     ---->      <android.telephony.CellSignalStrengthTdscdma: int getAsuLevel()>
+(29)<android.media.ThumbnailUtils: Bitmap createVideoThumbnail(String,int)>    ---->    <android.media.ThumbnailUtils: Bitmap createVideoThumbnail(File, Size, CancellationSignal)>
+(29)<android.telephony.SignalStrength: int getGsmAsuLevel()>    ----->     <android.telephony.CellSignalStrengthGsm: int getAsuLevel()>
+(29)<android.app.AutomaticZenRule: void <init>(String,ComponentName,Uri,int,boolean)>    ---->    <android.app.AutomaticZenRule: void <init>AutomaticZenRule(String, ComponentName, ComponentName, Uri,  ZenPolicy, int, boolean)>
+(29)<android.net.wifi.WifiManager: boolean isDeviceToDeviceRttSupported()>   ---->    <android.content.pm.PackageManager: boolean hasSystemFeature(String, int)>
+(29)<android.net.wifi.aware.DiscoverySession: NetworkSpecifier createNetworkSpecifierOpen(PeerHandle)>    ---->    <android.net.wifi.aware.WifiAwareNetworkSpecifier.Builder: WifiAwareNetworkSpecifier build()>
+(29)<android.telephony.SignalStrength: int getCdmaLevel()>    ---->    <android.telephony.CellSignalStrengthCdma: int getLevel()>
+(29)<android.net.NetworkInfo: int getSubtype()>    ---->    <android.telephony.TelephonyManager: int getDataNetworkType()>
+(29)<android.content.pm.PackageManager: int installExistingPackage(String)>   ---->    <android.content.pm.PackageInstaller: int installExistingPackage(String)>
+(29)<android.view.textclassifier.TextClassifier.EntityConfig: EntityConfig create(Collection<String>,Collection<String>,Collection<String>)>    ---->     <android.view.textclassifier.TextClassifier.EntityConfig.Builder: TextClassifier.EntityConfig build()>
+(29)<android.view.textclassifier.TextClassifier.EntityConfig: EntityConfig createWithHints(Collection<String>)>    ---->    <android.view.textclassifier.TextClassifier.EntityConfig.Builder: TextClassifier.EntityConfig build()>   + <android.view.textclassifier.TextClassifier.EntityConfig.Builder: TextClassifier.EntityConfig.Builder setHints(Collections<String>)>
+(29)<android.app.ActivityManager: boolean isRunningInTestHarness()>    ---->    <android.app.ActivityManager: boolean isRunningInUserTestHarness()>
+(29)<android.telephony.TelephonyManager: boolean isRadioOn()>   ---->    <android.telephony.TelephonyManager: ServiceState getServiceState()>
+(29)<com.android.internal.widget.LockPatternUtils: String patternToString(Cell>)>    ---->    <com.android.internal.widget.LockPatternUtils: byte[] patternToByteArray(List<LockPatternView.Cell>)>
+(29)<com.android.internal.widget.LockPatternUtils: Cell> stringToPattern(String)>    ---->    <com.android.internal.widget.LockPatternUtils: List<LockPatternView.Cell>  byteArrayToPattern(byte[])>
+(29)<android.view.textclassifier.TextClassifier.EntityConfig: EntityConfig createWithExplicitEntityList(Collection<String>)>    ---->    <android.view.textclassifier.TextClassifier.EntityConfig.Builder: TextClassifier.EntityConfig build()>
+(29)<android.graphics.drawable.Drawable: void setColorFilter(int,Mode)>    ---->    <android.graphics.drawable.Drawable: void setColorFilter(android.graphics.ColorFilter)>
+(29)<android.media.MediaTimestamp: long getAnchorSytemNanoTime()>    ---->    <android.media.MediaTimestamp: long getAnchorSystemNanoTime()>
+(29)<android.telephony.SignalStrength: int getGsmSignalStrength()>    ---->    <android.telephony.CellSignalStrengthGsm: int getAsuLevel()>
+(29)<android.telephony.SubscriptionInfo: int getMcc()>    ---->    <android.telephony.SubscriptionInfo: String getMccString()>
+(29)<android.app.TaskStackListener: void onTaskRemovalStarted(int)>    ---->    <android.app.TaskStackListener: void onTaskRemovalStarted(ActivityManager.RunningTaskInfo)>
+(29)<android.app.InstantAppResolverService: void onGetInstantAppResolveInfo(Intent,int[],String,InstantAppResolutionCallback)>    ---->    <android.app.InstantAppResolverService: void onGetInstantAppResolveInfo(Intent,int[],UserHandle,String,InstantAppResolutionCallback)>
+(29)<android.telephony.SignalStrength: int getEvdoEcio()>    ---->    	<android.telephony.CellSignalStrengthCdma: int getEvdoEcio()>
+(29)<android.telephony.data.ApnSetting: InetAddress getProxyAddress()>    ---->    <android.telephony.data.ApnSetting: String getProxyAddressAsString()>
+(29)<android.net.wifi.WifiManager: int addNetwork(WifiConfiguration)>    ---->    WifiNetworkSpecifier.Builder#build()
+(29)<android.transition.TransitionValues: void <init>()>    ---->    #TransitionValues(View)
+(29)<android.media.ThumbnailUtils: Bitmap createImageThumbnail(String,int)>    ---->    #createImageThumbnail(File, Size, CancellationSignal)
+(29)<android.webkit.WebViewDelegate: void callDrawGlFunction(Canvas,long)>    ---->    #drawWebViewFunctor(Canvas, int)
+(29)<android.location.LocationManager: void clearTestProviderEnabled(String)>    ---->    #setTestProviderEnabled(String, boolean)
+(29)<android.os.FileObserver: void <init>(String)>    ---->    #FileObserver(File)
+(29)<com.android.systemui.bubbles.BubbleStackView: void collapseStack(Runnable)>    ---->    #setExpanded(boolean)
+(29)<android.telephony.SignalStrength: int getGsmBitErrorRate()>    ---->    android.telephony#CellSignalStrengthGsm
+(29)<com.android.server.SystemServiceManager: File ensureSystemDir()>    ---->    Environment#getDataSystemCeDirectory()
+(29)<android.telephony.PhoneNumberUtils: boolean isEmergencyNumber(String)>    ---->    TelephonyManager#isEmergencyNumber(String)
+(29)<android.telephony.SignalStrength: int getEvdoSnr()>    ---->    android.telephony#CellSignalStrengthCdma
+(29)<android.view.WindowInsets: WindowInsets replaceSystemWindowInsets(Rect)>    ---->    Builder#setSystemWindowInsets(Insets)
+(29)<android.telephony.ims.ImsSsInfo: String getIcbNum()>    ---->    #getIncomingCommunicationBarringNumber()
+(29)<android.view.WindowInsets: WindowInsets replaceSystemWindowInsets(int,int,int,int)>    ---->    Builder#setSystemWindowInsets(Insets)
+(29)<android.security.keystore.recovery.RecoveryController: Key generateKey(String)>    ---->    #generateKey(String, byte[])
+(29)<android.os.FileObserver: void <init>(String,int)>    ---->    #FileObserver(File, int)
+(29)<android.app.TaskStackListener: void onActivityLaunchOnSecondaryDisplayFailed()>    ---->    #onActivityLaunchOnSecondaryDisplayFailed(ActivityManager.RunningTaskInfo, int)
+(29)<android.provider.MediaStore.Images.Media: Bitmap getBitmap(ContentResolver,Uri)>    ---->    ImageDecoder#createSource(ContentResolver, Uri)
+(29)<android.telephony.ServiceState: void <init>(Parcel)>    ---->    #ServiceState()
+(29)<android.app.backup.BackupTransport: String dataManagementLabel()>    ---->    #dataManagementIntentLabel()
+(29)<android.view.accessibility.AccessibilityNodeInfo: void getBoundsInParent(Rect)>    ---->    #getBoundsInScreen(Rect)
+(29)<android.net.wifi.WifiManager: List<WifiConfiguration> getConfiguredNetworks()>    ---->    WifiNetworkSpecifier.Builder#build()
+(29)<android.net.wifi.WifiManager: boolean reconnect()>    ---->    WifiNetworkSpecifier.Builder#build()
+(29)<android.widget.SearchView: boolean isIconfiedByDefault()>    ---->    #isIconifiedByDefault()
+(29)<android.telephony.data.ApnSetting: InetAddress getMmsProxyAddress()>    ---->    #getMmsProxyAddressAsString()
+(29)<android.telephony.SubscriptionInfo: int getMnc()>    ---->    #getMncString()
+(29)<android.webkit.WebViewDelegate: void callDrawGlFunction(Canvas,long,Runnable)>    ---->    #drawWebViewFunctor(Canvas, int)
+(29)<android.net.wifi.WifiManager: boolean disconnect()>    ---->    WifiNetworkSpecifier.Builder#build()
+(29)<android.service.textclassifier.TextClassifierService: TextClassifier getLocalTextClassifier()>    ---->    #getDefaultTextClassifierImplementation(Context)
+(29)<android.net.wifi.WifiManager: int updateNetwork(WifiConfiguration)>    ---->    WifiNetworkSpecifier.Builder#build()
+(29)<android.view.inputmethod.InputMethodManager: boolean setCurrentInputMethodSubtype(InputMethodSubtype)>    ---->    InputMethodService#switchInputMethod(String, InputMethodSubtype)
+(29)<android.webkit.WebViewDelegate: void detachDrawGlFunctor(View,long)>    ---->    #drawWebViewFunctor(Canvas, int)
+(29)<android.service.voice.VoiceInteractionSession: void onHandleAssist(Bundle,AssistStructure,AssistContent)>    ---->    #onHandleAssist(AssistState)
+(29)<android.service.euicc.EuiccService: int onDownloadSubscription(int,DownloadableSubscription,boolean,boolean)>    ---->    #onDownloadSubscription(int, DownloadableSubscription, boolean, boolean, Bundle)
+(29)<android.security.keystore.recovery.RecoveryController: Key importKey(String,byte[])>    ---->    #importKey(String, byte[], byte[])
+(29)<com.android.server.locksettings.recoverablekeystore.RecoverableKeyStoreManager: String generateKey(String)>    ---->    #generateKeyWithMetadata(String, byte[])
+(30)<android.app.AppOpsManager: int noteProxyOpNoThrow(String,String)>    ---->    #noteProxyOpNoThrow(String, String, int, String, String)
+(30)<android.view.View: void setOnSystemUiVisibilityChangeListener(OnSystemUiVisibilityChangeListener)>    ---->    WindowInsets#isVisible(int)
+(30)<android.app.AppOpsManager: int startOp(String,int,String)>    ---->    #startOp(String, int, String, String, String)
+(30)<android.graphics.Canvas: boolean quickReject(RectF,EdgeType)>    ---->    #quickReject(RectF)
+(30)<android.service.euicc.EuiccService: int onEraseSubscriptions(int)>    ---->    #onEraseSubscriptions(int, int)
+(30)<android.view.View: void dispatchSystemUiVisibilityChanged(int)>    ---->    WindowInsets#isVisible(int)
+(30)<android.telephony.ims.ImsCallSessionListener: void callSessionMayHandover(int,int)>    ---->    #onMayHandover(int, int)
+(30)<android.graphics.Canvas: boolean quickReject(float,float,float,float,EdgeType)>    ---->    #quickReject(float, float, float, float)
+(30)<android.app.Notification.BubbleMetadata.Builder: void <init>()>    ---->    Builder#Builder(String)
+(30)<android.graphics.Canvas: boolean quickReject(Path,EdgeType)>    ---->    #quickReject(Path)
+(30)<android.app.AppOpsManager: int startOpNoThrow(String,int,String)>    ---->    #startOpNoThrow(String, int, String, String, String)
+(30)<android.hardware.biometrics.BiometricPrompt.Builder: Builder setDeviceCredentialAllowed(boolean)>    ---->    #setAllowedAuthenticators(int)
+(30)<android.telephony.ims.stub.ImsSmsImplBase: void onSendSmsResult(int,int,int,int)>    ---->    #onSendSmsResultSuccess(int, int)
+(30)<android.app.AppOpsManager.OpEntry: int getProxyUid()>    ---->    #getLastProxyInfo(int)
+(30)<android.app.AppOpsManager: int noteOpNoThrow(String,int,String)>    ---->    #noteOpNoThrow(String, int, String, String, String)
+(30)<android.view.Display: void getRectSize(Rect)>    ---->    WindowMetrics#getBounds()
+(30)<android.hardware.camera2.CameraDevice: void createReprocessableCaptureSessionByConfigurations(InputConfiguration,List<OutputConfiguration>,StateCallback,Handler)>    ---->    #createCaptureSession(android.hardware.camera2.params.SessionConfiguration)
+(30)<android.telephony.data.DataProfile: int getMtu()>    ---->    #getMtuV4
+(30)<android.telephony.TelephonyManager: int getNetworkType()>     <android.telephony.TelephonyManager: int getDataNetworkType()>
+(30)<android.app.AppOpsManager: void finishOp(int,int,String)>     <android.app.AppOpsManager: void finishOp(java.lang.String,int,java.lang.String,java.lang.String)>
+(30)<android.widget.Toast: View getView()>    <android.widget.Toast: android.widget.Toast makeText (Context,CharSequence,int)>
+(30)<android.app.AppOpsManager: int noteOp(String,int,String)>  <android.app.AppOpsManager: int noteOp(java.lang.String,int,java.lang.String,java.lang.String,java.lang.String)
+(30)<android.view.WindowInsets: Insets getSystemGestureInsets()>   getInsets(int)
+(30)<android.view.WindowInsets: Insets getSystemGestureInsets()>   Type#systemGestures()
+(30)<android.content.pm.PackageInstaller: android.content.pm.PackageInstaller.SessionInfo getActiveStagedSession()>     <android.content.pm.PackageInstaller: List<android.content.pm.PackageInstaller.SessionInfo> getActiveStagedSessions()>
+(30)<android.app.Activity: void startIntentSenderFromChild(Activity,IntentSender,int,Intent,int,int,int,Bundle)>   startIntentSenderForResult(android.content.IntentSender,int,android.content.Intent,int,int,int)
+(30)<android.view.WindowInsets: int getSystemWindowInsetLeft()>   getInsets(int)
+(30)<android.location.LocationManager: void requestSingleUpdate(Criteria,LocationListener,Looper)>   getCurrentLocation(java.lang.String, android.os.CancellationSignal, java.util.concurrent.Executor, java.util.function.Consumer)
+(30)<android.view.ViewConfiguration: float getAmbiguousGestureMultiplier()>  getScaledAmbiguousGestureMultiplier()
+(30)<android.net.wifi.WifiManager.LocalOnlyHotspotReservation: WifiConfiguration getWifiConfiguration()>  WifiManager#getSoftApConfiguration()
+(30)<android.content.pm.LauncherApps.Callback: void onPackagesSuspended(String[],UserHandle,Bundle)>   onPackagesSuspended(java.lang.String[], android.os.UserHandle)
+(30)<android.view.WindowInsets.Builder: Builder setSystemGestureInsets(Insets)>    public WindowInsets.Builder setInsets (int typeMask, Insets insets)
+(30)<android.app.AppOpsManager: int startOpNoThrow(int,int,String)> startOpNoThrow(java.lang.String, int, java.lang.String, java.lang.String, java.lang.String)
+(30)<android.hardware.camera2.CameraDevice: void createReprocessableCaptureSession(InputConfiguration,List<Surface>,StateCallback,Handler)> createCaptureSession(android.hardware.camera2.params.SessionConfiguration)
+(30)<android.app.admin.DevicePolicyManager: boolean getStorageEncryption(ComponentName)>   getStorageEncryptionStatus()
+(30)<android.view.WindowInsets: int getSystemWindowInsetTop()>  getInsets(int) with Type#systemBars() instead.
+(30)<android.hardware.camera2.CameraDevice: void createCaptureSession(List<Surface>,StateCallback,Handler)>       ---->    createCaptureSession(android.hardware.camera2.params.SessionConfiguration)
+(30)<android.app.Activity: boolean navigateUpToFromChild(Activity,Intent)>  navigateUpTo(android.content.Intent)
+(30)<android.app.AppOpsManager: int startOp(int,int,String,boolean)>  startOp(java.lang.String, int, java.lang.String, java.lang.String, java.lang.String)
+(30)<android.telephony.TelephonyManager: IccOpenLogicalChannelResponse iccOpenLogicalChannel(String,int)>  iccOpenLogicalChannel(java.lang.String, int)
+(30)<android.view.WindowInsets: int getStableInsetRight()>  getInsetsIgnoringVisibility(int)
+(30)<android.app.admin.DevicePolicyManager: boolean getAutoTimeRequired()> getAutoTimeEnabled(ComponentName)
+(30)<android.app.AppOpsManager: void finishOp(int)>  finishOp(java.lang.String, int, java.lang.String, java.lang.String)
+(30)<android.location.LocationManager: void requestSingleUpdate(String,LocationListener,Looper)> getCurrentLocation(java.lang.String, android.os.CancellationSignal, java.util.concurrent.Executor, java.util.function.Consumer)
+(30)<android.view.WindowInsets: int getSystemWindowInsetRight()> getInsets(int)
+(30)<android.hardware.biometrics.BiometricManager: int canAuthenticate()>  canAuthenticate(int).
+(30)<android.app.Activity: void startIntentSenderFromChild(Activity,IntentSender,int,Intent,int,int,int)> startIntentSenderForResult(android.content.IntentSender, int, android.content.Intent, int, int, int)
+(30)<android.media.DrmInitData: SchemeInitData get(UUID)> getSchemeInitDataCount()
+(30)<android.app.admin.DevicePolicyManager: boolean resetPassword(String,int)> resetPasswordWithToken(ComponentName, String, byte[], int)
+(30)<android.view.WindowInsets: int getStableInsetTop()> getInsetsIgnoringVisibility(int)
+(30)<android.view.WindowInsets.Builder: Builder setMandatorySystemGestureInsets(Insets)>  setInsets(int, android.graphics.Insets)
+(30)<android.hardware.camera2.CameraDevice: void createConstrainedHighSpeedCaptureSession(List<Surface>,StateCallback,Handler)> createCaptureSession(android.hardware.camera2.params.SessionConfiguration)
+(30)<android.app.Activity: boolean onNavigateUpFromChild(Activity)> onNavigateUp()
+(30)<android.view.WindowInsets.Builder: Builder setTappableElementInsets(Insets)> setInsets(int, android.graphics.Insets)
+(30)<android.view.Display: void getSize(Point)> WindowMetrics#getBounds()
+(30)<android.telephony.CellInfo: long getTimeStamp()> getTimestampMillis()
+(30)<android.location.LocationManager: void requestSingleUpdate(String,PendingIntent)>  getCurrentLocation(java.lang.String, android.os.CancellationSignal, java.util.concurrent.Executor, java.util.function.Consumer)
+(30)<android.content.ContentResolver: void notifyChange(Iterable<Uri>,ContentObserver,int)>  notifyChange(android.net.Uri, android.database.ContentObserver, int)
+(30)<android.view.WindowInsets.Builder: Builder setStableInsets(Insets)> setInsetsIgnoringVisibility(int, android.graphics.Insets)
+(30)<android.view.WindowInsets: boolean hasStableInsets()> getInsetsIgnoringVisibility(int)
+(30)<android.view.ViewGroup: void dispatchSystemUiVisibilityChanged(int)>  WindowInsets#isVisible(int)
+(30)<android.telecom.Conference: void setConnectionStartElapsedRealTime(long)> setConnectionStartElapsedRealtimeMillis(long)
+(30)<android.location.LocationManager: void requestSingleUpdate(Criteria,PendingIntent)>  getCurrentLocation(java.lang.String, android.os.CancellationSignal, java.util.concurrent.Executor, java.util.function.Consumer)
+(30)<android.view.WindowInsets: int getStableInsetLeft()>  getInsetsIgnoringVisibility(int)
+(30)<android.test.mock.MockContentResolver: void notifyChange(Uri,ContentObserver,boolean)> notifyChange(android.net.Uri, android.database.ContentObserver, int)
+(30)<android.view.WindowInsets: int getStableInsetBottom()> getInsetsIgnoringVisibility(int)
+(30)<android.app.AppOpsManager: void finishOp(String,int,String)>  finishOp(java.lang.String, int, java.lang.String, java.lang.String)
+(30)<android.app.Activity: void startActivityFromChild(Activity,Intent,int)> androidx.fragment.app.FragmentActivity#startActivityFromFragment( androidx.fragment.app.Fragment,Intent,int)
+(30)<android.hardware.camera2.CameraDevice: void createCaptureSessionByOutputConfigurations(List<OutputConfiguration>,StateCallback,Handler)>  createCaptureSession(android.hardware.camera2.params.SessionConfiguration)
+(30)<android.view.WindowInsets: Insets getSystemWindowInsets()>  getInsets(int)
+(30)<android.location.LocationManager: boolean registerGnssNavigationMessageCallback(Callback)> registerGnssNavigationMessageCallback(android.location.GnssNavigationMessage.Callback, android.os.Handler)
+(30)<android.net.wifi.WifiManager: int calculateSignalLevel(int,int)> calculateSignalLevel(int)
+(30)<android.location.LocationManager: boolean registerGnssMeasurementsCallback(Callback)>  registerGnssMeasurementsCallback(GnssMeasurementsEvent.Callback, Handler)
+(30)<android.app.Activity: void startActivityFromChild(Activity,Intent,int,Bundle)> androidx.fragment.app.FragmentActivity#startActivityFromFragment( androidx.fragment.app.Fragment,Intent,int,Bundle)
+(30)<android.app.Activity: void finishFromChild(Activity)> finish()
+(30)<android.content.pm.PackageManager: String getInstallerPackageName(String)> getInstallSourceInfo(java.lang.String)
+(30)<android.net.NetworkRequest.Builder: Builder setNetworkSpecifier(String)> setNetworkSpecifier(android.net.NetworkSpecifier)
+(30)<android.location.LocationManager: boolean addNmeaListener(OnNmeaMessageListener)>  addNmeaListener(android.location.OnNmeaMessageListener, android.os.Handler)
+(30)<android.app.AppOpsManager: int noteOpNoThrow(int,int,String)>  noteOpNoThrow(java.lang.String, int, java.lang.String, java.lang.String, java.lang.String)
+(30)<android.widget.Toast: void setView(View)> makeText(android.content.Context, java.lang.CharSequence, int)
+(30)<android.accessibilityservice.AccessibilityService: boolean onGesture(int)> onGesture(android.accessibilityservice.AccessibilityGestureEvent)
+(30)<android.app.AppOpsManager: int noteOp(String,int,String)>  noteOp(java.lang.String, int, java.lang.String, java.lang.String, java.lang.String)
+(30)<android.view.WindowInsets: Insets getMandatorySystemGestureInsets()>  getInsets(int)
+(30)<android.view.WindowInsets: int getSystemWindowInsetBottom()> getInsets(int)
+(30)<android.app.AppOpsManager: int noteProxyOp(String,String)> noteProxyOp(java.lang.String, java.lang.String, int, java.lang.String, java.lang.String)
+(30)<android.view.WindowInsets: boolean hasSystemWindowInsets()> Use getInsets(int)
+(30)<android.content.ContentResolver: void notifyChange(Uri,ContentObserver,boolean)> notifyChange(android.net.Uri, android.database.ContentObserver, int)
+(30)<android.app.AppOpsManager: int noteProxyOpNoThrow(String,String,int)>  noteProxyOpNoThrow(java.lang.String, java.lang.String, int, java.lang.String, java.lang.String)
+(30)<android.app.Activity: void finishActivityFromChild(Activity,int)>  finishActivity(int)
+(30)<android.content.ContentResolver: void notifyChange(Uri,ContentObserver,boolean,int)> notifyChange(android.net.Uri, android.database.ContentObserver, int)
+(30)<android.app.admin.DevicePolicyManager: void setAutoTimeRequired(ComponentName,boolean)>  setAutoTimeEnabled(ComponentName, boolean)
+(30)<android.view.WindowInsets: Insets getStableInsets()>  getInsetsIgnoringVisibility(int)
+(30)<android.content.pm.PackageManagerInternal: int getPackageUid(String,int)> getPackageUid(java.lang.String, android.content.pm.PackageManager.PackageInfoFlags)
+(30)<android.app.AppOpsManager: void checkPackage(int,String)> int getPackageUid (String packageName, PackageManager.PackageInfoFlags flags)
+(30)<android.app.AppOpsManager: int startOp(int)>  startOp(java.lang.String, int, java.lang.String, java.lang.String, java.lang.String)
+(30)<android.security.keystore.KeyProtection.Builder: Builder setUserAuthenticationValidityDurationSeconds(int)> setUserAuthenticationParameters(int, int)
+(30)<android.telephony.TelephonyManager: int getPhoneCount()>    ---->    <android.telephony.TelephonyManager: int getActiveModemCount()>
+(30)<android.app.AppOpsManager: int noteOp(String,int,String)>    ---->  <android.app.AppOpsManager: int noteOp(java.lang.String, int, java.lang.String, java.lang.String, java.lang.String)>

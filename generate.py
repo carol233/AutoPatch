@@ -391,7 +391,7 @@ class Analysis:
         # start clean
         clean_PatchDenotation0 = []
         for item in new_PatchDenotation:
-            if '+ "' or "+ '" in item:
+            if item.startswith("+ \"") or item.startswith("+ \'"):
                 continue
             if SDK_VERSION_STR in item:
                 if SDK_VERSION_STR in "".join(clean_PatchDenotation0):

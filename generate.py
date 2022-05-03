@@ -76,7 +76,7 @@ class Analysis:
                                             + method_name + "_" + str(file_number) + ".patch")
 
                     if DEBUG:
-                        if not "isScreenOn" in savePath:
+                        if not "setView" in savePath:
                             continue
 
                     new_PatchDenotation, SDK_VERSION_INT, all_variable_types, SEARCH_variables = self.solveLine(Old_API,
@@ -201,8 +201,11 @@ class Analysis:
             elif line.startswith("goto"):
                 continue
 
-            elif re.compile(r'\$?[a-z]\d+ = [-.\d]+').match(line):
-                m = re.compile(r'(\$?[a-z]\d+) = ([-.\d]+)').match(line)
+            elif ":= @caughtexception" in line:
+                continue
+
+            elif re.compile(r'\$?[a-z]\d+ = [-.nul\d]+').match(line):
+                m = re.compile(r'(\$?[a-z]\d+) = ([-.nul\d]+)').match(line)
                 var = m.group(1)
                 value = m.group(2)
                 all_variables[var] = value
@@ -525,7 +528,6 @@ class Analysis:
                                 constants_to_variable[paraVar] = new_var
                                 # from right to left
                                 line = rreplace(line, paraVar, constants_to_variable[paraVar], 1)
-
             clean_PatchDenotation2.append(line)
 
         # replacement old
@@ -548,7 +550,6 @@ class Analysis:
                         if paraVar in constants_to_variable:
                             # from right to left
                             line = rreplace(line, paraVar, constants_to_variable[paraVar], 1)
-
             clean_PatchDenotation3.append(line)
 
         return clean_PatchDenotation3, SDK_VERSION_INT, all_variable_types, SEARCH_variables

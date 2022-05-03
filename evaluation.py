@@ -6,13 +6,20 @@ def clean(s):
     s = re.sub(pattern, "", s, 0)
     return s
 
+def collect(s):
+    lines = s.split("\n")
+
+
+
 def evaluate_patches(file1, file2):
     with open(file1, 'r') as fr1:
         p1 = fr1.read()
     with open(file2, 'r') as fr2:
         p2 = fr2.read()
-    p1 = clean(p1)
-    p2 = clean(p2)
+    collect_1 = collect(p1)
+    collect_2 = collect(p2)
+    p1 = clean("".join(collect_1))
+    p2 = clean("".join(collect_2))
     if Levenshtein.distance(p1, p2) < 2:
         print(p1)
         print("\n\n")

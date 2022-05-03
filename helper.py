@@ -14,6 +14,12 @@ Declare_Variable = "@@ Variable declaration"
 Declare_Location = "@@ Issue Location"
 Declare_Denotation = "@@ Patch Denotation"
 
+def rreplace(self, old, new, *max):
+    count = len(self)
+    if max and str(max[0]).isdigit():
+        count = max[0]
+    return new.join(self.rsplit(old, count))
+
 def getFileList(rootDir, pickstr):
     """
     :param rootDir:  root directory of dataset

@@ -67,7 +67,7 @@ class Analysis:
                         continue
                     Stmts = line[3].strip("\"[]")
                     given_num = API_Old_dic[Old_API]
-                    pattern = re.compile(r'<\S+:\s\S+\s([\w<>]+)\(.*\)>')
+                    pattern = re.compile(r'<\S+:\s\S+\s(\S+)\(.*\)>')
                     m = pattern.match(line[0])
                     if not m:
                         continue
@@ -75,9 +75,9 @@ class Analysis:
                     savePath = os.path.join(PatchOutputPath, str(given_num) + "_"
                                             + method_name + "_" + str(file_number) + ".patch")
 
-                    # if DEBUG:
-                    #     if not "100_setBackgroundDrawable_3.patch" in savePath:
-                    #         continue
+                    if DEBUG:
+                        if not "isScreenOn" in savePath:
+                            continue
 
                     new_PatchDenotation, SDK_VERSION_INT, all_variable_types, SEARCH_variables = self.solveLine(Old_API,
                                                                                                                 New_API,
@@ -98,7 +98,6 @@ class Analysis:
                         if not (s.startswith("<android") or s.startswith("<java")
                                 or s.startswith("< ") or s.startswith("<label")
                                 or s.startswith("<= ")):
-                            print(s)
                             flag_ifSave = 0
                             break
 
@@ -119,7 +118,7 @@ class Analysis:
         return
 
     def getNewVar(self, num):
-        return "$v" + str(num)
+        return "$y" + str(num)
 
     def BuildPatch(self, new_PatchDenotation, SDK_VERSION_INT, Old_API, New_API, all_variable_types, SEARCH_variables):
         newPatch = []
@@ -174,10 +173,9 @@ class Analysis:
                         else:
                             new_var = self.getNewVar(len(all_variables))
                             all_variables[var] = new_var
-                        collect_seen_vars[new_var] = 1
 
         for line in sentences:
-            line = line.strip()
+            line = line.strip().replace("'", "")
             if line.startswith("if "):
                 pattern = re.compile(r'if (\$?[a-z]\d+) (<=?) (\d+) goto (.*)')
                 m = pattern.match(line)
@@ -203,7 +201,11 @@ class Analysis:
             elif line.startswith("goto"):
                 continue
 
-            elif re.compile(r'\$?[a-z]\d+ = -?\d+').match(line):
+            elif re.compile(r'\$?[a-z]\d+ = [-.\d]+').match(line):
+                m = re.compile(r'(\$?[a-z]\d+) = ([-.\d]+)').match(line)
+                var = m.group(1)
+                value = m.group(2)
+                all_variables[var] = value
                 continue
 
             elif STATE == "READ_NEW" and (TargetStmt not in line or FLAG_ifnext):
@@ -211,6 +213,8 @@ class Analysis:
                 allVars = re.findall(r'\$?[a-z]\d+', line)
                 if allVars:
                     for var in allVars:
+                        if var == "v4" and var == "v7":
+                            continue
                         if var in all_variables:
                             new_var = all_variables[var]
                         else:
@@ -222,7 +226,7 @@ class Analysis:
                 # means there is a method call
                 if "invoke " in line:
                     # static invoke
-                    pattern = re.compile(r'(\$?[a-z]\d+) = staticinvoke <(\S+): (\S+) (\w+)\((.*)\)>\((.*)\)')
+                    pattern = re.compile(r'(\$?[a-z]\d+) = staticinvoke <(\S+): (\S+) (\S+)\((.*)\)>\((.*)\)')
                     m = pattern.match(line)
                     if m:
                         rtnVar = m.group(1)
@@ -239,19 +243,6 @@ class Analysis:
 
                             if "$" in paraVar:
                                 all_variable_types[paraVar] = paraType
-                                if paraVar not in collect_seen_vars:
-                                    if paraType == "int" or paraType == "java.lang.Integer":
-                                        line = line.replace(paraVar, "0")
-                                        all_variable_types[paraVar] = -1
-                                    elif paraType == "float":
-                                        line = line.replace(paraVar, "0.1")
-                                        all_variable_types[paraVar] = -1
-                                    else:
-                                        # todo: consider [SEARCH] and "null"
-                                        # line = line.replace(paraVar, "null")
-                                        SEARCH_variables[paraVar] = 1
-
-                        collect_seen_vars[rtnVar] = 1
 
                     else:
                         rtnVar2 = ""
@@ -279,18 +270,6 @@ class Analysis:
 
                                 if "$" in paraVar2:
                                     all_variable_types[paraVar2] = paraType2
-                                    if paraVar2 not in collect_seen_vars:
-                                        if paraType2 == "int" or paraType2 == "java.lang.Integer":
-                                            line = line.replace(paraVar2, "0")
-                                            all_variable_types[paraVar2] = -1
-                                        elif paraType2 == "float":
-                                            line = line.replace(paraVar2, "0.1")
-                                            all_variable_types[paraVar2] = -1
-                                        else:
-                                            # todo: consider [SEARCH] and "null"
-                                            # line = line.replace(paraVar2, "null")
-                                            SEARCH_variables[paraVar2] = 1
-                            collect_seen_vars[rtnVar2] = 1
 
                 # parse field
                 else:
@@ -304,11 +283,6 @@ class Analysis:
 
                         all_variable_types[rtnVar4] = rtnType4.strip()
                         all_variable_types[baseVar4] = baseType.strip()
-
-                        if baseVar4 not in collect_seen_vars:
-                            SEARCH_variables[baseVar4] = 1
-
-                        collect_seen_vars[rtnVar4] = 1
 
                 newStmt = "+ " + line
                 new_PatchDenotation_part1.append(newStmt)
@@ -326,6 +300,8 @@ class Analysis:
                 allVars = re.findall(r'\$?[a-z]\d+', line)
                 if allVars:
                     for var in allVars:
+                        if var == "v4" and var == "v7":
+                            continue
                         if var in all_variables:
                             new_var = all_variables[var]
                         else:
@@ -337,7 +313,7 @@ class Analysis:
                 # means there is a method call
                 if "invoke " in line:
                     # static invoke
-                    pattern = re.compile(r'(\$?[a-z]\d+) = staticinvoke <(\S+): (\S+) (\w+)\((.*)\)>\((.*)\)')
+                    pattern = re.compile(r'(\$?[a-z]\d+) = staticinvoke <(\S+): (\S+) (\S+)\((.*)\)>\((.*)\)')
                     m = pattern.match(line)
                     if m:
                         rtnVar = m.group(1)
@@ -392,11 +368,11 @@ class Analysis:
                         all_variable_types[rtnVar4] = rtnType4.strip()
                         all_variable_types[baseVar4] = baseType.strip()
 
-                flag = 0
+                flagg = 0
                 for item1 in new_PatchDenotation_part1[:]:
                     clean1 = item1.replace("+ ", "").strip()
                     if line.strip() == clean1:
-                        flag = 1
+                        flagg = 1
                         new_PatchDenotation_part1.remove(item1)
                         allVars2 = re.findall(r'\$?[a-z]\d+', clean1)
                         if allVars2:
@@ -404,7 +380,7 @@ class Analysis:
                                 all_variable_types[var2] = -1
                         break
 
-                if flag == 0:
+                if flagg == 0:
                     newStmt = "[Stmt] " + line
                     new_PatchDenotation_part2.append(newStmt)
 
@@ -413,17 +389,47 @@ class Analysis:
         new_PatchDenotation.append(newStmt3)
 
         # start clean
-        clean_PatchDenotation1 = []
+        clean_PatchDenotation0 = []
         for item in new_PatchDenotation:
-            if SDK_VERSION_STR in item:
-                if SDK_VERSION_STR in "".join(clean_PatchDenotation1):
-                    clean_PatchDenotation1 = []
-            clean_PatchDenotation1.append(item)
-
-
-        for item in clean_PatchDenotation1:
-            if New_API in item:
+            if '+ "' or "+ '" in item:
                 continue
+            if SDK_VERSION_STR in item:
+                if SDK_VERSION_STR in "".join(clean_PatchDenotation0):
+                    clean_PatchDenotation0 = []
+            clean_PatchDenotation0.append(item)
+
+        clean_PatchDenotation1 = clean_PatchDenotation0
+        stack1 = []
+        var_forNew = {}
+        for item in clean_PatchDenotation0:
+            if New_API in item:
+                paraVars = re.findall(r'\$[a-z]\d+', item)
+                if not paraVars:
+                    continue
+                for param in paraVars:
+                    var_forNew[param] = 1
+                break
+            if "goto <label_original>" not in item and SDK_VERSION_STR not in item:
+                stack1.append(item)
+
+        for i in range(len(stack1)):
+            flag_remove = 1
+            s = stack1.pop()
+            for var in var_forNew:
+                if var in s:
+                    flag_remove = 0
+                    continue
+            if flag_remove:
+                clean_PatchDenotation1.remove(s)
+            else:
+                paraVars = re.findall(r'\$[a-z]\d+', s)
+                if not paraVars:
+                    continue
+                for param in paraVars:
+                    var_forNew[param] = 1
+
+        # collect seen vars
+        for item in clean_PatchDenotation1:
             if item.startswith("+"):
                 if "=" in item:
                     s = item.split("=")[0]
@@ -439,7 +445,7 @@ class Analysis:
                 for param in paraVars:
                     collect_seen_vars[param] = 1
 
-
+        # decide which to search
         for item in clean_PatchDenotation1:
             if item.startswith("+"):
                 if "=" in item:
@@ -454,17 +460,98 @@ class Analysis:
                         SEARCH_variables[param] = 1
                     else:
                         SEARCH_variables[param] = -1
-            if New_API in item:
-                paraVars = re.findall(r'\$[a-z]\d+', item)
-                if not paraVars:
-                    continue
-                for param in paraVars:
-                    if param not in collect_seen_vars:
-                        SEARCH_variables[param] = 1
-                    else:
-                        SEARCH_variables[param] = -1
 
-        return new_PatchDenotation, SDK_VERSION_INT, all_variable_types, SEARCH_variables
+
+        # collect constants
+        collect_seen_constants = {}
+        constants_to_variable = {}
+        for line in clean_PatchDenotation1:
+            if not line.startswith("[Stmt]"):
+                continue
+            pattern = re.compile(r'[\S\s]+<\S+: \S+ \S+\((.*)\)>\((.*)\)')
+            m = pattern.match(line)
+            if m:
+                paraVars_s = m.group(2)
+                paraTypes_s = m.group(1)
+                paraVars = paraVars_s.split(",")
+                paraTypes = paraTypes_s.split(",")
+                for i in range(0, len(paraVars)):
+                    paraVar = paraVars[i].strip()
+                    paraType = paraTypes[i].strip()
+                    if "$" not in paraVar and paraVar:
+                        collect_seen_constants[paraVar] = paraType
+
+        # replacement new
+        clean_PatchDenotation2 = []
+        for line in clean_PatchDenotation1:
+            if not line.startswith("+"):
+                clean_PatchDenotation2.append(line)
+                continue
+            pattern = re.compile(r'[\S\s]+<\S+: \S+ \S+\((.*)\)>\((.*)\)')
+            m = pattern.match(line)
+            if m:
+                paraVars_s = m.group(2)
+                paraTypes_s = m.group(1)
+                paraVars = paraVars_s.split(",")
+                paraTypes = paraTypes_s.split(",")
+                for i in range(0, len(paraVars)):
+                    paraVar = paraVars[i].strip()
+                    paraType = paraTypes[i].strip()
+
+                    if "$" in paraVar:
+                        # Todo: solve constants
+                        all_variable_types[paraVar] = paraType
+                        if paraVar not in collect_seen_vars:
+                            if paraType == "int" or paraType == "java.lang.Integer":
+                                # todo: 15_createVideoThumbnail_3986.patch
+                                replaceInt = "0"
+                                for constant in collect_seen_constants:
+                                    type = collect_seen_constants[constant]
+                                    if type == "int" or type == "java.lang.Integer":
+                                        replaceInt = constant
+                                line = line.replace(paraVar, replaceInt)
+                                all_variable_types[paraVar] = -1
+                            elif paraType == "float":
+                                line = line.replace(paraVar, "0.1")
+                                all_variable_types[paraVar] = -1
+                            else:
+                                SEARCH_variables[paraVar] = 1
+                    else:
+                        if paraVar in collect_seen_constants and paraVar:
+                            if paraType == collect_seen_constants[paraVar]:
+                                new_var = self.getNewVar(len(all_variables))
+                                all_variables[paraVar] = new_var
+                                all_variable_types[paraVar] = paraType
+                                constants_to_variable[paraVar] = new_var
+                                # from right to left
+                                line = rreplace(line, paraVar, constants_to_variable[paraVar], 1)
+
+            clean_PatchDenotation2.append(line)
+
+        # replacement old
+        clean_PatchDenotation3 = []
+        for line in clean_PatchDenotation2:
+            if not line.startswith("[Stmt]"):
+                clean_PatchDenotation3.append(line)
+                continue
+            pattern = re.compile(r'[\S\s]+<\S+: \S+ \S+\((.*)\)>\((.*)\)')
+            m = pattern.match(line)
+            if m:
+                paraVars_s = m.group(2)
+                paraTypes_s = m.group(1)
+                paraVars = paraVars_s.split(",")
+                paraTypes = paraTypes_s.split(",")
+                for i in range(0, len(paraVars)):
+                    paraVar = paraVars[i].strip()
+                    paraType = paraTypes[i].strip()
+                    if "$" not in paraVar and paraVar:
+                        if paraVar in constants_to_variable:
+                            # from right to left
+                            line = rreplace(line, paraVar, constants_to_variable[paraVar], 1)
+
+            clean_PatchDenotation3.append(line)
+
+        return clean_PatchDenotation3, SDK_VERSION_INT, all_variable_types, SEARCH_variables
 
     def start(self):
         files = getFileList(CSVInputPath, ".csv")

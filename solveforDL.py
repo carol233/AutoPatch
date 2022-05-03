@@ -2,8 +2,8 @@ from helper import *
 import csv
 
 PairPath = "AutoPatch_Pairs.txt"
-CSVInputPath = "/data/sdc/yanjie/AutoPatch_dataset"
-Patches = "/data/sdc/yanjie/AutoPatch_generatePatch_selected/"
+CSVInputPath = "/data/sdc/yanjie/AutoPatch_dataset2"
+Patches = "/home/yanjie/AutoPatch/MyPatch/"  # remember the "/"
 
 Root_dir = "/data/sdc/yanjie/AutoPatch_DL/"
 check_and_mk_dir(Root_dir)
@@ -20,7 +20,6 @@ filter_data = {}
 if __name__ == "__main__":
     all_patches = getFileList(Patches, ".patch")
     API_Old_dic, API_new_dic = loadPair(PairPath)
-    print(API_Old_dic)
     files = getFileList(CSVInputPath, ".csv")
     for file in files:
         with open(file, "r") as fr1:
@@ -46,7 +45,7 @@ if __name__ == "__main__":
                     gr = Patches + str(API_num) + "_"
                     if gr in patch:
                         if Old_API in filter_data:
-                            if (len(filter_data[Old_API])) < 1000:
+                            if (len(filter_data[Old_API])) < 100000:
                                 filter_data[Old_API].append(Stmts)
                         else:
                             filter_data[Old_API] = []

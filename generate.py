@@ -5,6 +5,8 @@ import threading
 from subprocess import Popen, PIPE
 from threading import Timer
 
+from nltk.sem.chat80 import items
+
 from helper import *
 
 DEBUG = 0
@@ -81,9 +83,9 @@ class Analysis:
                                                                                                                 New_API,
                                                                                                                 Stmts)
 
-                    if Old_API not in " ".join(new_PatchDenotation) or \
-                            New_API not in " ".join(new_PatchDenotation) or \
-                            " 512 " in " ".join(new_PatchDenotation):
+                    ss_ = " ".join(new_PatchDenotation)
+                    if Old_API not in ss_ or New_API not in ss_ or \
+                            " 512 " in ss_ or SDK_VERSION_STR not in ss_:
                         continue
 
                     newPatch = self.BuildPatch(new_PatchDenotation, SDK_VERSION_INT, Old_API, New_API,
@@ -133,7 +135,8 @@ class Analysis:
             if all_variable_types[item] != -1 and item.startswith("$"):
                 newline = item + " := " + all_variable_types[item]
                 if item in SEARCH_variables:
-                    newline = "[SEARCH] " + newline
+                    if SEARCH_variables[item] != -1:
+                        newline = "[SEARCH] " + newline
                 newPatch.append(newline)
         newPatch.append(BLANK)
         newPatch.append(Declare_Location)
@@ -164,6 +167,8 @@ class Analysis:
                 paraVars3 = re.findall(r'\$?[a-z]\d+', tmpline)
                 if paraVars3:
                     for var in paraVars3:
+                        if var == "v4" and var == "v7":
+                            continue
                         if var in all_variables:
                             new_var = all_variables[var]
                         else:
@@ -406,6 +411,58 @@ class Analysis:
         new_PatchDenotation = new_PatchDenotation_part1 + new_PatchDenotation_part2
         newStmt3 = "+ " + Label_Next
         new_PatchDenotation.append(newStmt3)
+
+        # start clean
+        clean_PatchDenotation1 = []
+        for item in new_PatchDenotation:
+            if SDK_VERSION_STR in item:
+                if SDK_VERSION_STR in "".join(clean_PatchDenotation1):
+                    clean_PatchDenotation1 = []
+            clean_PatchDenotation1.append(item)
+
+
+        for item in clean_PatchDenotation1:
+            if New_API in item:
+                continue
+            if item.startswith("+"):
+                if "=" in item:
+                    s = item.split("=")[0]
+                    paraVars = re.findall(r'\$[a-z]\d+', s)
+                    if not paraVars:
+                        continue
+                    for param in paraVars:
+                        collect_seen_vars[param] = 1
+            else:
+                paraVars = re.findall(r'\$[a-z]\d+', item)
+                if not paraVars:
+                    continue
+                for param in paraVars:
+                    collect_seen_vars[param] = 1
+
+
+        for item in clean_PatchDenotation1:
+            if item.startswith("+"):
+                if "=" in item:
+                    s = item.split("=")[1]
+                else:
+                    s = item
+                paraVars = re.findall(r'\$[a-z]\d+', s)
+                if not paraVars:
+                    continue
+                for param in paraVars:
+                    if param not in collect_seen_vars:
+                        SEARCH_variables[param] = 1
+                    else:
+                        SEARCH_variables[param] = -1
+            if New_API in item:
+                paraVars = re.findall(r'\$[a-z]\d+', item)
+                if not paraVars:
+                    continue
+                for param in paraVars:
+                    if param not in collect_seen_vars:
+                        SEARCH_variables[param] = 1
+                    else:
+                        SEARCH_variables[param] = -1
 
         return new_PatchDenotation, SDK_VERSION_INT, all_variable_types, SEARCH_variables
 

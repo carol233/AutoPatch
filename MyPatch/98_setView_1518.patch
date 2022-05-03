@@ -1,0 +1,31 @@
+//(21)<android.widget.Toast: void setView(android.view.View)>
+//----> <android.widget.Toast: android.widget.Toast makeText(android.content.Context,java.lang.CharSequence,int)>
+
+@@ Variable declaration
+$y2 := int
+$y3 := android.view.LayoutInflater
+$y4 := android.content.Context
+$y1 := android.view.View
+$y5 := android.view.View
+$y7 := java.lang.CharSequence
+$y0 := android.widget.Toast
+
+@@ Issue Location
+[OS] <android.widget.Toast: void setView(android.view.View)> Build.VERSION.SDK_INT 21
+
+@@ Patch Denotation
++ $y2 = <android.os.Build$VERSION: int SDK_INT>
++ if $y2 < 21 goto <label_original>
++ $y3 = staticinvoke <android.view.LayoutInflater: android.view.LayoutInflater from(android.content.Context)>($y4)
++ $y1 = virtualinvoke $y3.<android.view.LayoutInflater: android.view.View inflate(int,android.view.ViewGroup)>(2131492913, null)
++ $y5 = virtualinvoke $y1.<android.view.View: android.view.View findViewById(int)>(2131296670)
++ $y6 = (android.widget.TextView) $y5
++ virtualinvoke $y6.<android.widget.TextView: void setText(java.lang.CharSequence)>($y7)
++ $y0 = new android.widget.Toast
++ specialinvoke $y0.<android.widget.Toast: void <init>(android.content.Context)>($y4)
++ virtualinvoke $y0.<android.widget.Toast: void setDuration(int)>($y8)
++ virtualinvoke $y0.<android.widget.Toast: void setView(android.view.View)>($y1)
++ goto <label_next>
++ <label_original>
+[Stmt] $y0 = staticinvoke <android.widget.Toast: android.widget.Toast makeText(android.content.Context,java.lang.CharSequence,int)>($y4, $y7, $y8)
++ <label_next>

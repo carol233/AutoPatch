@@ -1,0 +1,20 @@
+//(28)<android.telephony.CellIdentityWcdma: int getMcc()>
+//----> <android.telephony.CellIdentityWcdma: java.lang.String getMccString()>
+
+@@ Variable declaration
+$y0 := int
+$y1 := android.telephony.CellIdentityWcdma
+$y19 := java.lang.String
+
+@@ Issue Location
+[OS] <android.telephony.CellIdentityWcdma: int getMcc()> Build.VERSION.SDK_INT 28
+
+@@ Patch Denotation
++ $y19 = <android.os.Build$VERSION: int SDK_INT>
++ if $y19 < 28 goto <label_original>
++ $y19 = virtualinvoke $y1.<android.telephony.CellIdentityWcdma: java.lang.String getMccString()>()
++ $y0 = staticinvoke <java.lang.Integer: int parseInt(java.lang.String)>($y19)
++ goto <label_next>
++ <label_original>
+[Stmt] $y0 = virtualinvoke $y1.<android.telephony.CellIdentityWcdma: int getMcc()>()
++ <label_next>

@@ -1,0 +1,17 @@
+//(23)<android.media.AudioManager: void setStreamMute(int,boolean)>
+//----> <android.media.AudioManager: void adjustStreamVolume(int,int,int)>
+
+@@ Variable declaration
+$y1 := int
+
+@@ Issue Location
+[OS] <android.media.AudioManager: void setStreamMute(int,boolean)> Build.VERSION.SDK_INT 23
+
+@@ Patch Denotation
++ $y1 = <android.os.Build$VERSION: int SDK_INT>
++ if $y1 < 23 goto <label_original>
++ virtualinvoke $y0.<android.media.AudioManager: void adjustStreamVolume(int,int,int)>($y2, 100, 1)
++ goto <label_next>
++ <label_original>
+[Stmt] virtualinvoke $y0.<android.media.AudioManager: void setStreamMute(int,boolean)>($y2, 0)
++ <label_next>

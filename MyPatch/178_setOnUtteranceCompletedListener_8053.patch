@@ -1,0 +1,24 @@
+//(15)<android.speech.tts.TextToSpeech: int setOnUtteranceCompletedListener(android.speech.tts.TextToSpeech$OnUtteranceCompletedListener)>
+//----> <android.speech.tts.TextToSpeech: int setOnUtteranceProgressListener(android.speech.tts.UtteranceProgressListener)>
+
+@@ Variable declaration
+$y2 := int
+$y5 := android.support.$y4.speech.tts.TextToSpeechICSMR1$UtteranceProgressListenerICSMR1
+$y3 := android.speech.tts.UtteranceProgressListener
+$y1 := android.speech.tts.TextToSpeech$OnUtteranceCompletedListener
+
+@@ Issue Location
+[OS] <android.speech.tts.TextToSpeech: int setOnUtteranceCompletedListener(android.speech.tts.TextToSpeech$OnUtteranceCompletedListener)> Build.VERSION.SDK_INT 15
+
+@@ Patch Denotation
++ $y2 = <android.os.Build$VERSION: int SDK_INT>
++ if $y2 < 15 goto <label_original>
++ $y3 = new android.support.$y4.speech.tts.TextToSpeechICSMR1$1
++ specialinvoke $y3.<android.support.$y4.speech.tts.TextToSpeechICSMR1$1: void <init>(android.support.$y4.speech.tts.TextToSpeechICSMR1$UtteranceProgressListenerICSMR1)>($y5)
++ virtualinvoke $y0.<android.speech.tts.TextToSpeech: int setOnUtteranceProgressListener(android.speech.tts.UtteranceProgressListener)>($y3)
++ goto <label_next>
++ <label_original>
+[Stmt] $y1 = new android.support.$y4.speech.tts.TextToSpeechICSMR1$2
+[Stmt] specialinvoke $y1.<android.support.$y4.speech.tts.TextToSpeechICSMR1$2: void <init>(android.support.$y4.speech.tts.TextToSpeechICSMR1$UtteranceProgressListenerICSMR1)>($y5)
+[Stmt] virtualinvoke $y0.<android.speech.tts.TextToSpeech: int setOnUtteranceCompletedListener(android.speech.tts.TextToSpeech$OnUtteranceCompletedListener)>($y1)
++ <label_next>

@@ -1,0 +1,21 @@
+//(21)<android.webkit.CookieSyncManager: void sync()>
+//----> <android.webkit.CookieManager: void flush()>
+
+@@ Variable declaration
+$y1 := int
+$y2 := android.webkit.CookieManager
+$y0 := android.webkit.CookieSyncManager
+
+@@ Issue Location
+[OS] <android.webkit.CookieSyncManager: void sync()> Build.VERSION.SDK_INT 21
+
+@@ Patch Denotation
++ $y1 = <android.os.Build$VERSION: int SDK_INT>
++ if $y1 < 21 goto <label_original>
++ $y2 = staticinvoke <android.webkit.CookieManager: android.webkit.CookieManager getInstance()>()
++ virtualinvoke $y2.<android.webkit.CookieManager: void flush()>()
++ goto <label_next>
++ <label_original>
+[Stmt] $y0 = staticinvoke <android.webkit.CookieSyncManager: android.webkit.CookieSyncManager getInstance()>()
+[Stmt] virtualinvoke $y0.<android.webkit.CookieSyncManager: void sync()>()
++ <label_next>

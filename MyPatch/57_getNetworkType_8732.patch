@@ -1,0 +1,21 @@
+//(28)<android.telephony.TelephonyManager: int getNetworkType()>
+//----> <android.telephony.TelephonyManager: int getDataNetworkType()>
+
+@@ Variable declaration
+$y2 := int
+$y3 := java.lang.CharSequence
+$y4 := java.lang.String
+$y0 := int
+$y8 := boolean
+
+@@ Issue Location
+[OS] <android.telephony.TelephonyManager: int getNetworkType()> Build.VERSION.SDK_INT 28
+
+@@ Patch Denotation
++ $y2 = <android.os.Build$VERSION: int SDK_INT>
++ if $y2 < 28 goto <label_original>
++ $y0 = virtualinvoke $y1.<android.telephony.TelephonyManager: int getNetworkType()>()
++ goto <label_next>
++ <label_original>
+[Stmt] $y0 = virtualinvoke $y1.<android.telephony.TelephonyManager: int getDataNetworkType()>()
++ <label_next>

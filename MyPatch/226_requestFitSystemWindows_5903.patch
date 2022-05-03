@@ -1,0 +1,17 @@
+//(20)<android.view.View: void requestFitSystemWindows()>
+//----> <android.view.View: void requestApplyInsets()>
+
+@@ Variable declaration
+$y1 := int
+
+@@ Issue Location
+[OS] <android.view.View: void requestFitSystemWindows()> Build.VERSION.SDK_INT 20
+
+@@ Patch Denotation
++ $y1 = <android.os.Build$VERSION: int SDK_INT>
++ if $y1 < 20 goto <label_original>
++ virtualinvoke $y0.<android.view.View: void requestApplyInsets()>()
++ goto <label_next>
++ <label_original>
+[Stmt] virtualinvoke $y0.<android.view.View: void requestFitSystemWindows()>()
++ <label_next>

@@ -1,0 +1,22 @@
+//(26)<android.media.AudioManager: int requestAudioFocus(android.media.AudioManager$OnAudioFocusChangeListener,int,int)>
+//----> <android.media.AudioManager: int requestAudioFocus(android.media.AudioFocusRequest)>
+
+@@ Variable declaration
+$y1 := int
+$y4 := android.media.AudioAttributes
+$y5 := android.media.AudioFocusRequest
+
+@@ Issue Location
+[OS] <android.media.AudioManager: int requestAudioFocus(android.media.AudioManager$OnAudioFocusChangeListener,int,int)> Build.VERSION.SDK_INT 26
+
+@@ Patch Denotation
++ $y1 = <android.os.Build$VERSION: int SDK_INT>
++ if $y1 < 26 goto <label_original>
++ $y7 = new android.media.AudioAttributes$Builder
++ specialinvoke $y7.<android.media.AudioAttributes$Builder: void <init>()>()
++ $y5 = virtualinvoke $y7.<android.media.AudioFocusRequest$Builder: android.media.AudioFocusRequest build()>()
++ virtualinvoke $y0.<android.media.AudioManager: int requestAudioFocus(android.media.AudioFocusRequest)>($y5)
++ goto <label_next>
++ <label_original>
+[Stmt] virtualinvoke $y0.<android.media.AudioManager: int requestAudioFocus(android.media.AudioManager$OnAudioFocusChangeListener,int,int)>(null, 3, 1)
++ <label_next>

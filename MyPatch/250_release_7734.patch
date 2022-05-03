@@ -1,0 +1,17 @@
+//(28)<android.media.MediaDrm: void release()>
+//----> <android.media.MediaDrm: void close()>
+
+@@ Variable declaration
+$y1 := int
+
+@@ Issue Location
+[OS] <android.media.MediaDrm: void release()> Build.VERSION.SDK_INT 28
+
+@@ Patch Denotation
++ $y1 = <android.os.Build$VERSION: int SDK_INT>
++ if $y1 < 28 goto <label_original>
++ virtualinvoke $y0.<android.media.MediaDrm: void close()>()
++ goto <label_next>
++ <label_original>
+[Stmt] virtualinvoke $y0.<android.media.MediaDrm: void release()>()
++ <label_next>

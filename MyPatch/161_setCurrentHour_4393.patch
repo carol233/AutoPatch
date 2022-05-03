@@ -1,0 +1,21 @@
+//(23)<android.widget.TimePicker: void setCurrentHour(java.lang.Integer)>
+//----> <android.widget.TimePicker: void setHour(int)>
+
+@@ Variable declaration
+$y2 := int
+$y3 := int
+$y1 := java.lang.Integer
+
+@@ Issue Location
+[OS] <android.widget.TimePicker: void setCurrentHour(java.lang.Integer)> Build.VERSION.SDK_INT 23
+
+@@ Patch Denotation
++ $y2 = <android.os.Build$VERSION: int SDK_INT>
++ if $y2 < 23 goto <label_original>
++ virtualinvoke $y0.<android.widget.TimePicker: void setHour(int)>($y3)
++ virtualinvoke $y0.<android.widget.TimePicker: void setMinute(int)>(0)
++ goto <label_next>
++ <label_original>
+[Stmt] $y1 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($y3)
+[Stmt] virtualinvoke $y0.<android.widget.TimePicker: void setCurrentHour(java.lang.Integer)>($y1)
++ <label_next>

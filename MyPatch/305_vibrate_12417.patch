@@ -1,0 +1,21 @@
+//(26)<android.os.Vibrator: void vibrate(long[],int)>
+//----> <android.os.Vibrator: void vibrate(android.os.VibrationEffect)>
+
+@@ Variable declaration
+$y3 := int
+$y4 := android.os.VibrationEffect
+$y1 := long[]
+$y2 := int
+
+@@ Issue Location
+[OS] <android.os.Vibrator: void vibrate(long[],int)> Build.VERSION.SDK_INT 26
+
+@@ Patch Denotation
++ $y3 = <android.os.Build$VERSION: int SDK_INT>
++ if $y3 < 26 goto <label_original>
++ $y4 = staticinvoke <android.os.VibrationEffect: android.os.VibrationEffect createWaveform(long[],int)>($y1, $y2)
++ virtualinvoke $y0.<android.os.Vibrator: void vibrate(android.os.VibrationEffect)>($y4)
++ goto <label_next>
++ <label_original>
+[Stmt] virtualinvoke $y0.<android.os.Vibrator: void vibrate(long[],int)>($y1, $y2)
++ <label_next>

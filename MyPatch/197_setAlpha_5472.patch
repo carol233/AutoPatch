@@ -1,0 +1,17 @@
+//(16)<android.widget.ImageView: void setAlpha(int)>
+//----> <android.widget.ImageView: void setImageAlpha(int)>
+
+@@ Variable declaration
+$y1 := int
+
+@@ Issue Location
+[OS] <android.widget.ImageView: void setAlpha(int)> Build.VERSION.SDK_INT 16
+
+@@ Patch Denotation
++ $y1 = <android.os.Build$VERSION: int SDK_INT>
++ if $y1 < 16 goto <label_original>
++ virtualinvoke $y0.<android.widget.ImageView: void setImageAlpha(int)>($y4)
++ goto <label_next>
++ <label_original>
+[Stmt] virtualinvoke $y0.<android.widget.ImageView: void setAlpha(int)>($y4)
++ <label_next>

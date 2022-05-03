@@ -1,0 +1,22 @@
+//(21)<android.graphics.Canvas: int saveLayerAlpha(float,float,float,float,int,int)>
+//----> <android.graphics.Canvas: int saveLayerAlpha(float,float,float,float,int)>
+
+@@ Variable declaration
+$y6 := int
+$y0 := int
+$y2 := float
+$y3 := float
+$y4 := float
+$y5 := float
+
+@@ Issue Location
+[OS] <android.graphics.Canvas: int saveLayerAlpha(float,float,float,float,int,int)> Build.VERSION.SDK_INT 21
+
+@@ Patch Denotation
++ $y6 = <android.os.Build$VERSION: int SDK_INT>
++ if $y6 <= 21 goto <label_original>
++ $y0 = virtualinvoke $y1.<android.graphics.Canvas: int saveLayerAlpha(float,float,float,float,int)>($y2, $y3, $y4, $y5, $y0)
++ goto <label_next>
++ <label_original>
+[Stmt] $y0 = virtualinvoke $y1.<android.graphics.Canvas: int saveLayerAlpha(float,float,float,float,int,int)>($y2, $y3, $y4, $y5, $y0, 31)
++ <label_next>

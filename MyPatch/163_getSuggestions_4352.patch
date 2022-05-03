@@ -1,0 +1,18 @@
+//(16)<android.view.textservice.SpellCheckerSession: void getSuggestions(android.view.textservice.TextInfo[],int,boolean)>
+//----> <android.view.textservice.SpellCheckerSession: void getSentenceSuggestions(android.view.textservice.TextInfo[],int)>
+
+@@ Variable declaration
+$y2 := int
+$y1 := android.view.textservice.TextInfo[]
+
+@@ Issue Location
+[OS] <android.view.textservice.SpellCheckerSession: void getSuggestions(android.view.textservice.TextInfo[],int,boolean)> Build.VERSION.SDK_INT 16
+
+@@ Patch Denotation
++ $y2 = <android.os.Build$VERSION: int SDK_INT>
++ if $y2 < 16 goto <label_original>
++ virtualinvoke $y0.<android.view.textservice.SpellCheckerSession: void getSentenceSuggestions(android.view.textservice.TextInfo[],int)>($y1, 0)
++ goto <label_next>
++ <label_original>
+[Stmt] virtualinvoke $y0.<android.view.textservice.SpellCheckerSession: void getSuggestions(android.view.textservice.TextInfo[],int,boolean)>($y1, 0, 0)
++ <label_next>

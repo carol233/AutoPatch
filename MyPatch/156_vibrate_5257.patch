@@ -1,0 +1,20 @@
+//(26)<android.os.Vibrator: void vibrate(long)>
+//----> <android.os.Vibrator: void vibrate(android.os.VibrationEffect)>
+
+@@ Variable declaration
+$y2 := int
+$y4 := android.os.VibrationEffect
+$y1 := long
+
+@@ Issue Location
+[OS] <android.os.Vibrator: void vibrate(long)> Build.VERSION.SDK_INT 26
+
+@@ Patch Denotation
++ $y2 = <android.os.Build$VERSION: int SDK_INT>
++ if $y2 < 26 goto <label_original>
++ $y4 = staticinvoke <android.os.VibrationEffect: android.os.VibrationEffect createOneShot(long,int)>($y1, -1)
++ virtualinvoke $y0.<android.os.Vibrator: void vibrate(android.os.VibrationEffect)>($y4)
++ goto <label_next>
++ <label_original>
+[Stmt] virtualinvoke $y0.<android.os.Vibrator: void vibrate(long)>($y1)
++ <label_next>

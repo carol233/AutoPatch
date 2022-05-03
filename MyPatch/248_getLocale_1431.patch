@@ -1,0 +1,20 @@
+//(24)<android.view.inputmethod.InputMethodSubtype: java.lang.String getLocale()>
+//----> <android.view.inputmethod.InputMethodSubtype: java.lang.String getLanguageTag()>
+
+@@ Variable declaration
+$y2 := int
+$y0 := java.lang.String
+$y3 := boolean
+
+@@ Issue Location
+[OS] <android.view.inputmethod.InputMethodSubtype: java.lang.String getLocale()> Build.VERSION.SDK_INT 24
+
+@@ Patch Denotation
++ $y2 = <android.os.Build$VERSION: int SDK_INT>
++ if $y2 < 24 goto <label_original>
++ $y0 = virtualinvoke $y1.<android.view.inputmethod.InputMethodSubtype: java.lang.String getLanguageTag()>()
++ goto <label_next>
++ <label_original>
+[Stmt] $y3 = staticinvoke <android.text.TextUtils: boolean isEmpty(java.lang.CharSequence)>($y0)
+[Stmt] $y0 = virtualinvoke $y1.<android.view.inputmethod.InputMethodSubtype: java.lang.String getLocale()>()
++ <label_next>

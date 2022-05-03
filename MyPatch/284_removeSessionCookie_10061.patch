@@ -1,0 +1,19 @@
+//(21)<android.webkit.CookieManager: void removeSessionCookie()>
+//----> <android.webkit.CookieManager: void flush()>
+
+@@ Variable declaration
+$y1 := int
+
+@@ Issue Location
+[OS] <android.webkit.CookieManager: void removeSessionCookie()> Build.VERSION.SDK_INT 21
+
+@@ Patch Denotation
++ $y1 = <android.os.Build$VERSION: int SDK_INT>
++ if $y1 < 21 goto <label_original>
++ virtualinvoke $y0.<android.webkit.CookieManager: void removeSessionCookies(android.webkit.ValueCallback)>(null)
++ virtualinvoke $y0.<android.webkit.CookieManager: void removeAllCookies(android.webkit.ValueCallback)>(null)
++ virtualinvoke $y0.<android.webkit.CookieManager: void flush()>()
++ goto <label_next>
++ <label_original>
+[Stmt] virtualinvoke $y0.<android.webkit.CookieManager: void removeSessionCookie()>()
++ <label_next>

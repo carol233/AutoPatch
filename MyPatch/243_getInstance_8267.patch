@@ -1,0 +1,20 @@
+//(26)<android.text.method.DigitsKeyListener: android.text.method.DigitsKeyListener getInstance()>
+//----> <android.text.method.DigitsKeyListener: android.text.method.DigitsKeyListener getInstance(java.util.Locale)>
+
+@@ Variable declaration
+$y1 := int
+$y0 := android.text.method.DigitsKeyListener
+$y2 := java.util.Locale
+
+@@ Issue Location
+[OS] <android.text.method.DigitsKeyListener: android.text.method.DigitsKeyListener getInstance()> Build.VERSION.SDK_INT 26
+
+@@ Patch Denotation
++ $y1 = <android.os.Build$VERSION: int SDK_INT>
++ if $y1 < 26 goto <label_original>
++ $y2 = <java.util.Locale: java.util.Locale US>
++ $y0 = staticinvoke <android.text.method.DigitsKeyListener: android.text.method.DigitsKeyListener getInstance(java.util.Locale)>($y2)
++ goto <label_next>
++ <label_original>
+[Stmt] $y0 = staticinvoke <android.text.method.DigitsKeyListener: android.text.method.DigitsKeyListener getInstance()>()
++ <label_next>

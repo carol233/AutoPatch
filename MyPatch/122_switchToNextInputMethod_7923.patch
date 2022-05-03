@@ -1,0 +1,29 @@
+//(28)<android.view.inputmethod.InputMethodManager: boolean switchToNextInputMethod(android.os.IBinder,boolean)>
+//----> <android.inputmethodservice.InputMethodService: boolean switchToPreviousInputMethod()>
+
+@@ Variable declaration
+$y2 := int
+$y4 := java.lang.Object
+$y7 := android.app.Dialog
+$y8 := android.view.Window
+$y9 := android.view.WindowManager$LayoutParams
+$y1 := android.os.IBinder
+
+@@ Issue Location
+[OS] <android.view.inputmethod.InputMethodManager: boolean switchToNextInputMethod(android.os.IBinder,boolean)> Build.VERSION.SDK_INT 28
+
+@@ Patch Denotation
++ $y2 = <android.os.Build$VERSION: int SDK_INT>
++ if $y2 < 28 goto <label_original>
++ virtualinvoke $y3.<android.inputmethodservice.InputMethodService: boolean switchToPreviousInputMethod()>()
++ goto <label_next>
++ <label_original>
+[Stmt] $y4 = virtualinvoke $y5.<android.app.Application: java.lang.Object getSystemService(java.lang.String)>("input_method")
+[Stmt] $y6 = $y4 instanceof android.view.inputmethod.InputMethodManager
+[Stmt] $y0 = (android.view.inputmethod.InputMethodManager) $y4
+[Stmt] $y7 = virtualinvoke $y3.<android.inputmethodservice.InputMethodService: android.app.Dialog getWindow()>()
+[Stmt] $y8 = virtualinvoke $y7.<android.app.Dialog: android.view.Window getWindow()>()
+[Stmt] $y9 = virtualinvoke $y8.<android.view.Window: android.view.WindowManager$LayoutParams getAttributes()>()
+[Stmt] $y1 = $y9.<android.view.WindowManager$LayoutParams: android.os.IBinder token>
+[Stmt] virtualinvoke $y0.<android.view.inputmethod.InputMethodManager: boolean switchToNextInputMethod(android.os.IBinder,boolean)>($y1, 0)
++ <label_next>

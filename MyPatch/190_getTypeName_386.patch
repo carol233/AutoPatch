@@ -1,0 +1,26 @@
+//(23)<android.net.NetworkInfo: java.lang.String getTypeName()>
+//----> <android.net.NetworkCapabilities: boolean hasTransport(int)>
+
+@@ Variable declaration
+$y2 := int
+$y3 := android.net.Network
+$y5 := android.net.NetworkCapabilities
+$y6 := boolean
+$y1 := android.net.NetworkInfo
+$y0 := java.lang.String
+
+@@ Issue Location
+[OS] <android.net.NetworkInfo: java.lang.String getTypeName()> Build.VERSION.SDK_INT 23
+
+@@ Patch Denotation
++ $y2 = <android.os.Build$VERSION: int SDK_INT>
++ if $y2 < 23 goto <label_original>
++ $y3 = virtualinvoke $y4.<android.net.ConnectivityManager: android.net.Network getActiveNetwork()>()
++ $y5 = virtualinvoke $y4.<android.net.ConnectivityManager: android.net.NetworkCapabilities getNetworkCapabilities(android.net.Network)>($y3)
++ $y6 = virtualinvoke $y5.<android.net.NetworkCapabilities: boolean hasTransport(int)>(1)
++ goto <label_next>
++ <label_original>
+[Stmt] $y1 = virtualinvoke $y4.<android.net.ConnectivityManager: android.net.NetworkInfo getActiveNetworkInfo()>()
+[Stmt] $y6 = virtualinvoke $y1.<android.net.NetworkInfo: boolean isConnected()>()
+[Stmt] $y0 = virtualinvoke $y1.<android.net.NetworkInfo: java.lang.String getTypeName()>()
++ <label_next>

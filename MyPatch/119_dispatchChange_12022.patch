@@ -1,0 +1,18 @@
+//(16)<android.database.ContentObservable: void dispatchChange(boolean)>
+//----> <android.database.ContentObservable: void dispatchChange(boolean,android.net.Uri)>
+
+@@ Variable declaration
+$y2 := int
+$y1 := boolean
+
+@@ Issue Location
+[OS] <android.database.ContentObservable: void dispatchChange(boolean)> Build.VERSION.SDK_INT 16
+
+@@ Patch Denotation
++ $y2 = <android.os.Build$VERSION: int SDK_INT>
++ if $y2 < 16 goto <label_original>
++ virtualinvoke $y0.<android.database.ContentObservable: void dispatchChange(boolean,android.net.Uri)>($y1, null)
++ goto <label_next>
++ <label_original>
+[Stmt] virtualinvoke $y0.<android.database.ContentObservable: void dispatchChange(boolean)>($y1)
++ <label_next>

@@ -1,0 +1,22 @@
+//(21)<android.telephony.PhoneNumberUtils: java.lang.String formatNumber(java.lang.String)>
+//----> <android.telephony.PhoneNumberUtils: java.lang.String formatNumber(java.lang.String,java.lang.String)>
+
+@@ Variable declaration
+$y1 := int
+$y2 := java.util.Locale
+$y3 := java.lang.String
+$y0 := java.lang.String
+
+@@ Issue Location
+[OS] <android.telephony.PhoneNumberUtils: java.lang.String formatNumber(java.lang.String)> Build.VERSION.SDK_INT 21
+
+@@ Patch Denotation
++ $y1 = <android.os.Build$VERSION: int SDK_INT>
++ if $y1 < 21 goto <label_original>
++ $y2 = staticinvoke <java.util.Locale: java.util.Locale getDefault()>()
++ $y3 = virtualinvoke $y2.<java.util.Locale: java.lang.String getCountry()>()
++ $y0 = staticinvoke <android.telephony.PhoneNumberUtils: java.lang.String formatNumber(java.lang.String,java.lang.String)>($y0, $y3)
++ goto <label_next>
++ <label_original>
+[Stmt] $y0 = staticinvoke <android.telephony.PhoneNumberUtils: java.lang.String formatNumber(java.lang.String)>($y0)
++ <label_next>

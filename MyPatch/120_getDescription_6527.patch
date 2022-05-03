@@ -1,0 +1,19 @@
+//(16)<android.accessibilityservice.AccessibilityServiceInfo: java.lang.String getDescription()>
+//----> <android.accessibilityservice.AccessibilityServiceInfo: java.lang.String loadDescription(android.content.pm.PackageManager)>
+
+@@ Variable declaration
+$y2 := int
+$y0 := java.lang.String
+[SEARCH] $y3 := android.content.pm.PackageManager
+
+@@ Issue Location
+[OS] <android.accessibilityservice.AccessibilityServiceInfo: java.lang.String getDescription()> Build.VERSION.SDK_INT 16
+
+@@ Patch Denotation
++ $y2 = <android.os.Build$VERSION: int SDK_INT>
++ if $y2 < 16 goto <label_original>
++ $y0 = virtualinvoke $y1.<android.accessibilityservice.AccessibilityServiceInfo: java.lang.String loadDescription(android.content.pm.PackageManager)>($y3)
++ goto <label_next>
++ <label_original>
+[Stmt] $y0 = virtualinvoke $y1.<android.accessibilityservice.AccessibilityServiceInfo: java.lang.String getDescription()>()
++ <label_next>

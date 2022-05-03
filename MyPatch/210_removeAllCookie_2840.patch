@@ -1,0 +1,21 @@
+//(21)<android.webkit.CookieManager: void removeAllCookie()>
+//----> <android.webkit.CookieManager: void removeAllCookies(android.webkit.ValueCallback)>
+
+@@ Variable declaration
+$y1 := int
+$y2 := android.webkit.CookieSyncManager
+$y3 := android.content.Context
+
+@@ Issue Location
+[OS] <android.webkit.CookieManager: void removeAllCookie()> Build.VERSION.SDK_INT 21
+
+@@ Patch Denotation
++ $y1 = <android.os.Build$VERSION: int SDK_INT>
++ if $y1 < 21 goto <label_original>
++ virtualinvoke $y0.<android.webkit.CookieManager: void removeAllCookies(android.webkit.ValueCallback)>(null)
++ goto <label_next>
++ <label_original>
+[Stmt] $y2 = staticinvoke <android.webkit.CookieSyncManager: android.webkit.CookieSyncManager createInstance(android.content.Context)>($y3)
+[Stmt] virtualinvoke $y2.<android.webkit.CookieSyncManager: void startSync()>()
+[Stmt] virtualinvoke $y0.<android.webkit.CookieManager: void removeAllCookie()>()
++ <label_next>

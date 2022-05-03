@@ -1,0 +1,18 @@
+//(20)<android.os.PowerManager: boolean isScreenOn()>
+//----> <android.os.PowerManager: boolean isInteractive()>
+
+@@ Variable declaration
+$y2 := int
+$y0 := boolean
+
+@@ Issue Location
+[OS] <android.os.PowerManager: boolean isScreenOn()> Build.VERSION.SDK_INT 20
+
+@@ Patch Denotation
++ $y2 = <android.os.Build$VERSION: int SDK_INT>
++ if $y2 < 20 goto <label_original>
++ $y0 = virtualinvoke $y1.<android.os.PowerManager: boolean isInteractive()>()
++ goto <label_next>
++ <label_original>
+[Stmt] $y0 = virtualinvoke $y1.<android.os.PowerManager: boolean isScreenOn()>()
++ <label_next>

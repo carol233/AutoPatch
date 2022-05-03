@@ -1,0 +1,19 @@
+//(18)<android.os.StatFs: int getBlockSize()>
+//----> <android.os.StatFs: long getBlockSizeLong()>
+
+@@ Variable declaration
+$y2 := int
+$y3 := long
+$y0 := int
+
+@@ Issue Location
+[OS] <android.os.StatFs: int getBlockSize()> Build.VERSION.SDK_INT 18
+
+@@ Patch Denotation
++ $y2 = <android.os.Build$VERSION: int SDK_INT>
++ if $y2 < 18 goto <label_original>
++ $y3 = virtualinvoke $y1.<android.os.StatFs: long getBlockSizeLong()>()
++ goto <label_next>
++ <label_original>
+[Stmt] $y0 = virtualinvoke $y1.<android.os.StatFs: int getBlockSize()>()
++ <label_next>

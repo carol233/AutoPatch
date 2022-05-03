@@ -1,0 +1,19 @@
+//(21)<android.os.Environment: java.lang.String getStorageState(java.io.File)>
+//----> <android.os.Environment: java.lang.String getExternalStorageState(java.io.File)>
+
+@@ Variable declaration
+$y2 := int
+$y0 := java.lang.String
+$y1 := java.io.File
+
+@@ Issue Location
+[OS] <android.os.Environment: java.lang.String getStorageState(java.io.File)> Build.VERSION.SDK_INT 21
+
+@@ Patch Denotation
++ $y2 = <android.os.Build$VERSION: int SDK_INT>
++ if $y2 < 21 goto <label_original>
++ $y0 = staticinvoke <android.os.Environment: java.lang.String getExternalStorageState(java.io.File)>($y1)
++ goto <label_next>
++ <label_original>
+[Stmt] $y0 = staticinvoke <android.os.Environment: java.lang.String getStorageState(java.io.File)>($y1)
++ <label_next>

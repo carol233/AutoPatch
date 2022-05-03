@@ -1,0 +1,18 @@
+//(17)<android.app.PendingIntent: java.lang.String getTargetPackage()>
+//----> <android.app.PendingIntent: java.lang.String getCreatorPackage()>
+
+@@ Variable declaration
+$y2 := int
+$y0 := java.lang.String
+
+@@ Issue Location
+[OS] <android.app.PendingIntent: java.lang.String getTargetPackage()> Build.VERSION.SDK_INT 17
+
+@@ Patch Denotation
++ $y2 = <android.os.Build$VERSION: int SDK_INT>
++ if $y2 < 17 goto <label_original>
++ $y0 = virtualinvoke $y1.<android.app.PendingIntent: java.lang.String getCreatorPackage()>()
++ goto <label_next>
++ <label_original>
+[Stmt] $y0 = virtualinvoke $y1.<android.app.PendingIntent: java.lang.String getTargetPackage()>()
++ <label_next>

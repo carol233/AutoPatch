@@ -1,0 +1,26 @@
+//(29)<android.media.ThumbnailUtils: android.graphics.Bitmap createVideoThumbnail(java.lang.String,int)>
+//----> <android.media.ThumbnailUtils: android.graphics.Bitmap createVideoThumbnail(java.io.File,android.util.Size,android.os.CancellationSignal)>
+
+@@ Variable declaration
+$y2 := int
+$y1 := java.lang.String
+$y0 := android.graphics.Bitmap
+$y4 := java.io.File
+$y5 := android.util.Size
+[SEARCH] $y8 := android.os.CancellationSignal
+
+@@ Issue Location
+[OS] <android.media.ThumbnailUtils: android.graphics.Bitmap createVideoThumbnail(java.lang.String,int)> Build.VERSION.SDK_INT 29
+
+@@ Patch Denotation
++ $y2 = <android.os.Build$VERSION: int SDK_INT>
++ if $y2 < 29 goto <label_original>
++ $y4 = new java.io.File
++ specialinvoke $y4.<java.io.File: void <init>(java.lang.String)>($y1)
++ $y5 = new android.util.Size
++ specialinvoke $y5.<android.util.Size: void <init>(int,int)>(1, 1)
++ $y0 = staticinvoke <android.media.ThumbnailUtils: android.graphics.Bitmap createVideoThumbnail(java.io.File,android.util.Size,android.os.CancellationSignal)>($y4, $y5, $y8)
++ goto <label_next>
++ <label_original>
+[Stmt] $y0 = staticinvoke <android.media.ThumbnailUtils: android.graphics.Bitmap createVideoThumbnail(java.lang.String,int)>($y1, 1)
++ <label_next>

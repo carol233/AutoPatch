@@ -204,11 +204,14 @@ class Analysis:
             elif ":= @caughtexception" in line:
                 continue
 
-            elif re.compile(r'\$?[a-z]\d+ = [-.nul\d]+').match(line):
-                m = re.compile(r'(\$?[a-z]\d+) = ([-.nul\d]+)').match(line)
+            elif re.compile(r'\$?[a-z]\d+ = [-.\d]+').match(line):
+                m = re.compile(r'(\$?[a-z]\d+) = ([-.\d]+)').match(line)
                 var = m.group(1)
                 value = m.group(2)
                 all_variables[var] = value
+                continue
+
+            elif re.compile(r'\$?[a-z]\d+ = null').match(line):
                 continue
 
             elif STATE == "READ_NEW" and (TargetStmt not in line or FLAG_ifnext):
@@ -464,7 +467,6 @@ class Analysis:
                     else:
                         SEARCH_variables[param] = -1
 
-
         # collect constants
         collect_seen_constants = {}
         constants_to_variable = {}
@@ -512,10 +514,10 @@ class Analysis:
                                     type = collect_seen_constants[constant]
                                     if type == "int" or type == "java.lang.Integer":
                                         replaceInt = constant
-                                line = line.replace(paraVar, replaceInt)
+                                line = rreplace(line, paraVar, replaceInt, 1)
                                 all_variable_types[paraVar] = -1
                             elif paraType == "float":
-                                line = line.replace(paraVar, "0.1")
+                                line = rreplace(line, paraVar, "0.1", 1)
                                 all_variable_types[paraVar] = -1
                             else:
                                 SEARCH_variables[paraVar] = 1

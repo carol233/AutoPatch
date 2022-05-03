@@ -8,14 +8,14 @@ from threading import Timer
 
 JAR_PATH = "AutoPatch.jar"
 APK_FOLDER = "/data/sdc/yanjie/APK2021"
-SAVECSV_DIR = "/data/sdc/yanjie/AutoPatch_dataset"
-SAVEAPI_DIR = "/data/sdc/yanjie/AutoPatch_APIindex"
+SAVECSV_DIR = "/data/sdc/yanjie/AutoPatch_dataset2"
+SAVEAPI_DIR = "/data/sdc/yanjie/AutoPatch_APIindex2"
 Android_jar = "/home/yanjie/android-sdk-linux/platforms"
-CDAPath = "NewPairs.txt"
-RECORD_TXT = "record_0422.txt"
+CDAPath = "AutoPatch_Pairs.txt"
+RECORD_TXT = "record_0501.txt"
 
 all_solved = {}
-
+all_27k = {}
 
 def getFileList(rootDir, pickstr):
     """
@@ -49,6 +49,8 @@ class Analysis:
     def process_one(self, args):
         file = args
         sha256 = os.path.split(file)[-1][:-4]
+        if sha256 not in all_27k:
+            return
         if sha256 in all_solved:
             return
         output_file = os.path.join(SAVECSV_DIR, sha256 + ".csv")
@@ -83,6 +85,14 @@ class Analysis:
 
 
 if __name__ == '__main__':
+
+    with open("27000record.txt", "r") as fr:
+        lines = fr.read().split("\n")
+        for line in lines:
+            sha256 = line.replace("[+] PreSolving ", "").strip()
+            if sha256:
+                all_27k[sha256] = 1
+
     if os.path.exists(RECORD_TXT):
         with open(RECORD_TXT, "r") as fr:
             solved = fr.read().split("\n")

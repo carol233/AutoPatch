@@ -7,16 +7,16 @@ from threading import Timer
 
 from helper import *
 
-DEBUG = 1
+DEBUG = 0
 if DEBUG:
     print("[-] Debug mode...")
     CSVInputPath = "test"
     PatchOutputPath = "testOutput"
 else:
-    CSVInputPath = "/data/sdc/yanjie/AutoPatch_dataset"
-    PatchOutputPath = "/data/sdc/yanjie/AutoPatch_generatePatch"
+    CSVInputPath = "/data/sdc/yanjie/AutoPatch_dataset2"
+    PatchOutputPath = "/data/sdc/yanjie/AutoPatch_generatePatch2"
 
-PairPath = "NewPairs.txt"
+PairPath = "AutoPatch_Pairs.txt"
 RECORD_TXT = "RawPatch_Parsed.txt"
 Filed_File = "framework_fields.txt"
 all_solved = {}
@@ -73,9 +73,19 @@ class Analysis:
                     savePath = os.path.join(PatchOutputPath, str(given_num) + "_"
                                             + method_name + "_" + str(file_number) + ".patch")
 
+                    # if DEBUG:
+                    #     if not "100_setBackgroundDrawable_3.patch" in savePath:
+                    #         continue
+
                     new_PatchDenotation, SDK_VERSION_INT, all_variable_types, SEARCH_variables = self.solveLine(Old_API,
                                                                                                                 New_API,
                                                                                                                 Stmts)
+
+                    if Old_API not in " ".join(new_PatchDenotation) or \
+                            New_API not in " ".join(new_PatchDenotation) or \
+                            " 512 " in " ".join(new_PatchDenotation):
+                        continue
+
                     newPatch = self.BuildPatch(new_PatchDenotation, SDK_VERSION_INT, Old_API, New_API,
                                                all_variable_types, SEARCH_variables)
 
@@ -89,16 +99,6 @@ class Analysis:
                             print(s)
                             flag_ifSave = 0
                             break
-
-                    # tmp_s = self.clean("".join(newPatch))
-                    # start_old = [_.start() for _ in re.finditer(self.clean(Old_API), tmp_s)]
-                    # start_new = [_.start() for _ in re.finditer(self.clean(New_API), tmp_s)]
-                    #
-                    # if len(start_old) == 3 and len(start_new) == 2:
-                    #     if start_old[2] < start_new[1]:
-                    #         flag_ifSave = 0
-                    # else:
-                    #     flag_ifSave = 0
 
                     if flag_ifSave == 1:
                         with open(savePath, "w") as fw:
@@ -161,7 +161,7 @@ class Analysis:
         for tmpline in sentences:
             tmpline = tmpline.strip()
             if Old_API in tmpline and not tmpline.startswith("if "):
-                paraVars3 = re.findall(r'\$[a-z]\d+', tmpline)
+                paraVars3 = re.findall(r'\$?[a-z]\d+', tmpline)
                 if paraVars3:
                     for var in paraVars3:
                         if var in all_variables:

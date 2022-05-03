@@ -6,8 +6,8 @@ if DEBUG:
     PatchOutputPath = "testOutput"
     selected_path = "testPatchOutput"
 else:
-    PatchOutputPath = "/data/sdc/yanjie/AutoPatch_generatePatch"
-    selected_path = "/data/sdc/yanjie/AutoPatch_generatePatch_selected"
+    PatchOutputPath = "/data/sdc/yanjie/AutoPatch_generatePatch2"
+    selected_path = "/data/sdc/yanjie/Patches"
 all_saved = {}
 
 if __name__ == "__main__":

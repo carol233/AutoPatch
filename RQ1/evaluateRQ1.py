@@ -1,7 +1,7 @@
 import re
 
-pairfile = "/Users/yzha0544/PycharmProjects/AutoPatch/NewPairs.txt"
-file1 = "/Users/yzha0544/PycharmProjects/AutoPatch/RQ1/30.txt"
+pairfile = "/Users/yzha0544/PycharmProjects/AutoPatch/AutoPatch_Pairs.txt"
+file1 = "/Users/yzha0544/PycharmProjects/AutoPatch/RQ1/29.txt"
 
 if __name__ == '__main__':
     cda = {}
@@ -9,7 +9,7 @@ if __name__ == '__main__':
     with open(pairfile, "r") as fr:
         lines = fr.read().split("\n")
         for line in lines:
-            if line.startswith("(30)"):
+            if line.startswith("(29)"):
                 pattern = re.compile(r'\S+(<\S+:\s+\S+\s+[\w<>]+\(.*\)>)[\s\S]+----> {1,10}(<\S+:\s+\S+\s+[\w<>]+\(.*\)>)[\s\S]+')
                 m = pattern.match(line)
                 if m:
@@ -45,11 +45,11 @@ if __name__ == '__main__':
                     methodname2 = m2.group(2).strip()
 
                     if classname1 == classname2 and methodname1 == methodname2:
-                        matches[item2] = item1
+                        matches[item1] = item2
                         break
 
     print(len(matches), len(cda), len(sc))
-    for item in sc.keys() - matches.keys():
+    for item in cda.keys() - matches.keys():
         print(item)
 
 

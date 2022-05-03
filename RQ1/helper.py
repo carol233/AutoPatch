@@ -1,7 +1,6 @@
 import hashlib
 import os
 import re
-import csv
 from subprocess import Popen, PIPE
 from threading import Timer
 import shlex
@@ -60,15 +59,10 @@ def loadPair(Path):
             if m:
                 old_sig = m.group(1)
                 new_sig = m.group(2)
-                if old_sig in API_Old_dic:
-                    print(old_sig)
                 API_Old_dic[old_sig] = num
                 API_new_dic[new_sig] = num
                 num += 1
             else:
                 print("Load CDA error", line)
     return API_Old_dic, API_new_dic
-
-def dic2list(s):
-    return sorted(s.items(), key=lambda d:d[1], reverse=True)
 

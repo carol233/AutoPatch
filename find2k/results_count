@@ -1,0 +1,57 @@
+OSPatches/getDrawable.patch 321 1950 1407 985
+OSPatches/getType.patch 379 984 760 557
+OSPatches/3_setSystemUiVisibility.patch 417 898 488 480
+OSPatches/getWidth.patch 362 654 438 404
+OSPatches/getColor.patch 214 827 521 265
+OSPatches/2_fromHtml.patch 139 360 306 265
+OSPatches/2_abandonAudioFocus.patch 90 246 237 236
+OSPatches/2_vibrate_12.patch 149 233 216 215
+OSPatches/setBackgroundDrawable.patch 189 436 220 182
+OSPatches/getHeight.patch 377 615 174 171
+----------------------------------------------------------------
+OSPatches/getColor.patch 827 521 265
+OSPatches/getType.patch 984 760 557
+OSPatches/getDrawable.patch 1950 1407 985
+OSPatches/getHeight.patch 615 174 171
+OSPatches/3_setSystemUiVisibility.patch 898 488 480
+OSPatches/2_getAllNetworkInfo.patch 117 97 85
+OSPatches/setBackgroundDrawable.patch 436 220 182
+OSPatches/2_getCurrentHour.patch 187 187 168
+OSPatches/2_getCurrentMinute.patch 187 182 163
+OSPatches/2_shouldOverrideUrLoading.patch 136 129 129
+OSPatches/getWidth.patch 654 438 404
+OSPatches/2_getDeviceId.patch 119 102 98
+OSPatches/2_abandonAudioFocus.patch 246 237 236
+OSPatches/2_requestAudioFocus.patch 112 104 104
+OSPatches/2_fromHtml.patch 360 306 265
+OSPatches/2_vibrate_12.patch 233 216 215
+OSPatches/3_getClipData.patch 48 22 3
+OSPatches/2_addAction.patch 66 48 31
+OSPatches/2_setTextAppearance.patch 84 57 34
+OSPatches/2_vibrate_11.patch 36 34 34
+OSPatches/init.patch 9 8 0     xxxxxxxxxxxx
+OSPatches/2_setCurrentHour.patch 4 3 0
+OSPatches/2_setCurrentMinute.patch 4 0 0
+OSPatches/setWindowLayoutMode.patch 12 7 2
+OSPatches/release.patch 8 6 4
+OSPatches/2_saveLayer.patch 2 0 0    xxxxxxxxxxxx
+OSPatches/toHtml.patch 1 1 1
+all:  714 8519 5932 4616
+################################################################
+DevicePatches/getWindow.patch 464 2101 2095 2095
+DevicePatches/setRecordingHint.patch 156 947 947 947
+DevicePatches/DatePicker.patch 31 38 0 0
+----------------------------------------------------------------
+DevicePatches/getWindow.patch 2101 2095 2095
+DevicePatches/setRecordingHint.patch 947 947 947
+DevicePatches/DatePicker.patch 38 0 0
+all:  492 3086 3042 3042
+################################################################
+CallBackPatches/shouldOverrideUrlLoading.patch 7 23 2 5
+CallBackPatches/onReceivedError.patch 2 8 0 0
+----------------------------------------------------------------
+CallBackPatches/shouldOverrideUrlLoading.patch 23 2 5
+CallBackPatches/onReceivedError.patch 8 0 0
+all:  7 31 2 5
+################################################################
+all apks:  725

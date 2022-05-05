@@ -5,7 +5,7 @@ PairPath = "AutoPatch_Pairs.txt"
 CSVInputPath = "/data/sdc/yanjie/AutoPatch_dataset2"
 Patches = "/home/yanjie/AutoPatch/MyPatch/"  # remember the "/"
 
-Root_dir = "/data/sdc/yanjie/AutoPatch_DL/"
+Root_dir = "/data/sdc/yanjie/AutoPatch_DL_2k/"
 check_and_mk_dir(Root_dir)
 Output_all = Root_dir + "input_all.txt"
 Output_input = Root_dir + "input_filter.txt"
@@ -31,6 +31,7 @@ if __name__ == "__main__":
                     continue
 
                 Stmts = line[3].strip("\"[]")
+                Stmts = Old_API + "|/|" + New_API + "|/|" + Stmts
                 if Old_API in all_data:
                     all_data[Old_API].append(Stmts)
                 else:
@@ -45,7 +46,7 @@ if __name__ == "__main__":
                     gr = Patches + str(API_num) + "_"
                     if gr in patch:
                         if Old_API in filter_data:
-                            if (len(filter_data[Old_API])) < 100000:
+                            if (len(filter_data[Old_API])) < 2000:
                                 filter_data[Old_API].append(Stmts)
                         else:
                             filter_data[Old_API] = []

@@ -1,0 +1,39 @@
+OSPATCH/2_fromHtml.patch 241 414 371 350
+OSPATCH/setBackgroundDrawable.patch 428 449 321 268
+OSPATCH/2_addAction.patch 238 249 242 232
+OSPATCH/toHtml.patch 183 198 183 183
+OSPATCH/2_abandonAudioFocus.patch 124 149 147 146
+OSPATCH/2_requestAudioFocus.patch 127 138 136 135
+OSPATCH/2_getDeviceId.patch 69 80 72 67
+OSPATCH/getDrawable.patch 351 805 548 56
+OSPATCH/getColor.patch 239 504 374 34
+OSPATCH/2_vibrate_12.patch 121 128 128 21
+----------------------------------------------------------------
+OSPATCH/toHtml.patch 198 183 183
+OSPATCH/2_fromHtml.patch 414 371 350
+OSPATCH/3_getClipData.patch 0 0 0
+OSPATCH/setBackgroundDrawable.patch 449 321 268
+OSPATCH/getDrawable.patch 805 548 56
+OSPATCH/getType.patch 0 0 0
+OSPATCH/getCanRetrieveWindowContent.patch 0 0 0
+OSPATCH/getDescription.patch 120 120 0
+OSPATCH/2_setTextAppearance.patch 357 231 3
+OSPATCH/getColor.patch 504 374 34
+OSPATCH/2_addAction.patch 249 242 232
+OSPATCH/getHeight.patch 432 375 0
+OSPATCH/getWidth.patch 386 350 0
+OSPATCH/3_setSystemUiVisibility.patch 0 0 0
+OSPATCH/2_vibrate_12.patch 128 128 21
+OSPATCH/2_getAllNetworkInfo_x.patch 0 0 0
+OSPATCH/2_setAudioStreamType.patch 194 193 0
+OSPATCH/2_abandonAudioFocus.patch 149 147 146
+OSPATCH/2_requestAudioFocus.patch 138 136 135
+OSPATCH/2_getCurrentHour.patch 1 1 0
+OSPATCH/2_getCurrentMinute.patch 1 1 0
+OSPATCH/setWindowLayoutMode.patch 35 19 2
+OSPATCH/2_getDeviceId.patch 80 72 67
+OSPATCH/2_startDrag.patch 0 0 0
+OSPATCH/release.patch 0 0 0
+OSPATCH/2_setCurrentHour.patch 2 2 0
+OSPATCH/2_setCurrentMinute.patch 3 3 0
+all:  651 4645 3817 1497

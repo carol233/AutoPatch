@@ -9,7 +9,7 @@ from threading import Timer
 
 JAR_PATH = "RepairDroid.jar"
 # APK_FOLDER = "/data/sdc/yanjie/APPForRepairDroid"
-APK_FOLDER = "/data/sdc/yanjie/APK2021"
+APK_FOLDER = "/data/sdc/yanjie/APK2020"
 patch_os = "OSPatches"
 patch_device = "DevicePatches"
 patch_callback = "CallBackPatches"
@@ -17,9 +17,9 @@ patch_callback = "CallBackPatches"
 Exclude_files = "/home/yanjie/AutoPatch/27000record.txt"
 
 Android_jar = "/home/yanjie/android-sdk-linux/platforms"
-RECORD_TXT = "record_run1k_2.txt"
-SAVEResults_DIR = "/data/sdc/yanjie/AutoPatch_evaluation_1k_2"
-SELECT_APK = "APKList_find2k.txt"
+RECORD_TXT = "record_runall_added.txt"
+SAVEResults_DIR = "/data/sdc/yanjie/AutoPatch_evaluation_2w_added"
+# SELECT_APK = "APKList_find2k.txt"
 
 all_solved = {}
 all_APK = []
@@ -157,10 +157,7 @@ class Analysis:
 
 
     def start(self, all_APK):
-        files = []
-        for sha256 in all_APK:
-            file = os.path.join(APK_FOLDER, sha256 + ".apk")
-            files.append(file)
+        files = all_APK
         random.shuffle(files)
         # files = getFileList(APK_FOLDER, ".apk")
         selected_files = files
@@ -184,12 +181,7 @@ if __name__ == '__main__':
     if not os.path.exists(SAVEResults_DIR):
         os.mkdir(SAVEResults_DIR)
 
-    with open(SELECT_APK, "r") as fr:
-        s = fr.read().split("\n")
-        for item in s:
-            all_APK.append(item)
-
-    all_APK = list(set(all_APK))
+    all_APK = getFileList(APK_FOLDER, ".apk")
     print(len(all_APK))
     analysis = Analysis()
     analysis.start(all_APK)

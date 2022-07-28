@@ -33,7 +33,7 @@ def draw_api_num(box, savefile):
 def draw_api_num2(box, box2, savefile):
     labels = ["AutoPatch", "Transformer"]
     print(len(box))
-    plt.figure(figsize=(8, 4))  # 设置画布的尺寸
+    plt.figure(figsize=(8, 3))  # 设置画布的尺寸
     # vert=False:水平箱线图；showmeans=True：显示均值
     if len(box) > len(box2):
         box = box[:len(box2)]
